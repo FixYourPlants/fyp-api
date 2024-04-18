@@ -18,6 +18,7 @@ django_unique_upload
 djangorestframework
 Markdown
 django-filter
+coreapi
 
 # Generate OpenAPI documentation
 drf-yasg
