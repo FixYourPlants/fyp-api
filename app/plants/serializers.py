@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from app.diary.serializers import DiarySerializer
-from app.sickness.serializers import SicknessSerializer, TreatmentSerializer
+from app.sickness.serializers import SicknessSerializer
 from app.users.serializers import UserSerializer
 from .models import Plant, Opinion, Characteristic, Difficulty
 
@@ -50,7 +50,6 @@ class PlantSerializer(serializers.ModelSerializer):
     characteristics = CharacteristicSerializer(many=True)
     diary = DiarySerializer()
     user = UserSerializer()
-    treatment = TreatmentSerializer()
 
     class Meta:
         model = Plant

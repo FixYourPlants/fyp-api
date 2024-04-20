@@ -1,57 +1,54 @@
 from enum import Enum
 
+import uuid
 from django.db import models
 
-from app.diary.models import Diary
-from app.sickness.models import Sickness, Treatment
+from app.sickness.models import Sickness
 from app.users.models import User
 
 
 # Create your models here.
+class Difficulty(Enum):
+    EASY = 'FÁCIL'
+    MEDIUM = 'MEDIO'
+    HIGH = 'ALTA'
+
 class Plant(models.Model):
     # Atributos
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     scientific_name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to="plants/")
-    difficulty = models.IntegerField()
+    image = models.ImageField(upload_to="plants/", null=True, blank=True)
+    difficulty = models.CharField(choices=[(tag.name, tag.value) for tag in Difficulty], max_length=10, default=Difficulty.EASY.value)
+    treatment = models.TextField()
 
-    # Relaciones
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    treatment = models.ForeignKey(Treatment, on_delete=models.CASCADE, related_name="treatment_plants")
-    sicknesses = models.ManyToManyField(Sickness, related_name="sickness_plants")
-    characteristics = models.ManyToManyField('Characteristic', related_name="characteristic_plants")
-    diary = models.ManyToOneRel('Diary', related_name="diary_plants", to=Diary, field_name="plant_id")
+    # Relationships
+    sicknesses = models.ManyToManyField(Sickness, related_name="sickness_plants", blank=True)
+    characteristics = models.ManyToManyField('Characteristic', related_name="characteristic_plants", blank=True)
 
 
     def __str__(self):
         return self.name
 
 class Opinion(models.Model):
-    # Atributos
+    # Attributes
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # Relaciones
+    # Relationships
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title + " - " + self.plant.name + " - " + self.email
+        return self.title + " - " + self.plant.name
 
 class Characteristic(models.Model):
-    # Atributos
+    # Attributes
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
-
-    # Relaciones
-    plant = models.ManyToManyField(Plant, related_name="plant_characteristics")
 
     def __str__(self):
         return self.name
-
-class Difficulty(Enum):
-    EASY = 1
-    MEDIUM = 2
-    HARD = 3

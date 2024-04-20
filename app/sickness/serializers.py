@@ -1,12 +1,8 @@
 from rest_framework import serializers
 
-from .models import Treatment, Sickness
+from .models import Sickness
 
 
-class TreatmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Treatment
-        fields = '__all__'
 
 class SicknessSerializer(serializers.ModelSerializer):
 

@@ -1,5 +1,4 @@
 from rest_framework import viewsets, mixins
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
 from app.diary.models import Diary, Page
 from app.diary.serializers import DiarySerializer, PageSerializer

@@ -1,26 +1,9 @@
 from rest_framework import viewsets, mixins
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
 
-from app.sickness.models import Sickness, Treatment
-from app.sickness.serializers import SicknessSerializer, TreatmentSerializer
+from app.sickness.models import Sickness
+from app.sickness.serializers import SicknessSerializer
 
 # Create your views here.
-'''
-TREATMENT
-'''
-
-
-class TreatmentListCreateView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
-    queryset = Treatment.objects.all()
-    serializer_class = TreatmentSerializer
-
-
-class TreatmentDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
-                          mixins.DestroyModelMixin):
-    queryset = Treatment.objects.all()
-    serializer_class = TreatmentSerializer
-
-
 '''
 SICKNESS
 '''

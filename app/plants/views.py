@@ -1,5 +1,4 @@
 from rest_framework import viewsets, mixins
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from app.plants.models import Plant, Opinion, Characteristic
 from app.plants.serializers import PlantSerializer, OpinionSerializer, CharacteristicSerializer
