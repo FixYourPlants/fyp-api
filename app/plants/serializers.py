@@ -36,7 +36,7 @@ class CharacteristicSerializer(serializers.ModelSerializer):
 
 class DifficultyField(serializers.Field):
     def to_representation(self, obj):
-        return obj.value
+        return obj
 
     def to_internal_value(self, data):
         try:
@@ -46,10 +46,8 @@ class DifficultyField(serializers.Field):
 
 class PlantSerializer(serializers.ModelSerializer):
     difficulty = DifficultyField()
-    sickness = SicknessSerializer(many=True)
+    sicknesses = SicknessSerializer(many=True)
     characteristics = CharacteristicSerializer(many=True)
-    diary = DiarySerializer()
-    user = UserSerializer()
 
     class Meta:
         model = Plant

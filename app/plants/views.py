@@ -11,7 +11,8 @@ PLANTS
 
 class PlantListCreateView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
     serializer_class = PlantSerializer
-    queryset = Plant.objects.all()
+    pagination_class = None
+    queryset = Plant.objects.all().order_by("id")
 
 
 class PlantDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
