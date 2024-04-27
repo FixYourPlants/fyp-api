@@ -11,7 +11,7 @@ class Sickness(models.Model):
     treatment = models.TextField()
 
     # Relationships
-    plants = models.ManyToManyField('plants.Plant', related_name="plant_sicknesses", blank=True)
+    plants = models.ManyToManyField('plants.Plant', related_name="sicknesses_related", blank=True)
 
     def __str__(self):
         return self.name

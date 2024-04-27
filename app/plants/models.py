@@ -14,6 +14,7 @@ class Difficulty(Enum):
     HIGH = 'ALTA'
 
 
+
 class Plant(models.Model):
     # Atributos
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -26,7 +27,7 @@ class Plant(models.Model):
     treatment = models.TextField()
 
     # Relationships
-    sicknesses = models.ManyToManyField(Sickness, related_name="sickness_plants", blank=True)
+    sicknesses = models.ManyToManyField(Sickness, related_name="plants_related", blank=True)
     characteristics = models.ManyToManyField('Characteristic', related_name="characteristic_plants", blank=True)
 
     def __str__(self):

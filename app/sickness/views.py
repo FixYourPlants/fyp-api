@@ -37,3 +37,13 @@ class SicknessUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMi
     serializer_class = SicknessSerializer
     permission_classes = (IsUserOrReadOnly,)
     pagination_class = None
+
+class PlantsWithSicknessListView(viewsets.GenericViewSet, mixins.ListModelMixin):
+    serializer_class = SicknessSerializer
+    queryset = Sickness.objects.all().order_by("id")
+    permission_classes = (AllowAny,)
+    pagination_class = None
+
+    def get_queryset(self):
+        sickness_id = self.kwargs.get('sickness_id')
+        return Sickness.objects.get(id=sickness_id).plants.all()

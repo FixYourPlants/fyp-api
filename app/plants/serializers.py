@@ -49,3 +49,5 @@ class DifficultyField(serializers.Field):
             return Difficulty[data.upper()]
         except KeyError:
             raise serializers.ValidationError("Invalid difficulty level")
+
+
