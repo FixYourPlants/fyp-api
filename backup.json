@@ -101,6 +101,26 @@
   },
   {
     "model": "users.user",
+    "pk": "c12d418c-d69b-4a51-adcd-ef09d52acbac",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$zJHqfqSrXs9jOkPq9QahgS$gZrWLf51gaQaxUghFw63CNOIJidmJ8IIrGi9Xq7xQ6s=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "PU9h5_x1cYAD7z5DyZwvHHg_7jgKFJMDh0PQIb_PeoIHkZ7xV8vZ-VLgcMdzORyPKIFUVeRlB@YlqOSVv-_xy",
+      "first_name": "string",
+      "last_name": "string",
+      "email": "user@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-04-27T18:09:29.954Z",
+      "image": "",
+      "groups": [],
+      "user_permissions": [],
+      "favourite_plant": []
+    }
+  },
+  {
+    "model": "users.user",
     "pk": "eb73d89e-bb76-4eaa-a041-afe224dc0144",
     "fields": {
       "password": "pbkdf2_sha256$720000$mSLpahNowtu6NpUnITmoUi$SrmOl3kuWGIHRKj5YHv8yUhFhz2JuW1Dj019DciZyLU=",
@@ -126,9 +146,27 @@
       "name": "Pimiento Morrón",
       "scientific_name": "Capsicum annuum",
       "description": "Se caracteriza por su forma gruesa y carnosa, con una piel brillante y un sabor suave y dulce. Los pimientos morrones suelen tener colores que van desde el verde al rojo, pasando por el amarillo y el naranja, dependiendo de su grado de madurez. Son muy apreciados en la cocina por su versatilidad y se utilizan en una amplia variedad de platos, tanto crudos como cocidos.",
-      "image": "",
+      "image": "plants/pimiento_morrón.jpeg",
       "difficulty": "EASY",
       "treatment": "Proporcionar riego regular y asegurarse de que reciban suficiente luz solar. Fertilizar periódicamente y proteger contra plagas como pulgones.",
+      "sicknesses": [
+        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c"
+      ],
+      "characteristics": [
+        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528"
+      ]
+    }
+  },
+  {
+    "model": "plants.plant",
+    "pk": "41a8f8b7-2c92-48cf-b59e-3f11fe65b8e7",
+    "fields": {
+      "name": "Calabacín",
+      "scientific_name": "Cucurbita pepo",
+      "description": "aaaa",
+      "image": "",
+      "difficulty": "MEDIUM",
+      "treatment": "aaa",
       "sicknesses": [],
       "characteristics": []
     }
@@ -139,12 +177,15 @@
     "fields": {
       "name": "Frambuesa",
       "scientific_name": "Rubus idaeus",
-      "description": "La frambuesa es una pequeña fruta roja que crece en arbustos del género Rubus. Conocida por su sabor dulce y ligeramente ácido, la frambuesa es una fruta muy apreciada en la cocina por su versatilidad y su capacidad para realzar una amplia variedad de platos.",
-      "image": "",
+      "description": "La frambuesa es una peque±a fruta roja que crece en arbustos del género Rubus. Conocida por su sabor dulce y ligeramente ácido, la frambuesa es una fruta muy apreciada en la cocina por su versatilidad y su capacidad para realzar una amplia variedad de platos.",
+      "image": "plants/frambuesa.jpg",
       "difficulty": "EASY",
-      "treatment": "Podar las cañas viejas después de la fructificación y proporcionar riego regular. Proteger contra enfermedades como el moho.",
+      "treatment": "Podar las ca±as viejas después de la fructificación y proporcionar riego regular. Proteger contra enfermedades como el moho.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
+        "f4f91a64-1476-4528-89e1-dfee235eefb6"
+      ]
     }
   },
   {
@@ -154,11 +195,16 @@
       "name": "Patata",
       "scientific_name": "Solanum tuberosum",
       "description": "La patata es un tubérculo comestible que pertenece a la familia de las solanáceas. Es una de las principales fuentes de carbohidratos en la dieta humana y se consume en todo el mundo en una amplia variedad de platos.",
-      "image": "",
+      "image": "plants/patata.jpeg",
       "difficulty": "EASY",
       "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar plagas como el escarabajo de la patata.",
-      "sicknesses": [],
-      "characteristics": []
+      "sicknesses": [
+        "f5378db4-7219-4116-ac3e-2ab4ba772491"
+      ],
+      "characteristics": [
+        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
+        "1dbe51fa-29b7-4cd0-b680-fc102c254785"
+      ]
     }
   },
   {
@@ -167,12 +213,15 @@
     "fields": {
       "name": "Cereza",
       "scientific_name": "Prunus cerasus",
-      "description": "Las cerezas son frutas pequeñas y redondas que crecen en árboles caducifolios del género Prunus. Existen dos tipos principales de cerezas: las dulces y las ácidas. Las cerezas dulces son conocidas por su sabor suave y dulce, mientras que las cerezas ácidas tienen un sabor más ácido y se utilizan comúnmente en la preparación de postres y conservas.",
-      "image": "",
+      "description": "Las cerezas son frutas peque±as y redondas que crecen en árboles caducifolios del género Prunus. Existen dos tipos principales de cerezas: las dulces y las ácidas. Las cerezas dulces son conocidas por su sabor suave y dulce, mientras que las cerezas ácidas tienen un sabor más ácido y se utilizan comúnmente en la preparación de postres y conservas.",
+      "image": "plants/cereza.jpg",
       "difficulty": "EASY",
       "treatment": "Proporcionar riego regular y protección contra enfermedades fúngicas y plagas como los pájaros.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "78350738-a259-4440-b0ba-836e21ec2bf6",
+        "7c2879f9-11f6-4690-ae7e-8fbfab55b764"
+      ]
     }
   },
   {
@@ -182,11 +231,20 @@
       "name": "Tomate",
       "scientific_name": "Solanum lycopersicum",
       "description": "El tomate es una fruta de pulpa jugosa y piel fina, de color rojo brillante en su madurez, que crece en la planta del mismo nombre. Aunque es comúnmente utilizado como una verdura en la cocina, botánicamente es una fruta. Los tomates son una fuente importante de nutrientes como la vitamina C, el potasio y el licopeno, un antioxidante que se ha asociado con varios beneficios para la salud.",
-      "image": "",
+      "image": "plants/tomate.jpg",
       "difficulty": "EASY",
-      "treatment": "Proporcionar riego regular y fertilizar según sea necesario. Podar y entutorar para promover un crecimiento saludable.",
-      "sicknesses": [],
-      "characteristics": []
+      "treatment": "Proporcionar riego regular y fertilizar según sea necesario. Podar y entutorar para promover un crecimiento saludable, evitando la aparición de hongos que da±an los frutos.",
+      "sicknesses": [
+        "200f50f6-a34c-48d7-82ec-ae485be62ed8",
+        "3f4aa136-6246-4338-ab9c-c6f603401e23",
+        "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
+        "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
+        "ee6a3f9b-e578-4ca1-b089-87b345cb76e1",
+        "f5378db4-7219-4116-ac3e-2ab4ba772491"
+      ],
+      "characteristics": [
+        "f1d388da-0dc5-4742-9795-b41ff2468d94"
+      ]
     }
   },
   {
@@ -195,12 +253,17 @@
     "fields": {
       "name": "Manzana",
       "scientific_name": "Malus domestica",
-      "description": "Es una fruta de forma redondeada, con una piel suave y brillante que puede variar en color desde el verde al rojo, pasando por diferentes tonalidades intermedias. Es una fruta muy popular y versátil, utilizada tanto en postres como en platos salados, y es conocida por su sabor dulce y refrescante.",
-      "image": "",
+      "description": "Es una fruta de forma redondeada, con una piel suave y brillante que puede variar en color desde el verde al rojo, pasando por diferentes tonalidades intermedias. Es una fruta muy popular y versátil, utilizada tanto en postres como en platos salados, siendo muy conocida por su sabor dulce y refrescante.",
+      "image": "plants/manzana.jpg",
       "difficulty": "MEDIUM",
       "treatment": "Podar regularmente para mantener la forma y estimular el crecimiento. Proporcionar riego regular y protección contra plagas y enfermedades.",
-      "sicknesses": [],
-      "characteristics": []
+      "sicknesses": [
+        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
+        "9f68c63e-9389-4339-b594-a61bd4edabad"
+      ],
+      "characteristics": [
+        "78350738-a259-4440-b0ba-836e21ec2bf6"
+      ]
     }
   },
   {
@@ -209,12 +272,16 @@
     "fields": {
       "name": "Arándanos",
       "scientific_name": "Vaccinium corymbosum",
-      "description": "Los arándanos son pequeñas bayas de color azul oscuro que crecen en arbustos de hoja perenne. Son conocidos por su sabor dulce y ligeramente ácido, así como por su alto contenido de antioxidantes y nutrientes beneficiosos para la salud.",
-      "image": "",
+      "description": "Los arándanos son peque±as bayas de color azul oscuro que crecen en arbustos de hoja perenne. Son conocidos por su sabor dulce y ligeramente ácido, así como por su alto contenido de antioxidantes y nutrientes beneficiosos para la salud.",
+      "image": "plants/arándanos.jpg",
       "difficulty": "EASY",
       "treatment": "Plantar en suelo ácido y bien drenado. Proporcionar riego regular y protección contra pájaros y enfermedades fúngicas.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
+        "e24707c7-ea98-41ae-a2d0-83984cc58f13",
+        "f4f91a64-1476-4528-89e1-dfee235eefb6"
+      ]
     }
   },
   {
@@ -223,12 +290,15 @@
     "fields": {
       "name": "Melocotón",
       "scientific_name": "Prunus persica",
-      "description": "El melocotón es una fruta de pulpa suave y jugosa que crece en el árbol del mismo nombre. Conocido por su piel aterciopelada y su sabor dulce y aromático, el melocotón es una fruta popular en muchas partes del mundo.",
-      "image": "",
+      "description": "El melocotón es una fruta de pulpa suave y jugosa que crece en el árbol del mismo nombre. Conocido por su piel aterciopelada y su sabor dulce y aromático. El melocotón es una fruta popular en muchas partes del mundo.",
+      "image": "plants/melocotón.jpg",
       "difficulty": "EASY",
       "treatment": "Proporcionar riego regular y protección contra plagas y enfermedades. Podar en invierno para mantener la forma y estimular la fructificación.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "022cdc1d-8916-4cc3-b726-4b835f4b9597",
+        "78350738-a259-4440-b0ba-836e21ec2bf6"
+      ]
     }
   },
   {
@@ -238,11 +308,13 @@
       "name": "Haba de Soja",
       "scientific_name": "Glycine max",
       "description": "La haba de soja, también conocida como soja o frijol de soja, es una leguminosa originaria de Asia oriental que se cultiva ampliamente por sus semillas comestibles ricas en proteínas y aceites vegetales.",
-      "image": "",
+      "image": "plants/haba_de_soja.jpg",
       "difficulty": "HIGH",
       "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y proteger contra enfermedades fúngicas.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "e71db759-aef9-40b6-8c7d-bada41e0e1a9"
+      ]
     }
   },
   {
@@ -252,10 +324,14 @@
       "name": "Maíz",
       "scientific_name": "Zea mays",
       "description": "El maíz es una planta cultivada ampliamente por sus mazorcas comestibles, que son una fuente importante de nutrientes como carbohidratos, proteínas y fibra. Es utilizado en una variedad de formas, desde alimentos básicos hasta ingredientes industriales.",
-      "image": "",
+      "image": "plants/maíz.png",
       "difficulty": "EASY",
-      "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y fertilizar según sea necesario.",
-      "sicknesses": [],
+      "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y fertilizar según sea necesario. Se suele cortar el penacho superior, que es la flor masculina, para que la mazorca tenga una mayor exposición al sol.",
+      "sicknesses": [
+        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
+        "748528a9-48b2-497e-957e-4547711cd87e",
+        "f5378db4-7219-4116-ac3e-2ab4ba772491"
+      ],
       "characteristics": []
     }
   },
@@ -265,12 +341,16 @@
     "fields": {
       "name": "Fresa",
       "scientific_name": "Fragaria x ananassa",
-      "description": "La fresa es un fruto rojo brillante, pequeño y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, así como por su textura suave y carnosa.",
-      "image": "",
+      "description": "La fresa es un fruto rojo brillante, peque±o y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, así como por su textura suave y carnosa.",
+      "image": "plants/fresa.jpeg",
       "difficulty": "EASY",
-      "treatment": "Plantar en suelo rico en materia orgánica y proporcionar riego regular. Retirar corredores para fomentar la producción de frutos.",
+      "treatment": "Plantar en suelo rico en materia orgánica y proporcionar riego regular. Retirar corredores para fomentar la producción de frutos. Estos corredores se pueden utilizar para producir nuevas plantas.",
       "sicknesses": [],
-      "characteristics": []
+      "characteristics": [
+        "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
+        "e24707c7-ea98-41ae-a2d0-83984cc58f13",
+        "f1d388da-0dc5-4742-9795-b41ff2468d94"
+      ]
     }
   },
   {
@@ -279,12 +359,17 @@
     "fields": {
       "name": "Uva",
       "scientific_name": "Vitis vinifera",
-      "description": "Las uvas son frutas pequeñas y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, así como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
-      "image": "",
+      "description": "Las uvas son frutas peque±as y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, así como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
+      "image": "plants/uva.jpeg",
       "difficulty": "MEDIUM",
-      "treatment": "Proporcionar riego regular y protección contra plagas como la polilla de la uva. Podar en invierno para promover una buena producción.",
-      "sicknesses": [],
-      "characteristics": []
+      "treatment": "Proporcionar riego regular (en Extremadura no se riegan) y protección contra plagas como la polilla de la uva. Con mucha humedad, época de muchas lluvias, conviene hacer un tratamiento contra el mildiu. Hacer una poda fuerte en invierno, quitando todas las ramas y dejando solo unas yemas, para promover una buena producción.",
+      "sicknesses": [
+        "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+      ],
+      "characteristics": [
+        "f1d388da-0dc5-4742-9795-b41ff2468d94",
+        "f4f91a64-1476-4528-89e1-dfee235eefb6"
+      ]
     }
   },
   {
@@ -362,6 +447,13 @@
   },
   {
     "model": "plants.characteristic",
+    "pk": "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
+    "fields": {
+      "name": "Americana"
+    }
+  },
+  {
+    "model": "plants.characteristic",
     "pk": "1dbe51fa-29b7-4cd0-b680-fc102c254785",
     "fields": {
       "name": "Tubérculo"
@@ -414,8 +506,9 @@
     "pk": "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
     "fields": {
       "name": "Oídio",
-      "description": "El oídio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosas, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
-      "treatment": "1. Mantener una buena circulación de aire alrededor de las plantas para reducir la humedad.\r\n2. Aplicar tratamientos fungicidas a intervalos regulares."
+      "description": "El oídio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosales, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
+      "treatment": "1. Mantener una buena circulación de aire alrededor de las plantas para reducir la humedad.\r\n2. Aplicar tratamientos con fungicidas a intervalos regulares.",
+      "image": "sicknesses/oídio.jpg"
     }
   },
   {
@@ -424,7 +517,8 @@
     "fields": {
       "name": "Moho",
       "description": "El moho es una enfermedad fúngica que afecta a muchas plantas, incluyendo hortalizas, árboles frutales y plantas ornamentales. Se manifiesta como un crecimiento micelial blanco, gris o negro en las hojas, tallos o frutos, lo que puede causar la pudrición de los tejidos.",
-      "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en períodos de alta humedad."
+      "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en períodos de alta humedad.",
+      "image": "sicknesses/moho.jpg"
     }
   },
   {
@@ -433,7 +527,8 @@
     "fields": {
       "name": "Mancha bacteriana",
       "description": "La mancha bacteriana es una enfermedad causada por bacterias que afecta a plantas como tomates, pimientos y pepinos. Se caracteriza por la formación de manchas húmedas y oscuras en las hojas y frutos, lo que puede llevar a la pudrición de estos tejidos.",
-      "treatment": "1. Utilizar prácticas de cultivo que reduzcan la humedad en las hojas.\r\n2. Aplicar tratamientos bactericidas según las recomendaciones del fabricante."
+      "treatment": "1. Utilizar prácticas de cultivo que reduzcan la humedad en las hojas.\r\n2. Aplicar tratamientos bactericidas, según las recomendaciones del fabricante.",
+      "image": "sicknesses/mancha_bacteriana.jpg"
     }
   },
   {
@@ -442,7 +537,8 @@
     "fields": {
       "name": "Virus del mosaico",
       "description": "El virus del mosaico es una enfermedad viral que afecta a muchas plantas, incluyendo tomates, pepinos y calabacines. Se manifiesta como un moteado característico en las hojas, que puede reducir la capacidad de la planta para realizar la fotosíntesis y afectar su rendimiento.",
-      "treatment": "1. Eliminar y destruir las plantas infectadas para prevenir la propagación del virus.\r\n2. Controlar los insectos vectores que puedan transmitir el virus."
+      "treatment": "1. Eliminar y destruir las plantas infectadas para prevenir la propagación del virus.\r\n2. Controlar los insectos vectores que puedan transmitir el virus.",
+      "image": "sicknesses/virus_del_mosaico.jpeg"
     }
   },
   {
@@ -450,8 +546,9 @@
     "pk": "748528a9-48b2-497e-957e-4547711cd87e",
     "fields": {
       "name": "Óxido",
-      "description": "El óxido es una enfermedad fúngica que afecta a diversas plantas, incluyendo cereales, rosas y árboles frutales. Se manifiesta como manchas de color naranja o marrón en las hojas y puede debilitar la planta si no se controla.",
-      "treatment": "1. Retirar y eliminar las partes de la planta afectadas.\r\n2. Aplicar fungicidas preventivos al inicio de la temporada de crecimiento."
+      "description": "El óxido es una enfermedad fúngica que afecta a diversas plantas, incluyendo cereales, rosales y árboles frutales. Se manifiesta como manchas de color naranja o marrón en las hojas y, si no se controla, puede debilitar la planta.",
+      "treatment": "1. Retirar y eliminar las partes de la planta afectadas.\r\n2. Aplicar fungicidas preventivos al inicio de la temporada de crecimiento.",
+      "image": "sicknesses/óxido.jpg"
     }
   },
   {
@@ -460,7 +557,8 @@
     "fields": {
       "name": "Sarna",
       "description": "La sarna es una enfermedad fúngica común en árboles frutales como manzanos y perales. Se caracteriza por la formación de manchas en las hojas y frutos, lo que puede afectar su crecimiento y calidad.",
-      "treatment": "1. Aplicar fungicidas específicos para la sarna siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación."
+      "treatment": "1. Aplicar fungicidas específicos para la sarna, siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación.",
+      "image": "sicknesses/sarna.jpg"
     }
   },
   {
@@ -469,7 +567,8 @@
     "fields": {
       "name": "Podredumbre negra",
       "description": "La podredumbre negra es una enfermedad causada por hongos que afecta a diversas plantas, incluyendo vides, tomates y fresas. Se caracteriza por la descomposición de los tejidos, que adquieren un color oscuro o negro, y puede propagarse rápidamente en condiciones húmedas.",
-      "treatment": "1. Evitar el exceso de riego para reducir la humedad en el suelo.\r\n2. Eliminar y destruir los frutos afectados para prevenir la propagación."
+      "treatment": "1. Evitar el exceso de riego para reducir la humedad en el suelo.\r\n2. Eliminar y destruir los frutos afectados para prevenir la propagación.",
+      "image": "sicknesses/podredumbre_negra.jpg"
     }
   },
   {
@@ -478,7 +577,8 @@
     "fields": {
       "name": "Mancha foliar",
       "description": "La mancha foliar es una enfermedad fúngica que afecta a una amplia gama de plantas, desde árboles frutales hasta cultivos de hortalizas. Se presenta como manchas circulares o irregulares en las hojas, que pueden expandirse y fusionarse si las condiciones son favorables.",
-      "treatment": "1. Evitar el riego por aspersión para reducir la humedad en las hojas.\r\n2. Eliminar y destruir las hojas afectadas para prevenir la propagación."
+      "treatment": "1. Evitar el riego por aspersión para reducir la humedad en las hojas.\r\n2. Eliminar y destruir las hojas afectadas para prevenir la propagación.",
+      "image": "sicknesses/mancha_foliar.jpg"
     }
   },
   {
@@ -487,7 +587,8 @@
     "fields": {
       "name": "Virus rizado amarillo",
       "description": "El virus rizado amarillo es una enfermedad viral que afecta a diversas plantas cultivadas, incluyendo tomates, patatas y remolachas. Se caracteriza por el amarillamiento y deformación de las hojas, así como la reducción en el rendimiento de la planta.",
-      "treatment": "1. Utilizar variedades resistentes cuando sea posible.\r\n2. Controlar las malas hierbas que puedan servir como hospederos alternativos."
+      "treatment": "1. Utilizar variedades resistentes, cuando sea posible.\r\n2. Controlar las malas hierbas que puedan servir como huéspedes alternativos.",
+      "image": "sicknesses/virus_rizado_amarillo.jpg"
     }
   },
   {
@@ -495,8 +596,9 @@
     "pk": "f5378db4-7219-4116-ac3e-2ab4ba772491",
     "fields": {
       "name": "Tizón",
-      "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo maíz, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar daños significativos si no se trata adecuadamente.",
-      "treatment": "1. Rotar cultivos para evitar la propagación del tizón.\r\n2. Mantener el suelo limpio de restos vegetales para reducir la propagación de esporas."
+      "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo maíz, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar da±os significativos si no se trata adecuadamente.",
+      "treatment": "1. Rotar cultivos para evitar la propagación del tizón.\r\n2. Mantener el suelo limpio de restos vegetales para reducir la propagación de esporas.",
+      "image": "sicknesses/tizón.jpeg"
     }
   }
 ]

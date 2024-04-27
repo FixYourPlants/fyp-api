@@ -9,9 +9,7 @@ class Sickness(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     treatment = models.TextField()
-
-    # Relationships
-    plants = models.ManyToManyField('plants.Plant', related_name="sicknesses_related", blank=True)
+    image = models.ImageField(upload_to="sicknesses/", null=True, blank=True)
 
     def __str__(self):
         return self.name

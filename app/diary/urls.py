@@ -12,7 +12,7 @@ DIARY
 router.register(r'diaries', DiaryListView,basename="diary-list")
 router.register(r'diaries', DiaryCreateView,basename="diary-create")
 router.register(r'diary', DiaryDetailView,basename="diary-detail")
-router.register(r'diary', DiaryUpdateAndDestroyView,basename="diary-update-destroy")
+router.register(r'diaries', DiaryUpdateAndDestroyView,basename="diary-update-destroy")
 
 '''
 PAGE
@@ -20,6 +20,6 @@ PAGE
 router.register(r'pages', PageListView,basename="page-list")
 router.register(r'pages', PageCreateView,basename="page-create")
 router.register(r'page', PageDetailView,basename="page-detail")
-router.register(r'page', PageUpdateAndDestroyView,basename="page-update-destroy")
+router.register(r'pages', PageUpdateAndDestroyView,basename="page-update-destroy")
 
 urlpatterns = [path('', include(router.urls))]

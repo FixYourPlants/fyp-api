@@ -17,7 +17,7 @@ class DifficultySerializer(serializers.Serializer):
 
 
 class PlantSerializer(serializers.ModelSerializer):
-    sickness = SicknessSerializer(many=True)
+    sicknesses = SicknessSerializer(many=True)
     characteristics = CharacteristicSerializer(many=True)
 
     class Meta:
@@ -31,12 +31,6 @@ class OpinionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Opinion
-        fields = '__all__'
-
-
-class CharacteristicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Characteristic
         fields = '__all__'
 
 
