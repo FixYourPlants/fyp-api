@@ -11,7 +11,7 @@ DIARY
 '''
 
 
-class DiaryListCreateView(viewsets.GenericViewSet, mixins.ListModelMixin):
+class DiaryListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = DiarySerializer
     queryset = Diary.objects.all()
     permission_classes = (AllowAny,)
@@ -44,7 +44,7 @@ PAGE
 '''
 
 
-class PageListCreateView(viewsets.GenericViewSet, mixins.ListModelMixin):
+class PageListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Page.objects.all()
     serializer_class = PageSerializer
     permission_classes = (AllowAny,)
