@@ -13,6 +13,7 @@ class Difficulty(Enum):
     MEDIUM = 'MEDIO'
     HIGH = 'ALTA'
 
+
 class Plant(models.Model):
     # Atributos
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -20,16 +21,17 @@ class Plant(models.Model):
     scientific_name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to="plants/", null=True, blank=True)
-    difficulty = models.CharField(choices=[(tag.name, tag.value) for tag in Difficulty], max_length=10, default=Difficulty.EASY.value)
+    difficulty = models.CharField(choices=[(tag.name, tag.value) for tag in Difficulty], max_length=10,
+                                  default=Difficulty.EASY.value)
     treatment = models.TextField()
 
     # Relationships
     sicknesses = models.ManyToManyField(Sickness, related_name="sickness_plants", blank=True)
     characteristics = models.ManyToManyField('Characteristic', related_name="characteristic_plants", blank=True)
 
-
     def __str__(self):
         return self.name
+
 
 class Opinion(models.Model):
     # Attributes
@@ -44,6 +46,7 @@ class Opinion(models.Model):
 
     def __str__(self):
         return self.title + " - " + self.plant.name
+
 
 class Characteristic(models.Model):
     # Attributes

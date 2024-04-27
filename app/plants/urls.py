@@ -1,19 +1,38 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from app.plants.views import OpinionDetailView, CharacteristicListView, CharacteristicDetailView, OpinionListView, \
-    PlantListCreateView, PlantDetailView
+from app.plants.views import CharacteristicListView, CharacteristicDetailView, OpinionListView, \
+    PlantDetailView, PlantListView, PlantCreateView, PlantUpdateAndDestroyView, OpinionCreateView, OpinionDetailView, \
+    OpinionUpdateAndDestroyView, CharacteristicCreateView, CharacteristicUpdateAndDestroyView, PlantFavListView, \
+    PlantFavCreateView, PlantFavDestroyView
 
 router = SimpleRouter()
-router.register(r'plants', PlantListCreateView,basename="plant")
-router.register(r'plant', PlantDetailView,basename="plant-detail")
-#router.register(r'plant', OpinionDetailView,basename="plant-fav") TODO
-#router.register(r'plant', OpinionDetailView,basename="plant-fav-add") TODO
-#router.register(r'plant', OpinionDetailView,basename="plant-fav-remove") TODO
-router.register(r'opinions', OpinionListView,basename="plant-opinion")
-#router.register(r'opinion', OpinionDetailView,basename="plant-opinion-detail") REMOVE
-#router.register(r'opinion', OpinionDetailView,basename="plant-opinion-create") TODO
-router.register(r'charasteristics', CharacteristicListView,basename="plant-charasteristics")
-router.register(r'charasteristic', CharacteristicDetailView,basename="plant-charasteristics-detail")
+
+'''
+PLANT
+'''
+router.register(r'plants', PlantListView, basename="plant-list")
+router.register(r'plants', PlantCreateView, basename="plant-create")
+router.register(r'plant', PlantDetailView, basename="plant-detail")
+router.register(r'plants', PlantUpdateAndDestroyView, basename="plant-update-destroy")
+router.register(r'plant', PlantFavListView, basename="plant-fav")
+router.register(r'plant', PlantFavCreateView, basename="plant-fav-add")
+router.register(r'plant', PlantFavDestroyView, basename="plant-fav-remove")
+
+'''
+OPINION
+'''
+router.register(r'opinions', OpinionListView, basename="opinion-list")
+router.register(r'opinion', OpinionCreateView, basename="opinion-create")
+router.register(r'opinion', OpinionDetailView, basename="opinion-detail")
+router.register(r'opinion', OpinionUpdateAndDestroyView, basename="opinion-update-destroy")
+
+'''
+CHARACTERISTIC
+'''
+router.register(r'charasteristics', CharacteristicListView, basename="charasteristics")
+router.register(r'charasteristics', CharacteristicCreateView, basename="charasteristics-create")
+router.register(r'charasteristic', CharacteristicDetailView, basename="charasteristics-detail")
+router.register(r'charasteristic', CharacteristicUpdateAndDestroyView, basename="charasteristics-update-destroy")
 
 urlpatterns = [path('', include(router.urls))]

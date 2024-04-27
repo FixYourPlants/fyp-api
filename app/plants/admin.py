@@ -8,12 +8,12 @@ from app.plants.models import Plant, Opinion, Characteristic
 class PlantAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Opinion)
 class OpinionAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Characteristic)
 class CharacteristicAdmin(admin.ModelAdmin):
     pass
-
-

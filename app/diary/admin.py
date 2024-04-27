@@ -8,6 +8,7 @@ from app.diary.models import Diary, Page
 class DiaryAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     pass

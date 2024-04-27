@@ -2,17 +2,22 @@ from rest_framework import serializers
 
 from app.users.serializers import UserSerializer
 from .models import Diary, Page
+from ..plants.serializers import PlantSerializer
 
-
-class PageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Page
-        fields = '__all__'
 
 class DiarySerializer(serializers.ModelSerializer):
-    pages = PageSerializer(many=True, read_only=True)
-    user = UserSerializer()  # Suponiendo que tienes un serializador UserSerializer
+    plant = PlantSerializer()
+    user = UserSerializer()
 
     class Meta:
         model = Diary
         fields = '__all__'
+
+
+
+class PageSerializer(serializers.ModelSerializer):
+    diary = DiarySerializer()
+    class Meta:
+        model = Page
+        fields = '__all__'
+
