@@ -10,16 +10,38 @@ from .serializers import CreateUserSerializer, UserSerializer
 USER
 '''
 
-
-class UserViewSet(mixins.RetrieveModelMixin,
-                  mixins.UpdateModelMixin,
-                  viewsets.GenericViewSet):
-    """
-    Updates and retrieves user accounts
-    """
+class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (AllowAny,)
+    pagination_class = None
+
+    @swagger_auto_schema(
+        operation_summary="List of Users",
+        tags=['User']
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+
+class UserCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
+    queryset = User.objects.all()
+    serializer_class = CreateUserSerializer
+    permission_classes = (AllowAny,)
+    pagination_class = None
+
+    @swagger_auto_schema(
+        operation_summary="Create a User",
+        tags=['User']
+    )
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+class UserDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+    pagination_class = None
 
     @swagger_auto_schema(
         operation_summary="Retrieve a User",
@@ -28,6 +50,12 @@ class UserViewSet(mixins.RetrieveModelMixin,
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
+class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+    pagination_class = None
+
     @swagger_auto_schema(
         operation_summary="Update a User",
         tags=['User']
@@ -35,20 +63,10 @@ class UserViewSet(mixins.RetrieveModelMixin,
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 
-
-class UserCreateViewSet(mixins.CreateModelMixin,
-                        viewsets.GenericViewSet):
-    """
-    Creates user accounts
-    """
-    queryset = User.objects.all()
-    serializer_class = CreateUserSerializer
-    permission_classes = (AllowAny,)
-
     @swagger_auto_schema(
-        operation_summary="Create a User",
+        operation_summary="Delete a User",
         tags=['User']
     )
-    def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
 
