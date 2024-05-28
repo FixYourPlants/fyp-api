@@ -2,7 +2,6 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
-from app.permissions import IsUserOrReadOnly
 from .models import User
 from .serializers import CreateUserSerializer, UserSerializer
 
@@ -22,20 +21,6 @@ class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     )
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
-
-
-class UserCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
-    queryset = User.objects.all()
-    serializer_class = CreateUserSerializer
-    permission_classes = (AllowAny,)
-    pagination_class = None
-
-    @swagger_auto_schema(
-        operation_summary="Create a User",
-        tags=['User']
-    )
-    def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
 
 class UserDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     queryset = User.objects.all()

@@ -8,7 +8,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Common(Configuration):
-
     INSTALLED_APPS = (
         'jazzmin',
         'django.contrib.admin',
@@ -18,12 +17,16 @@ class Common(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-
         # Third party apps
-        'rest_framework',            # utilities for rest apis
-        'drf_yasg',                  # swagger
+        'rest_framework',  # utilities for rest apis
+        'drf_yasg',  # swagger
         'rest_framework.authtoken',  # token authentication
-        'django_filters',            # for filtering rest endpoints
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'dj_rest_auth',
+        'dj_rest_auth.registration',
+        'django_filters',  # for filtering rest endpoints
 
         # Your apps
         'app.users',
@@ -33,20 +36,34 @@ class Common(Configuration):
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
-    MIDDLEWARE = (
+    MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'allauth.account.middleware.AccountMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+    # Allauth configuration
+    AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        'allauth.account.auth_backends.AuthenticationBackend',
     )
+
+    SITE_ID = 1
 
     ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'app.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     WSGI_APPLICATION = 'app.wsgi.application'
+
+    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_AUTHENTICATION_METHOD = 'email'
+    ACCOUNT_USERNAME_REQUIRED = False
 
     # Email
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
