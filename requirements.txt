@@ -6,6 +6,7 @@ dj-rest-auth
 gunicorn
 newrelic
 pillow
+django-allauth
 
 # For the persistence stores
 psycopg2-binary
