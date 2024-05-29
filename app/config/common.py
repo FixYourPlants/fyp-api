@@ -54,13 +54,15 @@ class Common(Configuration):
     )
 
     SITE_ID = 1
+    REST_USE_JWT = True
+    JWT_AUTH_COOKIE = 'my-app-auth'
 
     ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'app.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     WSGI_APPLICATION = 'app.wsgi.application'
 
-    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+    ACCOUNT_EMAIL_VERIFICATION = 'optional'
     ACCOUNT_EMAIL_REQUIRED = True
     ACCOUNT_AUTHENTICATION_METHOD = 'email'
     ACCOUNT_USERNAME_REQUIRED = False
@@ -208,10 +210,9 @@ class Common(Configuration):
         'DEFAULT_PERMISSION_CLASSES': [
             'rest_framework.permissions.AllowAny',
         ],
-        'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
-        ),
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ],
         'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
     }
 
