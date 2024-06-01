@@ -7,6 +7,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from rest_framework.authtoken import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 VERSION = 'v1'
 
@@ -35,6 +36,8 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('api-auth/', include('dj_rest_auth.urls')),
     path('api-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('simple/token',TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('simple/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # the 'api-root' from django rest-frameworks default router
     # http://www.django-rest-framework.org/api-guide/routers/#defaultrouter
