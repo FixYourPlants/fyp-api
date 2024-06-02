@@ -1,10 +1,12 @@
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, status
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from app.permissions import IsUserOrReadOnly
 from app.plants.models import Plant, Opinion, Characteristic
-from app.plants.serializers import PlantSerializer, OpinionSerializer, CharacteristicSerializer
+from app.plants.serializers import PlantSerializer, OpinionSerializer, CharacteristicSerializer, PlantFavSerializer
 
 # Create your views here.
 '''
@@ -92,48 +94,61 @@ class PlantFavListView(viewsets.GenericViewSet, mixins.ListModelMixin):
         return super().list(request, *args, **kwargs)
 
 
-class PlantFavCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
+class PlantFavChangeView(viewsets.GenericViewSet, APIView):
+    serializer_class = PlantFavSerializer
+    queryset = Plant.objects.all()
+    permission_classes = (IsUserOrReadOnly,)
+    pagination_class = None
+
+    def perform_update(self, serializer):
+        user = self.request.user
+        id = self.kwargs['pk']
+        plant = Plant.objects.get(id=id)
+
+        if not user.favourite_plant.filter(id=plant.id).exists():
+            user.favourite_plant.add(plant)
+        else:
+            user.favourite_plant.remove(plant)
+        user.save()
+
+        return user.favourite_plant.filter(id=plant.id).exists()
+
+    @swagger_auto_schema(
+        operation_summary="Add or Remove a Favorite Plant",
+        tags=['Plant']
+    )
+    def update(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        exists = self.perform_update(serializer)
+
+        return Response(exists)
+
+
+class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     serializer_class = PlantSerializer
     queryset = Plant.objects.all()
     permission_classes = (IsUserOrReadOnly,)
     pagination_class = None
 
-    def perform_create(self, serializer):
+    def get_queryset(self):
         user = self.request.user
-        plant = serializer.save()
-        user.fav_plants.add(plant)
+        print(user.username)
+        return user.favourite_plant.all().filter(id=self.kwargs['pk'])
 
     @swagger_auto_schema(
-        operation_summary="Create a Favorite Plant",
+        operation_summary="Retrieve a Favorite Plant",
         tags=['Plant']
     )
-    def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
-
-
-class PlantFavDestroyView(viewsets.GenericViewSet, mixins.DestroyModelMixin):
-    serializer_class = PlantSerializer
-    queryset = Plant.objects.all()
-    permission_classes = (IsUserOrReadOnly,)
-    pagination_class = None
-
-    def perform_destroy(self, instance):
-        user = self.request.user
-        user.fav_plants.remove(instance)
-
-    @swagger_auto_schema(
-        operation_summary="Delete a Favorite Plant",
-        tags=['Plant']
-    )
-    def destroy(self, request, *args, **kwargs):
-        return super().destroy(request, *args, **kwargs)
+    def retrieve(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        return Response(queryset.exists())
 
 
 '''
 OPINION
 '''
-
-
 class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Opinion.objects.all()
     serializer_class = OpinionSerializer

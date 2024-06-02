@@ -4,7 +4,7 @@ from rest_framework.routers import SimpleRouter
 from app.plants.views import CharacteristicListView, CharacteristicDetailView, OpinionListView, \
     PlantDetailView, PlantListView, PlantCreateView, PlantUpdateAndDestroyView, OpinionCreateView, OpinionDetailView, \
     OpinionUpdateAndDestroyView, CharacteristicCreateView, CharacteristicUpdateAndDestroyView, PlantFavListView, \
-    PlantFavCreateView, PlantFavDestroyView
+    PlantFavChangeView, PlantFavStatusView
 
 router = SimpleRouter()
 
@@ -16,8 +16,8 @@ router.register(r'plants/create', PlantCreateView, basename="plant-create")
 router.register(r'plant', PlantDetailView, basename="plant-detail")
 router.register(r'plants', PlantUpdateAndDestroyView, basename="plant-update-destroy")
 router.register(r'plants/fav', PlantFavListView, basename="plant-fav")
-router.register(r'plant/fav/add', PlantFavCreateView, basename="plant-fav-add") # TODO: Revise
-router.register(r'plant/fav/remove', PlantFavDestroyView, basename="plant-fav-remove")
+router.register(r'plant/fav/change', PlantFavChangeView, basename="plant-fav-change")
+router.register(r'plant/fav/status', PlantFavStatusView, basename="plant-fav-status")
 
 '''
 OPINION

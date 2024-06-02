@@ -24,6 +24,11 @@ class PlantSerializer(serializers.ModelSerializer):
         model = Plant
         fields = '__all__'
 
+class PlantFavSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plant
+        fields = ['id']
+
 
 class OpinionSerializer(serializers.ModelSerializer):
     plant = PlantSerializer()
