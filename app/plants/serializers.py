@@ -30,10 +30,14 @@ class PlantFavSerializer(serializers.ModelSerializer):
         fields = ['id']
 
 
-class OpinionSerializer(serializers.ModelSerializer):
-    plant = PlantSerializer()
-    user = UserSerializer()
+class OpinionCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Opinion
+        fields = ['id', 'title', 'description', 'created_at', 'plant']
+        read_only_fields = ['id', 'created_at', 'plant', 'user']
 
+class OpinionSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Opinion
         fields = '__all__'

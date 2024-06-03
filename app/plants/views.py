@@ -1,17 +1,20 @@
+from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins, status, serializers
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from app.permissions import IsUserOrReadOnly
 from app.plants.models import Plant, Opinion, Characteristic
-from app.plants.serializers import PlantSerializer, OpinionSerializer, CharacteristicSerializer, PlantFavSerializer
+from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
+    OpinionSerializer, OpinionCreateSerializer
 
 # Create your views here.
 '''
 PLANT
 '''
+
 
 class PlantListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = PlantSerializer
@@ -149,6 +152,8 @@ class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
 '''
 OPINION
 '''
+
+
 class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Opinion.objects.all()
     serializer_class = OpinionSerializer
@@ -157,15 +162,27 @@ class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
 
     @swagger_auto_schema(
         operation_summary="List of Opinions",
-        tags=['Opinion']
+        tags=['Opinion'],
+        manual_parameters=[
+            openapi.Parameter(
+                name='plant_id',
+                in_=openapi.IN_QUERY,
+                type=openapi.TYPE_STRING,
+                required=True,
+                description='ID of the plant to filter opinions'
+            )
+        ]
     )
     def list(self, request, *args, **kwargs):
+        plant_id = request.query_params.get('plant_id')
+        if plant_id:
+            self.queryset = Opinion.objects.filter(plant_id=plant_id)
         return super().list(request, *args, **kwargs)
 
 
 class OpinionCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     queryset = Opinion.objects.all()
-    serializer_class = OpinionSerializer
+    serializer_class = OpinionCreateSerializer
     permission_classes = (IsUserOrReadOnly,)
     pagination_class = None
 
@@ -173,6 +190,18 @@ class OpinionCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
         operation_summary="Create an Opinion",
         tags=['Opinion']
     )
+    def perform_create(self, serializer):
+        user = self.request.user
+        data = self.request.data
+        plant_id = data.get('plant_id')
+
+        try:
+            plant = Plant.objects.get(id=plant_id)
+        except Plant.DoesNotExist:
+            raise serializers.ValidationError("Plant with the given ID does not exist")
+
+        serializer.save(user=user, plant=plant)
+
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
 
@@ -278,5 +307,3 @@ class CharacteristicUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateM
     )
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
-
-

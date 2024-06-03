@@ -1,10 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from app.plants.views import CharacteristicListView, CharacteristicDetailView, OpinionListView, \
-    PlantDetailView, PlantListView, PlantCreateView, PlantUpdateAndDestroyView, OpinionCreateView, OpinionDetailView, \
-    OpinionUpdateAndDestroyView, CharacteristicCreateView, CharacteristicUpdateAndDestroyView, PlantFavListView, \
-    PlantFavChangeView, PlantFavStatusView
+from app.plants.views import CharacteristicListView, CharacteristicDetailView, \
+    PlantDetailView, PlantListView, PlantCreateView, PlantUpdateAndDestroyView, OpinionCreateView, \
+    CharacteristicCreateView, CharacteristicUpdateAndDestroyView, PlantFavListView, \
+    PlantFavChangeView, PlantFavStatusView, OpinionListView, OpinionDetailView, OpinionUpdateAndDestroyView
 
 router = SimpleRouter()
 
@@ -22,7 +22,7 @@ router.register(r'plant/fav/status', PlantFavStatusView, basename="plant-fav-sta
 '''
 OPINION
 '''
-router.register(r'opinions/lists', OpinionListView, basename="opinion-list")  # TODO: Filter for a plant
+router.register(r'opinions/lists', OpinionListView, basename="opinion-list")
 router.register(r'opinions/create', OpinionCreateView, basename="opinion-create")
 router.register(r'opinion', OpinionDetailView, basename="opinion-detail")
 router.register(r'opinions', OpinionUpdateAndDestroyView, basename="opinion-update-destroy")
