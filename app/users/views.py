@@ -83,6 +83,8 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
         return super().destroy(request, *args, **kwargs)
 
 class LoggedInUserView(viewsets.ViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(

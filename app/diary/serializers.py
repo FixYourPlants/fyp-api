@@ -14,10 +14,16 @@ class DiarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class PageSerializer(serializers.ModelSerializer):
     diary = DiarySerializer()
+
     class Meta:
         model = Page
         fields = '__all__'
+
+    def create(self, validated_data):
+        diary_data = validated_data.pop('diary')
+        diary = Diary.objects.get_or_create(**diary_data)
+        return Page.objects.get_or_create(diary=diary, **validated_data)
+
 

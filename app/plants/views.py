@@ -5,6 +5,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from app.diary.models import Diary
 from app.permissions import IsUserOrReadOnly
 from app.plants.models import Plant, Opinion, Characteristic
 from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
@@ -110,8 +111,10 @@ class PlantFavChangeView(viewsets.GenericViewSet, APIView):
 
         if not user.favourite_plant.filter(id=plant.id).exists():
             user.favourite_plant.add(plant)
+            Diary.objects.get_or_create(user=user, plant=plant, title="Diario para " + plant.name)
         else:
             user.favourite_plant.remove(plant)
+            Diary.objects.filter(user=user, plant=plant).delete()
         user.save()
 
         return user.favourite_plant.filter(id=plant.id).exists()
@@ -137,7 +140,6 @@ class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
 
     def get_queryset(self):
         user = self.request.user
-        print(user.username)
         return user.favourite_plant.all().filter(id=self.kwargs['pk'])
 
     @swagger_auto_schema(

@@ -24,6 +24,7 @@ class Page(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="pages/", null=True, blank=True)
 
     # Relationships
     diary = models.ForeignKey(Diary, on_delete=models.CASCADE)

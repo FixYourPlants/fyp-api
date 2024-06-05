@@ -1,3 +1,4 @@
+from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
@@ -31,6 +32,12 @@ class DiaryCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     queryset = Diary.objects.all()
     permission_classes = (IsUserOrReadOnly,)
     pagination_class = None
+
+    def get_queryset(self):
+        user = self.request.user
+        if user:
+            return self.queryset.filter(user=self.request.user)
+        return self.queryset.none()
 
     @swagger_auto_schema(
         operation_summary="Create a Diary",
@@ -86,11 +93,18 @@ class PageListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
+    def get_queryset(self):
+        diary_id = self.request.query_params.get('diary_id')
+        if diary_id:
+            return self.queryset.filter(diary=diary_id)
+        return self.queryset.none()
+
     @swagger_auto_schema(
         operation_summary="List of Pages",
         tags=['Page']
     )
     def list(self, request, *args, **kwargs):
+
         return super().list(request, *args, **kwargs)
 
 
@@ -102,10 +116,20 @@ class PageCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
 
     @swagger_auto_schema(
         operation_summary="Create a Page",
-        tags=['Page']
+        tags=['Page'],
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'title': openapi.Schema(type=openapi.TYPE_STRING),
+                'content': openapi.Schema(type=openapi.TYPE_STRING),
+                'image': openapi.Schema(type=openapi.TYPE_FILE),
+                'diary': openapi.Schema(type=openapi.TYPE_OBJECT)
+            }
+        )
     )
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
+
 
 
 class PageDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
