@@ -19,11 +19,11 @@ class PageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Page
-        fields = '__all__'
+        fields = ['id', 'title', 'content', 'image', 'diary', 'created_at']
 
     def create(self, validated_data):
         diary_data = validated_data.pop('diary')
-        diary = Diary.objects.get_or_create(**diary_data)
-        return Page.objects.get_or_create(diary=diary, **validated_data)
+        diary = Diary.objects.create(**diary_data)
+        return Page.objects.create(diary=diary, **validated_data)
 
 

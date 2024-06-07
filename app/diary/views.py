@@ -1,7 +1,8 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, mixins
-from rest_framework.permissions import AllowAny
+from rest_framework import viewsets, mixins, status
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
 
 from app.diary.models import Diary, Page
 from app.diary.serializers import DiarySerializer, PageSerializer
@@ -111,7 +112,7 @@ class PageListView(viewsets.GenericViewSet, mixins.ListModelMixin):
 class PageCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = PageSerializer
     queryset = Page.objects.all()
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (AllowAny,)
     pagination_class = None
 
     @swagger_auto_schema(
@@ -123,12 +124,21 @@ class PageCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
                 'title': openapi.Schema(type=openapi.TYPE_STRING),
                 'content': openapi.Schema(type=openapi.TYPE_STRING),
                 'image': openapi.Schema(type=openapi.TYPE_FILE),
-                'diary': openapi.Schema(type=openapi.TYPE_OBJECT)
-            }
+                'diary': openapi.Schema(type=openapi.TYPE_INTEGER),  # Assuming 'diary' is a ForeignKey to Diary model
+            },
+            required=['title', 'content', 'diary']
         )
     )
     def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
+        # Get the serializer with the request data
+        print("REQUEST DATA: ", request.data['diary'])
+        title = request.data['title']
+        content = request.data['content']
+        image = request.data['image']
+        diary = Diary.objects.get(id=request.data['diary'])
+        Page.objects.create(title=title, content=content, image=image, diary=diary)
+
+        return Response(status=status.HTTP_201_CREATED)
 
 
 
@@ -149,7 +159,7 @@ class PageDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
 class PageUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
     serializer_class = PageSerializer
     queryset = Page.objects.all()
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (AllowAny,)
     pagination_class = None
 
     @swagger_auto_schema(
