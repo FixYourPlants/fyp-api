@@ -12,7 +12,7 @@ djangorestframework-simplejwt
 # For the persistence stores
 psycopg2-binary
 dj-database-url
-
+bs4
 # Model Tools
 django-model-utils
 django_unique_upload
