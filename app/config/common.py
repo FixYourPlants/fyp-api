@@ -33,6 +33,7 @@ class Common(Configuration):
         'app.plants',
         'app.sickness',
         'app.diary',
+        'app.alerts',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
