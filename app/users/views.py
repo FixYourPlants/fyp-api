@@ -1,9 +1,5 @@
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, mixins, status
-from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
+from app.users.utils import get_user, validate_email
+from app.users.forms import NewPasswordForm, EmailForm
 
 from .models import User
 from .serializers import UserSerializer
@@ -14,8 +10,18 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-from .models import User
-from .serializers import UserSerializer
+
+from django.views import View
+from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+from app.config import common as settings
+
 
 class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = User.objects.all()
@@ -96,5 +102,68 @@ class LoggedInUserView(viewsets.ViewSet):
         user = request.user
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class CustomPasswordResetView(View):
+    
+    def get(self, request):
+        form = EmailForm()
+        return render(request, 'password_reset_form.html', {'form': form})
+    
+    def post(self, request):
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            user = get_object_or_404(User, email=form.cleaned_data['email'])
+
+            if validate_email(user.email):
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                new_password_url = reverse('change_password', args=[uid, token])
+
+                template = get_template('password_reset_email.html')
+                content = template.render(
+                    {'new_password_url': request.build_absolute_uri('/') + new_password_url[1:], 'username': user.username})
+                message = EmailMultiAlternatives(
+                    'Cambio de contraseña',
+                    content,
+                    settings.Common.EMAIL_HOST_USER,
+                    [user.email]
+                )
+
+                message.attach_alternative(content, 'text/html')
+                message.send()
+                return redirect('/api/v1/password-sended/')
+
+        return render(request, 'password_reset_confirm.html', {'form': form})
+    
+class ChangePasswordView(View):
+
+    def get(self, request, uidb64, token):
+        user = get_user(uidb64)
+        if user is not None and default_token_generator.check_token(user, token):
+            form = NewPasswordForm()
+            return render(request, 'password_reset_confirm.html', {'form': form})
+        else:
+            return redirect('/?message=Error al cambiar la contraseña&status=Error')
+
+    def post(self, request, uidb64, token):
+        user = get_user(uidb64)
+        if user is not None and default_token_generator.check_token(user, token):
+            form = NewPasswordForm(request.POST)
+            if form.is_valid():
+                user.set_password(form.cleaned_data['password'])
+                user.save()
+                return redirect('/api/v1//password-success/')
+            return render(request, 'password_reset_confirm.html', {'form': form})
+        return redirect('/?message=Error al cambiar la contraseña&status=Error')
+    
+class CustomPasswordSendedView(View):
+    
+    def get(self, request):
+        return render(request, 'password_reset_sended.html')
+    
+class CustomPasswordSuccesView(View):
+        
+    def get(self, request):
+        return render(request, 'password_reset_success.html')
 
 
