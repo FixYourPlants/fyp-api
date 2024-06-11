@@ -12,6 +12,7 @@ class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     image = models.ImageField(upload_to="users/", null=True, blank=True)
     about_me = models.TextField(null=True, blank=True)
+    email_verified = models.BooleanField(default=False)
 
     # Relationships
     favourite_plant = models.ManyToManyField('plants.Plant', blank=True)
