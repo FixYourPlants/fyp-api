@@ -68,6 +68,8 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
     permission_classes = (AllowAny,)
     pagination_class = None
 
+
+
     @swagger_auto_schema(
         operation_summary="Update a User",
         tags=['User']
