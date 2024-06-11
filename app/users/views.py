@@ -180,6 +180,7 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
         tags=['User']
     )
     def create(self, request, *args, **kwargs):
+        print(request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         
@@ -215,6 +216,7 @@ class ConfirmEmailView(View):
         if user is not None and default_token_generator.check_token(user, token):
             user.email_verified = True
             user.save()
+            print(user)
             return render(request, 'email_verification_success.html')
         else:
             return redirect('/docs/?message=Correo electrónico no verificado&status=Error')
@@ -248,7 +250,7 @@ class LoginView(viewsets.GenericViewSet):
         refresh = RefreshToken.for_user(user)
         return Response({
             'refresh': str(refresh),
-            'token': str(refresh.access_token),
+            'access': str(refresh.access_token),
             'userId': user.id,  # Aquí devolvemos el userID
             'message': 'Login successful'
         }, status=status.HTTP_200_OK)
