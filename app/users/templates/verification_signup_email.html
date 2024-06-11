@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Creación de Cuenta</title>
+</head>
+
+<body>
+    <h1>Verificación de creación de cuenta</h1>
+    <p>Hola {{ username }},</p>
+    <p>Recibes este correo porque has solicitado la creación de una cuenta de usuario en nuestro aplicación. Haz clic en el siguiente enlace para activar la cuenta creada:</p>
+    <p><a href="{{ verification_url }}">Activar cuenta</a></p>
+    <p>Si no has solicitado estos servicios, puedes ignorar este correo electrónico.</p>
+    <p>Gracias,</p>
+    <p>El equipo de FixYourPlants</p>
+</body>
