@@ -4,6 +4,7 @@ from distutils.util import strtobool
 from os.path import join
 
 from configurations import Configuration
+from django.contrib.auth.password_validation import UserAttributeSimilarityValidator
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
