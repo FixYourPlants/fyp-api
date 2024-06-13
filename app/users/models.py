@@ -29,6 +29,23 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    def save(self, *args, **kwargs):
+        try:
+            # If updating the user, delete the old image if a new image is set
+            old_user = User.objects.get(pk=self.pk)
+            if old_user.image and old_user.image != self.image:
+                old_user.image.delete(save=False)
+        except User.DoesNotExist:
+            pass  # User is new, so no old image to delete
+
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        # Delete the image when the user is deleted
+        if self.image:
+            self.image.delete(save=False)
+        super().delete(*args, **kwargs)
+
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
