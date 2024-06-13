@@ -1,3 +1,5 @@
+from rest_framework.exceptions import ValidationError
+
 from app import permissions
 from app.users.utils import get_user, validate_email
 from app.users.forms import NewPasswordForm, EmailForm
@@ -13,7 +15,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.views import APIView
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, password_validation
 from django.views import View
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
@@ -139,7 +141,7 @@ class CustomPasswordResetView(View):
                 return redirect('/api/v1/password-sended/')
 
         return render(request, 'password_reset_confirm.html', {'form': form})
-    
+
 class ChangePasswordView(View):
 
     def get(self, request, uidb64, token):
@@ -155,11 +157,15 @@ class ChangePasswordView(View):
         if user is not None and default_token_generator.check_token(user, token):
             form = NewPasswordForm(request.POST)
             if form.is_valid():
-                user.set_password(form.cleaned_data['password'])
+                password = form.cleaned_data['password']
+                password_validation.validate_password(password, user)
+
+                user.set_password(password)
                 user.save()
-                return redirect('/api/v1//password-success/')
+                return redirect('/api/v1/password-success/')
             return render(request, 'password_reset_confirm.html', {'form': form})
         return redirect('/?message=Error al cambiar la contraseña&status=Error')
+
     
 class CustomPasswordSendedView(View):
     
@@ -171,6 +177,7 @@ class CustomPasswordSuccesView(View):
     def get(self, request):
         return render(request, 'password_reset_success.html')
 
+
 class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     queryset = User.objects.all()
     serializer_class = CreateUserSerializer
@@ -178,19 +185,23 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     pagination_class = None
 
     @swagger_auto_schema(
-        operation_summary="Create an User",
+        operation_summary="Create a User",
         tags=['User']
     )
     def create(self, request, *args, **kwargs):
         print(request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        
+
+        # Validación de la contraseña usando los validadores de Django
+        password = serializer.validated_data.get('password')
+        password_validation.validate_password(password, serializer.instance)
+
         user = serializer.save()
-        
+
         username = serializer.validated_data.get('username')
         email = serializer.validated_data.get('email')
-        
+
         if validate_email(email):
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -207,9 +218,10 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
             )
             message.attach_alternative(content, 'text/html')
             message.send()
-            
+
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class ConfirmEmailView(View):
     
