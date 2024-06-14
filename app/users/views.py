@@ -26,6 +26,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from app.config import common as settings
+from django.core.exceptions import ValidationError as DjangoValidationError
+
 
 
 class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -202,25 +204,33 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
         username = serializer.validated_data.get('username')
         email = serializer.validated_data.get('email')
 
-        if validate_email(email):
-            token = default_token_generator.make_token(user)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            new_password_url = reverse('verification_success', args=[uid, token])
+        try:
+            if validate_email(email):
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                new_password_url = reverse('verification_success', args=[uid, token])
 
-            template = get_template('verification_signup_email.html')
-            content = template.render(
-                {'verification_url': request.build_absolute_uri('/') + new_password_url[1:], 'username': username})
-            message = EmailMultiAlternatives(
-                'Verificación de Cuenta FixYourPlants',
-                content,
-                settings.Common.EMAIL_HOST_USER,
-                [request.data.get('email')]
-            )
-            message.attach_alternative(content, 'text/html')
-            message.send()
+                template = get_template('verification_signup_email.html')
+                content = template.render(
+                    {'verification_url': request.build_absolute_uri('/') + new_password_url[1:], 'username': username})
+                message = EmailMultiAlternatives(
+                    'Verificación de Cuenta FixYourPlants',
+                    content,
+                    settings.Common.EMAIL_HOST_USER,
+                    [request.data.get('email')]
+                )
+                message.attach_alternative(content, 'text/html')
+                message.send()
 
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        
+        except DjangoValidationError as e:
+            error_data = {}
+            for field, errors in e.error_dict.items():
+                error_data[field] = errors[0]  # Assuming you want the first error message for each field
+            return Response({'errors': error_data}, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class ConfirmEmailView(View):
