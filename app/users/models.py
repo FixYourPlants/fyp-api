@@ -17,7 +17,7 @@ import uuid
 class User(AbstractUser):
     # Attributes
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = models.ImageField(upload_to="users/", null=True, blank=True)
+    image = models.ImageField(upload_to="users/", null=True, blank=True, default="users/default.png")
     about_me = models.TextField(null=True, blank=True, default='')
     email_verified = models.BooleanField(default=False)
     email = models.EmailField(unique=True)
