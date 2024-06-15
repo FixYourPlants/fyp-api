@@ -75,12 +75,6 @@ class DiaryUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 
-    @swagger_auto_schema(
-        operation_summary="Delete a Diary",
-        tags=['Diary']
-    )
-    def destroy(self, request, *args, **kwargs):
-        return super().destroy(request, *args, **kwargs)
 
 
 '''
@@ -168,11 +162,4 @@ class PageUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
     )
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
-
-    @swagger_auto_schema(
-        operation_summary="Delete a Page",
-        tags=['Page']
-    )
-    def destroy(self, request, *args, **kwargs):
-        return super().destroy(request, *args, **kwargs)
 

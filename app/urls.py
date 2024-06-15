@@ -34,9 +34,7 @@ urlpatterns = [
     path(f'api/{VERSION}/', include('app.alerts.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('api-token-auth/', views.obtain_auth_token),
     path('api-auth/', include('dj_rest_auth.urls')),
-    path('api-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('simple/token',TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('simple/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
