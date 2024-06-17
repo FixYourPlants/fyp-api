@@ -247,13 +247,22 @@ class LoginView(viewsets.GenericViewSet):
             properties={
                 'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username'),
                 'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password'),
+                'googleAccount': openapi.Schema(type=openapi.TYPE_BOOLEAN, description='Google Account?'),
+
             },
-            required=['username', 'password'],
+            required=['username', 'password','googleAccount'],
          )
     )
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
+        googleAccount = request.data.get('googleAccount')
+        
+        print(username)
+        print(password)
+        print(googleAccount)
+
+        
         user = authenticate(username=username, password=password)
         
         if User.objects.filter(username=username).exists():
