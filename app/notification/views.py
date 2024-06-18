@@ -1,4 +1,3 @@
-from django.utils.dateparse import parse_datetime
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, mixins
@@ -7,6 +6,7 @@ from rest_framework.response import Response
 
 from .models import Notification
 from .serilizers import NotificationSerializer
+
 
 # Create your views here.
 class NotificationListView(viewsets.GenericViewSet, mixins.ListModelMixin):

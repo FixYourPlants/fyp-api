@@ -1,43 +1,30 @@
 import os
 
 import dj_database_url
+from decouple import config
 
 from .common import Common
 
 
 class Production(Common):
-    INSTALLED_APPS = Common.INSTALLED_APPS
-    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-    # Site
-    # https://docs.djangoproject.com/en/2.0/ref/settings/#allowed-hosts
-    ALLOWED_HOSTS = ["*"]
-    INSTALLED_APPS += ("gunicorn", )
-
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/2.0/howto/static-files/
-    # http://django-storages.readthedocs.org/en/latest/index.html
-    INSTALLED_APPS += ('storages',)
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = os.getenv('DJANGO_AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('DJANGO_AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('DJANGO_AWS_STORAGE_BUCKET_NAME')
-    AWS_DEFAULT_ACL = 'public-read'
-    AWS_AUTO_CREATE_BUCKET = True
-    AWS_QUERYSTRING_AUTH = False
-    MEDIA_URL = f'https://s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/'
-
-    # https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#cache-control
-    # Response can be cached by browser and any intermediary caches (i.e. it is "public") for up to 1 day
-    # 86400 = (60 seconds x 60 minutes x 24 hours)
-    AWS_HEADERS = {
-        'Cache-Control': 'max-age=86400, s-maxage=86400, must-revalidate',
-    }
-
-    # Database
+    DEBUG = False
+    ALLOWED_HOSTS = [config('DJANGO_ALLOWED_HOSTS', default='*')]
     DATABASES = {
-        'default': dj_database_url.config(
-            default='postgres://postgres:@postgres:5432/postgres',
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
+        'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
     }
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', default='smtp.sendgrid.net')
+    EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+
+    # CORS settings
+    CORS_ORIGIN_ALLOW_ALL = True
+
+    # Render specific settings
+    RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+    if RENDER_EXTERNAL_HOSTNAME:
+        ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+

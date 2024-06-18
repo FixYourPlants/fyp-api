@@ -1,7 +1,6 @@
 import uuid
-from django.db import models
 
-from app.notification.models import Notification
+from django.db import models
 
 
 # Create your models here.

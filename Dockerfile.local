@@ -1,4 +1,4 @@
-# Etapa de construcción para clonar el repositorio y establecer la rama develop
+# Usa la imagen base de Python
 FROM python:3.11-slim-bullseye
 
 # Instala git
@@ -10,15 +10,17 @@ RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /cod
 # Establece el directorio de trabajo
 WORKDIR /code
 
-
-
 # Instala las dependencias de la aplicación
-RUN pip install -r ./requirements.txt
+RUN pip install -r requirements.txt
+
+# Establece las variables de entorno para el entorno de desarrollo
+ENV DJANGO_SETTINGS_MODULE=app.settings
+ENV DJANGO_CONFIGURATION=Dev
 
 # Ejecuta los siguientes comandos al iniciar el contenedor
 RUN python manage.py makemigrations && \
     python manage.py migrate && \
-    python manage.py loaddata ./backup.json
+    python manage.py loaddata backup.json
 
 # Exponer el puerto
 EXPOSE 8000
@@ -26,3 +28,5 @@ EXPOSE 8000
 # Comando para iniciar el servidor de desarrollo
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
+# To Build ->  docker build -f Dockerfile.local -t local-server . --no-cache
+# To Run -> docker run -p 8000:8000 local-server

@@ -1,8 +1,8 @@
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
-from django.contrib.auth import views as auth_views
 
-from app.users.views import ChangePasswordView, ConfirmEmailView, CreateUserView, CustomPasswordResetView, LoginView, UserListView, UserDetailView, \
+from app.users.views import ChangePasswordView, ConfirmEmailView, CreateUserView, CustomPasswordResetView, LoginView, \
+    UserListView, UserDetailView, \
     UserUpdateAndDestroyView, LoggedInUserView, CustomPasswordSendedView, CustomPasswordSuccesView
 
 router = SimpleRouter()

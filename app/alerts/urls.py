@@ -1,7 +1,7 @@
 from django.urls import include, path
-from app.alerts.views import  AlertDetailsView, AlertListView, AlertListViewGob
 from rest_framework.routers import SimpleRouter
 
+from app.alerts.views import AlertDetailsView, AlertListView, AlertListViewGob
 
 router = SimpleRouter()
 '''

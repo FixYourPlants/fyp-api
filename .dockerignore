@@ -1,7 +1,7 @@
 .git
 .gitignore
 docker-compose.yml
-Dockerfile
+Dockerfile.local
 README.md
 *.pyc
 __pycache__

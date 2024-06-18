@@ -3,7 +3,7 @@ from rest_framework.routers import SimpleRouter
 
 from app.plants.views import CharacteristicListView, CharacteristicDetailView, \
     PlantDetailView, PlantListView, OpinionCreateView, \
-     PlantFavListView, \
+    PlantFavListView, \
     PlantFavChangeView, PlantFavStatusView, OpinionListView, OpinionDetailView
 
 router = SimpleRouter()

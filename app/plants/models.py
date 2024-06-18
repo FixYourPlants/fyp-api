@@ -1,10 +1,8 @@
+import uuid
 from enum import Enum
 
-import uuid
 from django.db import models
 
-from app.notification.models import Notification
-from app.sickness.models import Sickness
 from app.users.models import User
 
 

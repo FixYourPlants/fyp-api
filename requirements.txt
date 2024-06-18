@@ -9,6 +9,7 @@ pillow
 django-allauth
 djangorestframework-simplejwt
 django-cors-headers
+python-decouple
 
 # For the persistence stores
 psycopg2-binary

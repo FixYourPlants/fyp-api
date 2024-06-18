@@ -1,33 +1,26 @@
-from rest_framework.exceptions import ValidationError
-
-from app import permissions
-from app.users.utils import get_user, validate_email
-from app.users.forms import NewPasswordForm, EmailForm
-
-from .models import User
-from .serializers import CreateUserSerializer, UserSerializer
-
-from rest_framework import viewsets, mixins, status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.views import APIView
 from django.contrib.auth import authenticate, password_validation
-from django.views import View
+from django.contrib.auth.tokens import default_token_generator
+from django.core.exceptions import ValidationError as DjangoValidationError
+from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
+from django.template.loader import get_template
 from django.urls import reverse
 from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import get_template
-from app.config import common as settings
-from django.core.exceptions import ValidationError as DjangoValidationError
+from django.utils.http import urlsafe_base64_encode
+from django.views import View
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework import viewsets, mixins, status
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
+from app.config import common as settings
+from app.users.forms import NewPasswordForm, EmailForm
+from app.users.utils import get_user, validate_email
+from .models import User
+from .serializers import CreateUserSerializer, UserSerializer
 
 
 class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
