@@ -16,6 +16,7 @@ class User(AbstractUser):
     email_verified = models.BooleanField(default=False)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
+    googleAccount = models.BooleanField(default=False)
 
     # Relationships
     favourite_plant = models.ManyToManyField('plants.Plant', blank=True)

@@ -81,8 +81,6 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
     permission_classes = (AllowAny,)
     pagination_class = None
 
-
-
     @swagger_auto_schema(
         operation_summary="Update a User",
         tags=['User']
@@ -90,12 +88,6 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 
-    @swagger_auto_schema(
-        operation_summary="Delete a User",
-        tags=['User']
-    )
-    def destroy(self, request, *args, **kwargs):
-        return super().destroy(request, *args, **kwargs)
 
 class LoggedInUserView(viewsets.ViewSet):
     queryset = User.objects.all()
@@ -255,21 +247,30 @@ class LoginView(viewsets.GenericViewSet):
             properties={
                 'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username'),
                 'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password'),
+                'googleAccount': openapi.Schema(type=openapi.TYPE_BOOLEAN, description='Google Account?'),
+
             },
-            required=['username', 'password'],
+            required=['username', 'password','googleAccount'],
          )
     )
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
+        googleAccount = request.data.get('googleAccount')
+        
+        print(username)
+        print(password)
+        print(googleAccount)
+
+        
         user = authenticate(username=username, password=password)
         
         if User.objects.filter(username=username).exists():
             user_models = User.objects.filter(username=username).first()
             if not user_models.email_verified:
-                return Response({'error': 'El email no ha sido verificado'}, status=400)
+                return Response({'email': 'El email no ha sido verificado'}, status=400)
         if user is None:
-            return Response({'python manage.py runserver': 'Usuario o contraseña incorrectos'}, status=400)
+            return Response({'python manage.py runserver': 'Usuario o contraseña incorrectos'}, status=401)
         
         refresh = RefreshToken.for_user(user)
         return Response({

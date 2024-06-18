@@ -65,26 +65,6 @@ class SicknessDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
         return super().retrieve(request, *args, **kwargs)
 
 
-class SicknessUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
-    queryset = Sickness.objects.all()
-    serializer_class = SicknessSerializer
-    permission_classes = (IsUserOrReadOnly,)
-    pagination_class = None
-
-    @swagger_auto_schema(
-        operation_summary="Update a Sickness",
-        tags=['Sickness']
-    )
-    def update(self, request, *args, **kwargs):
-        return super().update(request, *args, **kwargs)
-
-    @swagger_auto_schema(
-        operation_summary="Delete a Sickness",
-        tags=['Sickness']
-    )
-    def destroy(self, request, *args, **kwargs):
-        return super().destroy(request, *args, **kwargs)
-
 
 class PlantsWithSicknessListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = SicknessSerializer
