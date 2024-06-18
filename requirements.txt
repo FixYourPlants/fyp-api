@@ -36,7 +36,7 @@ django-storages==1.14.3
 
 # Testing
 coverage==7.5.2
-django-nose==1.4.5; python_version<'3.11'
+django-nose==1.4.5
 factory-boy==3.3.0
 mock==5.1.0
 
@@ -46,4 +46,5 @@ django-jazzmin==3.0.0
 gunicorn==22.0.0
 newrelic==9.10.0
 pillow==10.3.0
+python-decouple==3.7
 

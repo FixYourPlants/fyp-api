@@ -13,10 +13,6 @@ WORKDIR /code
 # Instala las dependencias de la aplicación
 RUN pip install -r requirements.txt
 
-# Establece las variables de entorno para el entorno de desarrollo
-ENV DJANGO_SETTINGS_MODULE=app.config
-ENV DJANGO_CONFIGURATION=Local
-
 # Ejecuta los siguientes comandos al iniciar el contenedor
 RUN python manage.py makemigrations && \
     python manage.py migrate && \
