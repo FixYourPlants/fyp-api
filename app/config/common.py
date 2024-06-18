@@ -29,6 +29,7 @@ class Common(Configuration):
         'dj_rest_auth',
         'dj_rest_auth.registration',
         'django_filters',  # for filtering rest endpoints
+        'corsheaders',
 
         # Your apps
         'app.users',
@@ -41,6 +42,7 @@ class Common(Configuration):
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
     MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -49,6 +51,10 @@ class Common(Configuration):
         'allauth.account.middleware.AccountMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ]
+
+    CORS_ORIGIN_WHITELIST = [
+        "https://fyp-api-0yf4.onrender.com",
     ]
 
     # Allauth configuration

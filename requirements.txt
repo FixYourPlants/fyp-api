@@ -8,6 +8,7 @@ newrelic
 pillow
 django-allauth
 djangorestframework-simplejwt
+django-cors-headers
 
 # For the persistence stores
 psycopg2-binary
