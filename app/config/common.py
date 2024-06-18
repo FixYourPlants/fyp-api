@@ -53,7 +53,7 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
 
-    CORS_ORIGIN_WHITELIST = [
+    CSRF_TRUSTED_ORIGINS = [
         "https://fyp-api-0yf4.onrender.com",
     ]
 
