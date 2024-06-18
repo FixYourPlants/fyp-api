@@ -1,4 +1,5 @@
 import uuid
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -6,13 +7,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
-
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.dispatch import receiver
-from django.conf import settings
-from rest_framework.authtoken.models import Token
-import uuid
 
 class User(AbstractUser):
     # Attributes
@@ -25,6 +19,7 @@ class User(AbstractUser):
 
     # Relationships
     favourite_plant = models.ManyToManyField('plants.Plant', blank=True)
+    affected_sicknesses = models.ManyToManyField('sickness.Sickness', blank=True)
 
     def __str__(self):
         return self.username

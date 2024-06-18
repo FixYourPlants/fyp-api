@@ -32,6 +32,7 @@ urlpatterns = [
     path(f'api/{VERSION}/', include('app.sickness.urls')),
     path(f'api/{VERSION}/', include('app.diary.urls')),
     path(f'api/{VERSION}/', include('app.alerts.urls')),
+    path(f'api/{VERSION}/', include('app.notification.urls')),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api-token-auth/', views.obtain_auth_token),

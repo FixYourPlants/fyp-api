@@ -154,8 +154,6 @@ class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
 '''
 OPINION
 '''
-
-
 class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Opinion.objects.all()
     serializer_class = OpinionSerializer

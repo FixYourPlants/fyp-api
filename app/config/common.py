@@ -36,6 +36,7 @@ class Common(Configuration):
         'app.sickness',
         'app.diary',
         'app.alerts',
+        'app.notification',
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
