@@ -113,28 +113,29 @@ class CustomPasswordResetView(View):
     def post(self, request):
         form = EmailForm(request.POST)
         if form.is_valid():
-            user = get_object_or_404(User, email=form.cleaned_data['email'])
+            user = User.objects.filter(email=form.cleaned_data['email']).first()
+            if user != None:
+                if validate_email(user.email):
+                    token = default_token_generator.make_token(user)
+                    uid = urlsafe_base64_encode(force_bytes(user.pk))
+                    new_password_url = reverse('change_password', args=[uid, token])
 
-            if validate_email(user.email):
-                token = default_token_generator.make_token(user)
-                uid = urlsafe_base64_encode(force_bytes(user.pk))
-                new_password_url = reverse('change_password', args=[uid, token])
+                    template = get_template('password_reset_email.html')
+                    content = template.render(
+                        {'new_password_url': request.build_absolute_uri('/') + new_password_url[1:], 'username': user.username})
+                    message = EmailMultiAlternatives(
+                        'Cambio de contraseña',
+                        content,
+                        settings.Common.EMAIL_HOST_USER,
+                        [user.email]
+                    )
 
-                template = get_template('password_reset_email.html')
-                content = template.render(
-                    {'new_password_url': request.build_absolute_uri('/') + new_password_url[1:], 'username': user.username})
-                message = EmailMultiAlternatives(
-                    'Cambio de contraseña',
-                    content,
-                    settings.Common.EMAIL_HOST_USER,
-                    [user.email]
-                )
-
-                message.attach_alternative(content, 'text/html')
-                message.send()
-                return redirect('/api/v1/password-sended/')
-
-        return render(request, 'password_reset_confirm.html', {'form': form})
+                    message.attach_alternative(content, 'text/html')
+                    message.send()
+                    return redirect('/api/v1/password-sended/')
+            else:
+                error_message = 'No se encontró un usuario con ese email.'
+        return render(request, 'password_reset_form.html', {'form': form, 'error_message': error_message})
 
 class ChangePasswordView(View):
 
