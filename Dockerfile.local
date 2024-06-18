@@ -14,7 +14,7 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 
 # Establece las variables de entorno para el entorno de desarrollo
-ENV DJANGO_SETTINGS_MODULE=app.settings
+ENV DJANGO_SETTINGS_MODULE=app.config
 ENV DJANGO_CONFIGURATION=Dev
 
 # Ejecuta los siguientes comandos al iniciar el contenedor
@@ -27,6 +27,3 @@ EXPOSE 8000
 
 # Comando para iniciar el servidor de desarrollo
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-# To Build ->  docker build -f Dockerfile.local -t local-server . --no-cache
-# To Run -> docker run -p 8000:8000 local-server

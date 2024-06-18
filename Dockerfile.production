@@ -14,7 +14,7 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 
 # Establece las variables de entorno para el entorno de producción
-ENV DJANGO_SETTINGS_MODULE=app.settings
+ENV DJANGO_SETTINGS_MODULE=app.config
 ENV DJANGO_CONFIGURATION=Prod
 
 # Ejecuta los siguientes comandos al iniciar el contenedor
