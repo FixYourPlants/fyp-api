@@ -11,7 +11,8 @@ RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /cod
 WORKDIR /code
 
 # Instala las dependencias de la aplicación
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir && \
+    python manage.py collectstatic --noinput
 
 #---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
 
@@ -22,7 +23,6 @@ RUN pip install -r requirements.txt
 # Ejecuta los siguientes comandos al iniciar el contenedor
 # RUN python manage.py makemigrations && \
 #     python manage.py migrate && \
-#     python manage.py collectstatic --noinput && \
 #     python manage.py loaddata backup.jsonç
 
 #---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
@@ -31,7 +31,7 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Comando para iniciar el servidor de desarrollo
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # To build -> docker build -f Dockerfile -t server . --no-cache
 # To run -> docker run --env-file .env -p 8000:8000 server
