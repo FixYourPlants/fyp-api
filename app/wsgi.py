@@ -6,8 +6,10 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/gunicorn/
 """
 import os
 
+from decouple import config
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.config")
-os.environ.setdefault("DJANGO_CONFIGURATION", "Production")
+os.environ.setdefault("DJANGO_CONFIGURATION", config('DJANGO_CONFIGURATION', default='Production'))
 
 from configurations.wsgi import get_wsgi_application  # noqa
 application = get_wsgi_application()

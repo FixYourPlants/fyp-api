@@ -3,10 +3,12 @@
 import os
 import sys
 
+from decouple import config
+
 
 def main():
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.config")
-    os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
+    os.environ.setdefault("DJANGO_CONFIGURATION", config('DJANGO_CONFIGURATION', default='Local'))
 
     try:
         from configurations.management import execute_from_command_line

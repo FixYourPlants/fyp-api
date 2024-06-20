@@ -7,7 +7,6 @@ from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 class Common(Configuration):
 
     INSTALLED_APPS = [
@@ -42,6 +41,7 @@ class Common(Configuration):
     MIDDLEWARE = [
         'corsheaders.middleware.CorsMiddleware',
         'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise middleware here
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,12 +84,17 @@ class Common(Configuration):
     LOGIN_REDIRECT_URL = '/'
 
     STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
-    STATICFILES_DIRS = []
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'app', 'static'),
+    ]
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     )
+
+    # WhiteNoise settings
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     MEDIA_ROOT = join(os.path.dirname(BASE_DIR), 'media')
     MEDIA_URL = '/media/'
@@ -139,13 +144,13 @@ class Common(Configuration):
         "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
         "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
         "TOKEN_TYPE_CLAIM": "token_type",
-        "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+        "TOKEN_USER_CLASS": "rest_framework.simplejwt.models.TokenUser",
         "JTI_CLAIM": "jti",
         "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
         "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
         "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-        "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
-        "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
+        "TOKEN_OBTAIN_SERIALIZER": "rest_framework.simplejwt.serializers.TokenObtainPairSerializer",
+        "TOKEN_REFRESH_SERIALIZER": "rest_framework.simplejwt.serializers.TokenRefreshSerializer",
         "TOKEN_VERIFY_SERIALIZER": "rest_framework.simplejwt.serializers.TokenVerifySerializer",
         "TOKEN_BLACKLIST_SERIALIZER": "rest_framework.simplejwt.serializers.TokenBlacklistSerializer",
         "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework.simplejwt.serializers.TokenObtainSlidingSerializer",
@@ -209,6 +214,7 @@ class Common(Configuration):
             },
         }
     }
+
 
     AUTH_USER_MODEL = 'users.User'
 
@@ -277,4 +283,11 @@ class Common(Configuration):
         "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
         "language_chooser": False,
     }
+
+    SWAGGER_SETTINGS = {
+        'SECURITY_DEFINITIONS': None,  # Eliminar la definición de seguridad
+        'USE_SESSION_AUTH': False,  # No usar autenticación de sesión
+    }
+
+
 

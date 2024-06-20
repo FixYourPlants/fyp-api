@@ -2,10 +2,14 @@ version: '3'
 services:
   postgres:
     image: postgres:11.6
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   web:
     restart: always
-    environment:
-      - DJANGO_SECRET_KEY=local
+    env_file:
+      - .env
     build: ./Dockerfile.multiple
     command: >
       bash -c "python wait_for_postgres.py &&
@@ -19,6 +23,7 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
+
   documentation:
     restart: always
     build: ./
@@ -27,3 +32,4 @@ services:
       - ./:/code
     ports:
       - "8001:8001"
+

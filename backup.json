@@ -638,7 +638,7 @@
     "fields": {
       "title": "Recordatorio de riego por la tarde",
       "timestamp": "2024-06-18T22:00:00Z",
-      "description": "Es hora de regar tus plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
+      "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
     }
   },
   {
@@ -647,7 +647,7 @@
     "fields": {
       "title": "Recordatorio de riego por la mañana",
       "timestamp": "2024-06-18T10:00:00Z",
-      "description": "Es hora de regar tus calabacines. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
+      "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
     }
   }
 ]
