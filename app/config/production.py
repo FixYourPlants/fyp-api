@@ -9,7 +9,7 @@ from .common import Common
 class Production(Common):
     DEBUG = False
 
-    ALLOWED_HOSTS = [config('DJANGO_ALLOWED_HOSTS', default='*')]
+    ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='*').split(',')
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
     }
@@ -25,9 +25,4 @@ class Production(Common):
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS',
                                   default='*').split(',')
-
-    # Render specific settings
-    RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default=None)
-    if RENDER_EXTERNAL_HOSTNAME:
-        ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
