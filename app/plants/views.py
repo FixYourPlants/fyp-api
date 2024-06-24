@@ -11,7 +11,7 @@ from app.plants.models import Plant, Opinion, Characteristic
 from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
     OpinionSerializer, OpinionCreateSerializer
 
-# Create your views here.
+# Create your views.py here.
 '''
 PLANT
 '''

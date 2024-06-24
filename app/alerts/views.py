@@ -1,4 +1,4 @@
-# Create your views here.
+# Create your views.py here.
 import requests
 from bs4 import BeautifulSoup
 from drf_yasg import openapi

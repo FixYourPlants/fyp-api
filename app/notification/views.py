@@ -8,7 +8,7 @@ from .models import Notification
 from .serilizers import NotificationSerializer
 
 
-# Create your views here.
+# Create your views.py here.
 class NotificationListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated]

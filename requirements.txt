@@ -30,9 +30,6 @@ django-filter==24.2
 drf-yasg==1.21.7
 Markdown==3.6
 
-# Static and Media Storage
-whitenoise==6.0.0
-
 # Testing
 coverage==7.5.2
 django-nose==1.4.5

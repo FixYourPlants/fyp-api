@@ -8,7 +8,7 @@ from app.diary.models import Diary, Page
 from app.diary.serializers import DiarySerializer, PageSerializer
 from app.permissions import IsUserOrReadOnly
 
-# Create your views here.
+# Create your views.py here.
 '''
 DIARY
 '''

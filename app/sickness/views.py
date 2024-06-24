@@ -9,7 +9,7 @@ from app.permissions import IsUserOrReadOnly
 from app.sickness.models import Sickness
 from app.sickness.serializers import SicknessSerializer
 
-# Create your views here.
+# Create your views.py here.
 '''
 SICKNESS
 '''
@@ -17,7 +17,7 @@ SICKNESS
 
 
 
-# Create your views here.
+# Create your views.py here.
 '''
 SICKNESS
 '''

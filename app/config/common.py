@@ -41,7 +41,6 @@ class Common(Configuration):
     MIDDLEWARE = [
         'corsheaders.middleware.CorsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-        'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise middleware here
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,7 +84,6 @@ class Common(Configuration):
 
     STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'app', 'static'),
     ]
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
@@ -93,16 +91,13 @@ class Common(Configuration):
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     )
 
-    # WhiteNoise settings
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
     MEDIA_ROOT = join(os.path.dirname(BASE_DIR), 'media')
     MEDIA_URL = '/media/'
 
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': STATICFILES_DIRS,
+            'DIRS': STATICFILES_DIRS + [join(BASE_DIR, 'templates')],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
