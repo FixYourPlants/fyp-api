@@ -38,3 +38,5 @@ class Production(Common):
         if i not in ['*', '']
     ]
 
+    raise NotImplementedError(CORS_ALLOWED_ORIGINS)
+
