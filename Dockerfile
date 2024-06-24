@@ -5,8 +5,8 @@ FROM python:3.11-slim-bullseye
 RUN apt-get update && apt-get install -y git
 
 # Clona el repositorio
-COPY . /code
-# RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
+# COPY . /code
+RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
 
 # Establece el directorio de trabajo
 WORKDIR /code
