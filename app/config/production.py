@@ -23,6 +23,8 @@ class Production(Common):
 
     # CORS settings
     CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS',
+                                  default='*').split(',')
 
     # Render specific settings
     RENDER_EXTERNAL_HOSTNAME = config('RENDER_EXTERNAL_HOSTNAME', default=None)
