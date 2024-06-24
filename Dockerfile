@@ -22,7 +22,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
 
 # Ejecuta los siguientes comandos al iniciar el contenedor
 RUN python manage.py makemigrations && \
-     python manage.py migrate && \
+     python manage.py migrate
 #     python manage.py loaddata backup.json
 
 #---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
