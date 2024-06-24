@@ -8,10 +8,16 @@ from .common import Common
 
 
 
+
+
 class Production(Common):
     DEBUG = False
 
-    ALLOWED_HOSTS = list(config('DJANGO_ALLOWED_HOSTS', default='*').split(','))
+    ALLOWED_HOSTS = [
+        i
+        for i in list(config('DJANGO_ALLOWED_HOSTS', default='*').split(','))
+        if i not in ['*', '']
+    ]
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
     }
@@ -26,7 +32,9 @@ class Production(Common):
     # CORS settings
     CORS_ALLOW_ALL_ORIGINS = True
     CORS_ALLOW_CREDENTIALS = True
-    CORS_ALLOWED_ORIGINS = list(
-        config('CORS_ALLOWED_ORIGINS', default='*').split(',')
-    )
+    CORS_ALLOWED_ORIGINS = [
+        i
+        for i in list(config('CORS_ALLOWED_ORIGINS', default='*').split(','))
+        if i not in ['*', '']
+    ]
 
