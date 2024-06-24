@@ -6,10 +6,12 @@ from decouple import config
 from .common import Common
 
 
+
+
 class Production(Common):
     DEBUG = False
 
-    ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='*').split(',')
+    ALLOWED_HOSTS = list(config('DJANGO_ALLOWED_HOSTS', default='*').split(','))
     DATABASES = {
         'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
     }
@@ -22,7 +24,9 @@ class Production(Common):
     DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
 
     # CORS settings
-    CORS_ORIGIN_ALLOW_ALL = True
-    CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS',
-                                  default='*').split(',')
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOW_CREDENTIALS = True
+    CORS_ALLOWED_ORIGINS = list(
+        config('CORS_ALLOWED_ORIGINS', default='*').split(',')
+    )
 
