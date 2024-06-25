@@ -1,6 +1,8 @@
+from PIL import Image
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, mixins, serializers
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,7 +11,9 @@ from app.diary.models import Diary
 from app.permissions import IsUserOrReadOnly
 from app.plants.models import Plant, Opinion, Characteristic
 from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
-    OpinionSerializer, OpinionCreateSerializer
+    OpinionSerializer, OpinionCreateSerializer, ImageUploadSerializer
+import numpy as np
+import tensorflow as tf
 
 # Create your views.py here.
 '''
@@ -218,3 +222,63 @@ class CharacteristicDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixi
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
+class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    permission_classes = (AllowAny,)
+    serializer_class = ImageUploadSerializer
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Load the Keras model from the .pb file
+        self.model = self.load_model('saved_model.pb')
+
+    def load_model(self, model_path):
+        model = tf.keras.models.load_model(model_path)
+        return model
+
+    @swagger_auto_schema(
+        operation_summary="Predict Plant from Image",
+        tags=['Plant'],
+        request_body=ImageUploadSerializer,
+        responses={200: openapi.Response('Prediction Result')}
+    )
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        image = serializer.validated_data['image']
+
+        # Convert image to a format suitable for the prediction model
+        pil_image = Image.open(image)
+        processed_image = self.preprocess_image(pil_image)
+
+        # Make prediction
+        prediction_result = self.predict_plant(processed_image)
+
+        return Response({'prediction': prediction_result})
+
+    def preprocess_image(self, image):
+        # Resize the image to the size the model expects
+        image = image.resize((224, 224))  # Example size, replace with your model's input size
+        # Convert the image to a numpy array and normalize it
+        image_array = np.array(image) / 255.0
+        # Add a batch dimension (model expects batches of images)
+        image_array = np.expand_dims(image_array, axis=0)
+        return image_array
+
+    def predict_plant(self, image_array):
+        # Make a prediction
+        predictions = self.model.predict(image_array)
+        # Process the predictions as needed
+        predicted_class = np.argmax(predictions, axis=1)
+        # Map predicted class to plant name
+        predicted_plant_name = self.map_class_to_plant(predicted_class[0])
+        return predicted_plant_name
+
+    def map_class_to_plant(self, class_index):
+        # Implement the mapping from class index to plant name
+        class_to_plant = {
+            0: "Rose",
+            1: "Tulip",
+            2: "Daisy",
+        }
+        return class_to_plant.get(class_index, "Unknown Plant")

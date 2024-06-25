@@ -31,3 +31,4 @@ class Local(Common):
     DATABASES = {
         'default': dj_database_url.config(default=f"sqlite:///{os.path.join(BASE_DIR, 'app.sqlite3')}")
     }
+    print(DATABASES)

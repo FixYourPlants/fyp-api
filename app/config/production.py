@@ -38,4 +38,4 @@ class Production(Common):
     CSRF_TRUSTED_ORIGINS  = [i for i in list(config('CORS_ALLOWED_ORIGINS', default='*').split(',')) if i not in ['*', '']]
     if config('CRACK', default='False') == 'True':
         raise Exception(CORS_ALLOWED_ORIGINS)
-
+    print(DATABASES)

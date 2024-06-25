@@ -53,4 +53,7 @@ class DifficultyField(serializers.Field):
         except KeyError:
             raise serializers.ValidationError("Invalid difficulty level")
 
+class ImageUploadSerializer(serializers.Serializer):
+    image = serializers.ImageField()
+
 
