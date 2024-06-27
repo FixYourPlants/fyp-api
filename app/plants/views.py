@@ -222,6 +222,7 @@ class CharacteristicDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixi
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
+'''
 class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
     permission_classes = (AllowAny,)
     serializer_class = ImageUploadSerializer
@@ -282,3 +283,4 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             2: "Daisy",
         }
         return class_to_plant.get(class_index, "Unknown Plant")
+        '''

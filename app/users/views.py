@@ -251,12 +251,8 @@ class LoginView(viewsets.GenericViewSet):
         username = request.data.get('username')
         password = request.data.get('password')
         googleAccount = request.data.get('googleAccount')
-        
-        print(username)
-        print(password)
-        print(googleAccount)
 
-        
+    
         user = authenticate(username=username, password=password)
         
         if User.objects.filter(username=username).exists():

@@ -3,11 +3,8 @@ import os
 import dj_database_url
 from decouple import config
 
+
 from .common import Common
-
-
-
-
 
 
 class Production(Common):
@@ -18,9 +15,7 @@ class Production(Common):
         for i in list(config('DJANGO_ALLOWED_HOSTS', default='*').split(','))
         if i not in ['*', '']
     ]
-    DATABASES = {
-        'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
-    }
+    
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = config('EMAIL_HOST', default='smtp.sendgrid.net')
     EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
@@ -38,4 +33,8 @@ class Production(Common):
     CSRF_TRUSTED_ORIGINS  = [i for i in list(config('CORS_ALLOWED_ORIGINS', default='*').split(',')) if i not in ['*', '']]
     if config('CRACK', default='False') == 'True':
         raise Exception(CORS_ALLOWED_ORIGINS)
+    DATABASES = {
+        'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
+    }
     print(DATABASES)
+
