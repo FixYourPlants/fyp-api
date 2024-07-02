@@ -20,6 +20,12 @@ class DiaryListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
+    def get_queryset(self):
+        user = self.request.user
+        if user:
+            return self.queryset.filter(user=self.request.user)
+        return self.queryset.none()
+
     @swagger_auto_schema(
         operation_summary="List of Diaries",
         tags=['Diary']
