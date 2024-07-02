@@ -41,4 +41,3 @@ class Local(Common):
             'NAME': os.path.join(BASE_DIR, 'app.sqlite3'),
         }
     }
-    print(DATABASES)

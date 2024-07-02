@@ -1,6 +1,9 @@
+import os
+
 from PIL import Image
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from keras.src.saving import load_model
 from rest_framework import viewsets, mixins, serializers
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
@@ -222,18 +225,19 @@ class CharacteristicDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixi
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
-'''
 class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
     permission_classes = (AllowAny,)
     serializer_class = ImageUploadSerializer
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Load the Keras model from the .pb file
-        self.model = self.load_model('saved_model.pb')
+        # Load the Keras model from the .keras file
+        self.model = self.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/plant_leaf_disease_detector.keras'))
 
     def load_model(self, model_path):
-        model = tf.keras.models.load_model(model_path)
+        if not os.path.exists(model_path):
+            raise ValueError(f"File not found: {model_path}. Please ensure the file is an accessible .keras zip file.")
+        model = load_model(model_path)
         return model
 
     @swagger_auto_schema(
@@ -259,7 +263,7 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
     def preprocess_image(self, image):
         # Resize the image to the size the model expects
-        image = image.resize((224, 224))  # Example size, replace with your model's input size
+        image = image.resize((256, 256))  # Updated size to match model input size
         # Convert the image to a numpy array and normalize it
         image_array = np.array(image) / 255.0
         # Add a batch dimension (model expects batches of images)
@@ -283,4 +287,3 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             2: "Daisy",
         }
         return class_to_plant.get(class_index, "Unknown Plant")
-        '''
