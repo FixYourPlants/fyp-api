@@ -624,6 +624,56 @@
     }
   },
   {
+    "model": "sickness.sickness",
+    "pk": "120bd813-d903-4b64-926d-dfd9abb83c70",
+    "fields": {
+        "name": "Sarampión negro",
+        "description": "El sarampión negro de la vid es una enfermedad causada por hongos (principalmente especies del género Phaeomoniella y Phaeoacremonium) que afecta a la vid. Se manifiesta por manchas negras en las hojas y el tronco, así como un retraso en el crecimiento y la muerte prematura de las plantas.",
+        "treatment": "1. Poda: Poda de las partes infectadas de la planta y destrucción de los restos para evitar la propagación del hongo.\r\n2. Fungicidas: Aplicación de fungicidas específicos puede ayudar a controlar la enfermedad.\r\n3. Buen manejo del viñedo: Mantener una buena circulación de aire y evitar el exceso de humedad alrededor de las plantas.\r\n4. Replantación: En casos graves, puede ser necesario replantar con variedades más resistentes.",
+        "image": "sicknesses/Black_measel.jpeg",
+        "notifications": []
+    }
+  },
+  {
+    "model": "sickness.sickness",
+    "pk": "f2f94473-be4d-49c3-b022-47d49de98a1d",
+    "fields": {
+        "name": "Quemadura",
+        "description": "La quemadura en las plantas se manifiesta como el marchitamiento, decoloración y muerte del tejido vegetal, típicamente en las hojas y a veces en los tallos. Esto puede ser causado por diversos factores como el exceso de sol (quemadura solar), altas temperaturas, viento seco o una falta de agua.",
+        "treatment": "1. Riego adecuado: Mantener un riego regular y suficiente para que las plantas no se deshidraten.\r\n2. Sombra: Proporcionar sombra a las plantas durante las horas más calurosas del día, especialmente en regiones muy soleadas.\r\n3. Mulching: Aplicar una capa de mantillo alrededor de la base de las plantas para ayudar a retener la humedad del suelo.\r\n4. Evitar fertilizantes agresivos: Utilizar fertilizantes con cuidado para no causar estrés adicional a las plantas.",
+        "image": "sicknesses/Sorch.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
+    }
+  },
+  {
+    "model": "sickness.sickness",
+    "pk": "ccf10026-6fed-465a-b549-ad1b0c3efb29",
+    "fields": {
+        "name": "Ácaros rojos",
+        "description": "Los ácaros rojos son pequeños arácnidos que se alimentan de las hojas de las plantas, causando decoloración, manchas y, en casos graves, la caída de las hojas. Son especialmente problemáticos en climas cálidos y secos.",
+        "treatment": "1. Riego: Aumentar la humedad ambiental alrededor de las plantas puede ayudar a disuadir a los ácaros.\r\n2. Aceites hortícolas: Aplicar aceites hortícolas o insecticidas a base de neem puede ser efectivo para controlar la población de ácaros.\r\n3. Depredadores naturales: Introducir depredadores naturales como las mariquitas o los ácaros depredadores puede ayudar a reducir las poblaciones de ácaros rojos.\r\n4. Limpieza regular: Lavar las hojas de las plantas con agua jabonosa también puede ayudar a eliminar los ácaros.",
+        "image": "sicknesses/Two_spotted_spider_mittens.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
+    }
+  },
+  {
+    "model": "sickness.sickness",
+    "pk": "8eb46215-7dfd-4771-a083-68aef095b5ba",
+    "fields": {
+        "name": "Mancha gris",
+        "description": "La mancha gris es una enfermedad fúngica que afecta a varias especies de plantas. Se caracteriza por manchas grises en las hojas que pueden expandirse y fusionarse, causando la muerte del tejido foliar. Es común en condiciones de alta humedad y temperaturas moderadas.",
+        "treatment": "1. Riego controlado: Evitar el riego por aspersión para minimizar la humedad en las hojas.\r\n2. Fungicidas: Aplicación de fungicidas apropiados puede ayudar a controlar la propagación del hongo.\r\n3. Poda y eliminación de hojas infectadas: Retirar y destruir las hojas afectadas para reducir la fuente de inóculo.\r\n4. Rotación de cultivos: Practicar la rotación de cultivos para prevenir la acumulación de patógenos en el suelo.",
+        "image": "sicknesses/Gray_Spot.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
+    }
+  },
+  {
     "model": "notification.notification",
     "pk": "3398fbc0-f60f-430c-bc4b-076b630e030c",
     "fields": {
