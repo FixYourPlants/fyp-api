@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic.base import RedirectView
@@ -39,6 +40,7 @@ urlpatterns = [
     path('simple/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # Redirección desde la raíz '/' a '/admin/'
+   re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^$', RedirectView.as_view(url='/admin/', permanent=False)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
