@@ -225,6 +225,7 @@ class CharacteristicDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixi
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
+
 class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
     permission_classes = (AllowAny,)
     serializer_class = ImageUploadSerializer
@@ -232,7 +233,8 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Load the Keras model from the .keras file
-        self.model = self.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/plant_leaf_disease_detector.keras'))
+        self.model = self.load_model(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), 'models/plant_leaf_disease_detector.keras'))
 
     def load_model(self, model_path):
         if not os.path.exists(model_path):
@@ -270,20 +272,61 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
         image_array = np.expand_dims(image_array, axis=0)
         return image_array
 
-    def predict_plant(self, image_array):
+    def predict_plant(self, image_array, threshold=1e-4):
         # Make a prediction
         predictions = self.model.predict(image_array)
+
+        # Set low prediction values to zero
+        predictions[predictions < threshold] = 0
+
         # Process the predictions as needed
         predicted_class = np.argmax(predictions, axis=1)
+
         # Map predicted class to plant name
         predicted_plant_name = self.map_class_to_plant(predicted_class[0])
+
         return predicted_plant_name
 
     def map_class_to_plant(self, class_index):
         # Implement the mapping from class index to plant name
         class_to_plant = {
-            0: "Rose",
-            1: "Tulip",
-            2: "Daisy",
+            0: "Apple leaf_Black rot",
+            1: "Apple leaf_Rust",
+            2: "Apple leaf_Scab",
+            3: "Bell Pepper leaf_Bacterial spot",
+            4: "Bell Pepper leaf_Healthy",
+            5: "Cherry leaf_Healthy",
+            6: "Cherry leaf_Powdery mildew",
+            7: "Corn leaf_Blight",
+            8: "Corn leaf_Gray spot",
+            9: "Corn leaf_Healthy",
+            10: "Corn leaf_Rust",
+            11: "Grape leaf_Black measles",
+            12: "Grape leaf_Black rot",
+            13: "Grape leaf_Blight",
+            14: "Grape leaf_Healthy",
+            15: "Peach leaf_Bacterial spot",
+            16: "Peach leaf_Healthy",
+            17: "Potato leaf_Early blight",
+            18: "Potato leaf_Healthy",
+            19: "Potato leaf_Late blight",
+            20: "Raspberry leaf_Healthy",
+            21: "Soyabean leaf_Healthy",
+            22: "Squash leaf_Powdery mildew",
+            23: "Strawberry leaf_Healthy",
+            24: "Strawberry leaf_Scorch",
+            25: "Tomato leaf_Bacteria spot",
+            26: "Tomato leaf_Early blight",
+            27: "Tomato leaf_Healthy",
+            28: "Tomato leaf_Late blight",
+            29: "Tomato leaf_Mold",
+            30: "Tomato leaf_Mosaic virus",
+            31: "Tomato leaf_Septoria spot",
+            32: "Tomato leaf_Target spot",
+            33: "Tomato leaf_Two spotted spider mites",
+            34: "Tomato leaf_Yellow virus",
         }
+
+        raise ValueError(class_index)
         return class_to_plant.get(class_index, "Unknown Plant")
+
