@@ -30,6 +30,19 @@ class Plant(models.Model):
     def __str__(self):
         return self.name
 
+class History(models.Model):
+    # Attributes
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="history/", null=True, blank=True)
+
+    # Relationships
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+    sickness = models.ForeignKey('sickness.Sickness', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.description + " - " + self.plant.name
+
 
 class Opinion(models.Model):
     # Attributes

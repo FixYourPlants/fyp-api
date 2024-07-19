@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from app.sickness.serializers import SicknessSerializer
 from app.users.serializers import UserSerializer
-from .models import Plant, Opinion, Characteristic, Difficulty
+from .models import Plant, Opinion, Characteristic, Difficulty, History
 
 
 class CharacteristicSerializer(serializers.ModelSerializer):
@@ -28,6 +28,13 @@ class PlantFavSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
         fields = ['id']
+
+class HistorySerializer(serializers.ModelSerializer):
+    plant = PlantSerializer()
+    sickness = SicknessSerializer()
+    class Meta:
+        model = History
+        fields = '__all__'
 
 
 class OpinionCreateSerializer(serializers.ModelSerializer):

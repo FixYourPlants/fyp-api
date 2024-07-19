@@ -21,6 +21,7 @@ class User(AbstractUser):
     # Relationships
     favourite_plant = models.ManyToManyField('plants.Plant', blank=True)
     affected_sicknesses = models.ManyToManyField('sickness.Sickness', blank=True)
+    history = models.ManyToManyField('plants.History', blank=True)
 
     def __str__(self):
         return self.username

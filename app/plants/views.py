@@ -12,11 +12,13 @@ from rest_framework.views import APIView
 
 from app.diary.models import Diary
 from app.permissions import IsUserOrReadOnly
-from app.plants.models import Plant, Opinion, Characteristic
+from app.plants.models import Plant, Opinion, Characteristic, History
 from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
-    OpinionSerializer, OpinionCreateSerializer, ImageUploadSerializer
+    OpinionSerializer, OpinionCreateSerializer, ImageUploadSerializer, HistorySerializer
 import numpy as np
 import tensorflow as tf
+
+from app.sickness.models import Sickness
 
 # Create your views.py here.
 '''
@@ -261,7 +263,17 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
         # Make prediction
         prediction_result = self.predict_plant(processed_image)
 
-        return Response({'prediction': prediction_result})
+        plant = Plant.objects.filter(name=prediction_result[0]).first()
+        if (prediction_result[1] == "Saludable"):
+            sickness = None
+        else:
+            sickness = Sickness.objects.filter(name=prediction_result[1]).first()
+
+        history = History.objects.create(plant=plant, sickness=sickness, image=image)
+        request.user.history.add(history)
+        request.user.save()
+
+        return Response(HistorySerializer(history).data)
 
     def preprocess_image(self, image):
         # Resize the image to the size the model expects
@@ -290,43 +302,57 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
     def map_class_to_plant(self, class_index):
         # Implement the mapping from class index to plant name
         class_to_plant = {
-            0: "Apple leaf_Black rot",
-            1: "Apple leaf_Rust",
-            2: "Apple leaf_Scab",
-            3: "Bell Pepper leaf_Bacterial spot",
-            4: "Bell Pepper leaf_Healthy",
-            5: "Cherry leaf_Healthy",
-            6: "Cherry leaf_Powdery mildew",
-            7: "Corn leaf_Blight",
-            8: "Corn leaf_Gray spot",
-            9: "Corn leaf_Healthy",
-            10: "Corn leaf_Rust",
-            11: "Grape leaf_Black measles",
-            12: "Grape leaf_Black rot",
-            13: "Grape leaf_Blight",
-            14: "Grape leaf_Healthy",
-            15: "Peach leaf_Bacterial spot",
-            16: "Peach leaf_Healthy",
-            17: "Potato leaf_Early blight",
-            18: "Potato leaf_Healthy",
-            19: "Potato leaf_Late blight",
-            20: "Raspberry leaf_Healthy",
-            21: "Soyabean leaf_Healthy",
-            22: "Squash leaf_Powdery mildew",
-            23: "Strawberry leaf_Healthy",
-            24: "Strawberry leaf_Scorch",
-            25: "Tomato leaf_Bacteria spot",
-            26: "Tomato leaf_Early blight",
-            27: "Tomato leaf_Healthy",
-            28: "Tomato leaf_Late blight",
-            29: "Tomato leaf_Mold",
-            30: "Tomato leaf_Mosaic virus",
-            31: "Tomato leaf_Septoria spot",
-            32: "Tomato leaf_Target spot",
-            33: "Tomato leaf_Two spotted spider mites",
-            34: "Tomato leaf_Yellow virus",
+            0: ["Manzana", "Podredumbre negra"],
+            1: ["Manzana", "Mancha gris"],
+            2: ["Manzana", "Saludable"],
+            3: ["Manzana", "Óxido"],
+            4: ["Manzana", "Sarna"],
+            5: ["Pimiento Morrón", "Mancha bacteriana"],
+            6: ["Pimiento Morrón", "Saludable"],
+            7: ["Cereza", "Saludable"],
+            8: ["Cereza", "Oídio"],
+            9: ["Café", "Saludable"],
+            10: ["Café", "Ácaros rojos"],
+            11: ["Café", "Óxido"],
+            12: ["Maíz", "Tizón"],
+            13: ["Maíz", "Mancha gris"],
+            14: ["Maíz", "Saludable"],
+            15: ["Maíz", "Óxido"],
+            16: ["Algodón", "Tizón bacteriano"],
+            17: ["Algodón", "Saludable"],
+            18: ["Algodón", "Oídio"],
+            19: ["Algodón", "Mancha foliar"],
+            20: ["Uvas", "Sarampión negro"],
+            21: ["Uvas", "Podredumbre negra"],
+            22: ["Uvas", "Tizón"],
+            23: ["Uvas", "Saludable"],
+            24: ["Melocotón", "Mancha bacteriana"],
+            25: ["Melocotón", "Saludable"],
+            26: ["Patata", "Tizón temprano"],
+            27: ["Patata", "Saludable"],
+            28: ["Patata", "Tizón tardío"],
+            29: ["Arroz", "Tizón bacteriano"],
+            30: ["Arroz", "Brusone"],
+            31: ["Arroz", "Saludable"],
+            32: ["Fresa", "Saludable"],
+            33: ["Fresa", "Quemadura"],
+            34: ["Fresa", "Mancha foliar"],
+            35: ["Caña de azúcar", "Saludable"],
+            36: ["Caña de azúcar", "Virus del mosaico"],
+            37: ["Caña de azúcar", "Óxido"],
+            38: ["Caña de azúcar", "Virus rizado amarillo"],
+            39: ["Tomate", "Mancha bacteriana"],
+            40: ["Tomate", "Tizón temprano"],
+            41: ["Tomate", "Saludable"],
+            42: ["Tomate", "Tizón tardío"],
+            43: ["Tomate", "Moho"],
+            44: ["Tomate", "Virus del mosaico"],
+            45: ["Tomate", "Mancha septoria"],
+            46: ["Tomate", "Mancha foliar"],
+            47: ["Tomate", "Ácaros rojos"],
+            48: ["Tomate", "Virus rizado amarillo"],
         }
+        return class_to_plant.get(class_index, ["Índice de clase desconocido"])
 
-        raise ValueError(class_index)
-        return class_to_plant.get(class_index, "Unknown Plant")
+
 
