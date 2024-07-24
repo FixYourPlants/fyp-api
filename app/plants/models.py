@@ -41,7 +41,7 @@ class History(models.Model):
     sickness = models.ForeignKey('sickness.Sickness', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return self.description + " - " + self.plant.name
+        return str(self.created_at) + " - " + self.plant.name + " - " + self.sickness.name
 
 
 class Opinion(models.Model):
