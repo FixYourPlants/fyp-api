@@ -1,5 +1,7 @@
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
+# Create your views.py here.
+from datetime import datetime
+
+from django.utils import timezone
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -8,23 +10,10 @@ from .models import Notification
 from .serilizers import NotificationSerializer
 
 
-# Create your views.py here.
 class NotificationListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(
-        operation_summary="List of Notifications for the Logged-in User",
-        tags=['Notification'],
-        manual_parameters=[
-            openapi.Parameter(
-                'start_time', openapi.IN_QUERY, description="Start time for filtering notifications (HH:MM:SS)", type=openapi.TYPE_STRING, format='time'
-            ),
-            openapi.Parameter(
-                'end_time', openapi.IN_QUERY, description="End time for filtering notifications (HH:MM:SS)", type=openapi.TYPE_STRING, format='time'
-            ),
-        ]
-    )
     def list(self, request, *args, **kwargs):
         user = request.user
         start_time = request.query_params.get('start_time')
@@ -35,23 +24,23 @@ class NotificationListView(viewsets.GenericViewSet, mixins.ListModelMixin):
         notifications = plant_notifications | sickness_notifications
 
         if start_time:
-            start_hour, start_minute, start_second = map(int, start_time.split(':'))
-            notifications = notifications.filter(
-                timestamp__hour__gte=start_hour,
-                timestamp__minute__gte=start_minute,
-                timestamp__second__gte=start_second
-            )
+            start_time_utc = datetime.strptime(start_time, '%H:%M:%S').time()
+            start_datetime_utc = timezone.now().replace(hour=start_time_utc.hour, minute=start_time_utc.minute, second=start_time_utc.second, microsecond=0)
 
         if end_time:
-            end_hour, end_minute, end_second = map(int, end_time.split(':'))
-            notifications = notifications.filter(
-                timestamp__hour__lte=end_hour,
-                timestamp__minute__lte=end_minute,
-                timestamp__second__lte=end_second
-            )
+            end_time_utc = datetime.strptime(end_time, '%H:%M:%S').time()
+            end_datetime_utc = timezone.now().replace(hour=end_time_utc.hour, minute=end_time_utc.minute, second=end_time_utc.second, microsecond=0)
+
+        if start_time and end_time:
+            notifications = notifications.filter(timestamp__range=(start_datetime_utc, end_datetime_utc))
+        elif start_time:
+            notifications = notifications.filter(timestamp__gte=start_datetime_utc)
+        elif end_time:
+            notifications = notifications.filter(timestamp__lte=end_datetime_utc)
 
         notifications = notifications.distinct().order_by('timestamp')
         serializer = self.get_serializer(notifications, many=True)
         return Response(serializer.data)
+
 
 

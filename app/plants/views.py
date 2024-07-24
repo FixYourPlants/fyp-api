@@ -1,41 +1,33 @@
 import os
 
+import numpy as np
 from PIL import Image
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
 from keras.src.saving import load_model
-from rest_framework import viewsets, mixins, serializers
-from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
+from rest_framework import viewsets, mixins
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from app.diary.models import Diary
 from app.permissions import IsUserOrReadOnly
-from app.plants.models import Plant, Opinion, Characteristic, History
-from app.plants.serializers import PlantSerializer, CharacteristicSerializer, PlantFavSerializer, \
+from app.plants.models import Plant, Opinion, History
+from app.plants.serializers import PlantSerializer, PlantFavSerializer, \
     OpinionSerializer, OpinionCreateSerializer, ImageUploadSerializer, HistorySerializer
-import numpy as np
-import tensorflow as tf
-
+from app.plants.swagger import list_plants_swagger, retrieve_plant_swagger, update_favourite_plant_swagger, \
+    retrieve_favourite_plant_swagger, list_opinions_swagger, opinion_create_swagger
 from app.sickness.models import Sickness
 
 # Create your views.py here.
 '''
 PLANT
 '''
-
-
 class PlantListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = PlantSerializer
     queryset = Plant.objects.all().order_by("id")
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="List of Plants",
-        tags=['Plant']
-    )
+    @list_plants_swagger()
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -46,31 +38,9 @@ class PlantDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="Retrieve a Plant",
-        tags=['Plant']
-    )
+    @retrieve_plant_swagger()
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
-
-
-
-class PlantFavListView(viewsets.GenericViewSet, mixins.ListModelMixin):
-    serializer_class = PlantSerializer
-    queryset = Plant.objects.all()
-    permission_classes = (IsUserOrReadOnly,)
-    pagination_class = None
-
-    def get_queryset(self):
-        user = self.request.user
-        return user.fav_plants.all()
-
-    @swagger_auto_schema(
-        operation_summary="List of Favorite Plants",
-        tags=['Plant']
-    )
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
 
 
 class PlantFavChangeView(viewsets.GenericViewSet, APIView):
@@ -94,10 +64,7 @@ class PlantFavChangeView(viewsets.GenericViewSet, APIView):
 
         return user.favourite_plant.filter(id=plant.id).exists()
 
-    @swagger_auto_schema(
-        operation_summary="Add or Remove a Favorite Plant",
-        tags=['Plant']
-    )
+    @update_favourite_plant_swagger()
     def update(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -117,10 +84,7 @@ class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
         user = self.request.user
         return user.favourite_plant.all().filter(id=self.kwargs['pk'])
 
-    @swagger_auto_schema(
-        operation_summary="Retrieve a Favorite Plant",
-        tags=['Plant']
-    )
+    @retrieve_favourite_plant_swagger()
     def retrieve(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         return Response(queryset.exists())
@@ -135,19 +99,7 @@ class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="List of Opinions",
-        tags=['Opinion'],
-        manual_parameters=[
-            openapi.Parameter(
-                name='plant_id',
-                in_=openapi.IN_QUERY,
-                type=openapi.TYPE_STRING,
-                required=True,
-                description='ID of the plant to filter opinions'
-            )
-        ]
-    )
+    @list_opinions_swagger()
     def list(self, request, *args, **kwargs):
         plant_id = request.query_params.get('plant_id')
         if plant_id:
@@ -158,78 +110,19 @@ class OpinionListView(viewsets.GenericViewSet, mixins.ListModelMixin):
 class OpinionCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     queryset = Opinion.objects.all()
     serializer_class = OpinionCreateSerializer
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="Create an Opinion",
-        tags=['Opinion']
-    )
-    def perform_create(self, serializer):
-        user = self.request.user
-        data = self.request.data
-        plant_id = data.get('plant_id')
-
-        try:
-            plant = Plant.objects.get(id=plant_id)
-        except Plant.DoesNotExist:
-            raise serializers.ValidationError("Plant with the given ID does not exist")
-
-        serializer.save(user=user, plant=plant)
-
+    @opinion_create_swagger()
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
 
 
-class OpinionDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
-    serializer_class = OpinionSerializer
-    queryset = Opinion.objects.all()
-    permission_classes = (AllowAny,)
-    pagination_class = None
-
-    @swagger_auto_schema(
-        operation_summary="Retrieve an Opinion",
-        tags=['Opinion']
-    )
-    def retrieve(self, request, *args, **kwargs):
-        return super().retrieve(request, *args, **kwargs)
-
-
 '''
-CHARACTERISTIC
+PLANT PREDICT
 '''
-
-
-class CharacteristicListView(viewsets.GenericViewSet, mixins.ListModelMixin):
-    queryset = Characteristic.objects.all()
-    serializer_class = CharacteristicSerializer
-    permission_classes = (AllowAny,)
-    pagination_class = None
-
-    @swagger_auto_schema(
-        operation_summary="List of Characteristics",
-        tags=['Characteristic']
-    )
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
-
-
-class CharacteristicDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
-    serializer_class = CharacteristicSerializer
-    queryset = Characteristic.objects.all()
-    permission_classes = (AllowAny,)
-    pagination_class = None
-
-    @swagger_auto_schema(
-        operation_summary="Retrieve a Characteristic",
-        tags=['Characteristic']
-    )
-    def retrieve(self, request, *args, **kwargs):
-        return super().retrieve(request, *args, **kwargs)
-
-
 class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = ImageUploadSerializer
 
     def __init__(self, **kwargs):
@@ -243,13 +136,6 @@ class PlantPredictView(mixins.CreateModelMixin, viewsets.GenericViewSet):
             raise ValueError(f"File not found: {model_path}. Please ensure the file is an accessible .keras zip file.")
         model = load_model(model_path)
         return model
-
-    @swagger_auto_schema(
-        operation_summary="Predict Plant from Image",
-        tags=['Plant'],
-        request_body=ImageUploadSerializer,
-        responses={200: openapi.Response('Prediction Result')}
-    )
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from app.sickness.views import SicknessDetailView, SicknessListView, SicknessCreateView, \
+from app.sickness.views import SicknessDetailView, SicknessListView, \
     PlantsWithSicknessListView, SicknessAffectedListView, SicknessAffectedChangeView, SicknessAffectedStatusView
 
 router = SimpleRouter()
@@ -10,7 +10,6 @@ router = SimpleRouter()
 SICKNESS
 '''
 router.register(r'sicknesses/list', SicknessListView, basename="sickness-list")
-router.register(r'sicknesses/create', SicknessCreateView, basename="sickness-create")
 router.register(r'sickness', SicknessDetailView, basename="sickness-detail")
 router.register(r'sickness/affected', SicknessAffectedListView, basename="sickness-affected")
 router.register(r'sickness/affected/change', SicknessAffectedChangeView, basename="sickness-affected-change")

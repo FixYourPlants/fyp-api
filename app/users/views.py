@@ -21,6 +21,8 @@ from app.users.forms import NewPasswordForm, EmailForm
 from app.users.utils import get_user, validate_email
 from .models import User
 from .serializers import CreateUserSerializer, UserSerializer
+from .swagger import user_list_swagger, user_detail_swagger, user_update_swagger, logged_in_user_swagger, \
+    login_swagger
 
 
 class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -29,10 +31,7 @@ class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="List of Users",
-        tags=['User']
-    )
+    @user_list_swagger()
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -61,10 +60,7 @@ class UserDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="Retrieve a User",
-        tags=['User']
-    )
+    @user_detail_swagger()
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
@@ -74,10 +70,7 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="Update a User",
-        tags=['User']
-    )
+    @user_update_swagger()
     def update(self, request, *args, **kwargs):
         return super().update(request, *args, **kwargs)
 
@@ -87,10 +80,7 @@ class LoggedInUserView(viewsets.ViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(
-        operation_summary="Get Logged In User",
-        tags=['User']
-    )
+    @logged_in_user_swagger()
     @action(detail=False, methods=['GET'])
     def get_logged_in_user(self, request):
         user = request.user
@@ -172,10 +162,7 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    @swagger_auto_schema(
-        operation_summary="Create a User",
-        tags=['User']
-    )
+    # TODO: @create_user_swagger()
     def create(self, request, *args, **kwargs):
         print(request.data)
         serializer = self.get_serializer(data=request.data)
@@ -233,24 +220,10 @@ class ConfirmEmailView(View):
 
 class LoginView(viewsets.GenericViewSet):
     
-    @swagger_auto_schema(
-        operation_summary="Retrieve a User",
-        tags=['User'],
-         request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username'),
-                'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password'),
-                'googleAccount': openapi.Schema(type=openapi.TYPE_BOOLEAN, description='Google Account?'),
-
-            },
-            required=['username', 'password','googleAccount'],
-         )
-    )
+    @login_swagger()
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
-        googleAccount = request.data.get('googleAccount')
 
     
         user = authenticate(username=username, password=password)
@@ -260,7 +233,7 @@ class LoginView(viewsets.GenericViewSet):
             if not user_models.email_verified:
                 return Response({'email': 'El email no ha sido verificado'}, status=400)
         if user is None:
-            return Response({'python manage.py runserver': 'Usuario o contraseña incorrectos'}, status=401)
+            return Response({'error': 'Usuario o contraseña incorrectos'}, status=401)
         
         refresh = RefreshToken.for_user(user)
         return Response({

@@ -4,7 +4,9 @@ from app.users.serializers import UserSerializer
 from .models import Diary, Page
 from ..plants.serializers import PlantSerializer
 
-
+'''
+DIARY
+'''
 class DiarySerializer(serializers.ModelSerializer):
     plant = PlantSerializer()
     user = UserSerializer()
@@ -14,6 +16,18 @@ class DiarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class DiaryCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Diary
+        fields = ['id', 'title', 'plant', 'user']
+        extra_kwargs = {
+            'plant': {'write_only': True},
+            'user': {'write_only': True}
+        }
+
+'''
+PAGE
+'''
 class PageSerializer(serializers.ModelSerializer):
     diary = DiarySerializer()
 
@@ -21,9 +35,10 @@ class PageSerializer(serializers.ModelSerializer):
         model = Page
         fields = ['id', 'title', 'content', 'image', 'diary', 'created_at']
 
-    def create(self, validated_data):
-        diary_data = validated_data.pop('diary')
-        diary = Diary.objects.create(**diary_data)
-        return Page.objects.create(diary=diary, **validated_data)
-
-
+class PageCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Page
+        fields = ['id', 'title', 'content', 'image', 'diary']
+        extra_kwargs = {
+            'diary': {'write_only': True}
+        }
