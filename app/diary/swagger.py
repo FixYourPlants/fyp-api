@@ -4,8 +4,6 @@ from drf_yasg.utils import swagger_auto_schema
 '''
 DIARY
 '''
-
-
 def list_diaries_swagger():
     return swagger_auto_schema(
         operation_summary="List of Diaries",
@@ -56,8 +54,6 @@ def list_diaries_swagger():
 '''
 PAGE
 '''
-
-
 def list_pages_swagger():
     return swagger_auto_schema(
         operation_summary="List of Pages",

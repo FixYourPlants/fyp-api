@@ -8,8 +8,6 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.views import View
-from drf_yasg import openapi
-from drf_yasg.utils import swagger_auto_schema
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -22,7 +20,7 @@ from app.users.utils import get_user, validate_email
 from .models import User
 from .serializers import CreateUserSerializer, UserSerializer
 from .swagger import user_list_swagger, user_detail_swagger, user_update_swagger, logged_in_user_swagger, \
-    login_swagger
+    login_swagger, get_user_id_by_username_swagger, create_user_swagger
 
 
 class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
@@ -35,13 +33,7 @@ class UserListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
-    @swagger_auto_schema(
-        operation_summary="Get User ID by Username",
-        tags=['User'],
-        manual_parameters=[
-            openapi.Parameter('username', openapi.IN_QUERY, type=openapi.TYPE_STRING, description='Username'),
-        ],
-    )
+    @get_user_id_by_username_swagger()
     @action(detail=False, methods=['GET'])
     def get_user_id_by_username(self, request):
         username = request.query_params.get('username', None)
@@ -162,7 +154,7 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     permission_classes = (AllowAny,)
     pagination_class = None
 
-    # TODO: @create_user_swagger()
+    @create_user_swagger()
     def create(self, request, *args, **kwargs):
         print(request.data)
         serializer = self.get_serializer(data=request.data)

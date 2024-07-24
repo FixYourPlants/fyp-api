@@ -1,6 +1,41 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
+def get_user_id_by_username_swagger():
+    return swagger_auto_schema(
+        operation_summary="Get User ID by Username",
+        operation_description="Retrieve the user ID by providing the username. If the username is found, the user ID is returned. Otherwise, an error message is returned.",
+        tags=['User'],
+        manual_parameters=[
+            openapi.Parameter('username', openapi.IN_QUERY, type=openapi.TYPE_STRING, description='Username of the user', required=True),
+        ],
+        responses={
+            200: openapi.Response(
+                description="User found",
+                examples={
+                    "application/json": {
+                        "user_id": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3"
+                    }
+                }
+            ),
+            400: openapi.Response(
+                description="Bad Request",
+                examples={
+                    "application/json": {
+                        "error": "Username not provided"
+                    }
+                }
+            ),
+            404: openapi.Response(
+                description="Not Found",
+                examples={
+                    "application/json": {
+                        "error": "User not found"
+                    }
+                }
+            )
+        }
+    )
 
 def user_list_swagger():
     return swagger_auto_schema(
@@ -273,6 +308,54 @@ def login_swagger():
             )
         }
     )
+
+def create_user_swagger():
+    return swagger_auto_schema(
+        operation_summary="Create a New User",
+        operation_description="Register a new user by providing the necessary information. If the registration is successful, the user will receive a verification email.",
+        tags=['User'],
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'username': openapi.Schema(type=openapi.TYPE_STRING, description='Username of the user'),
+                'password': openapi.Schema(type=openapi.TYPE_STRING, description='Password of the user'),
+                'password2': openapi.Schema(type=openapi.TYPE_STRING, description='Password confirmation'),
+                'first_name': openapi.Schema(type=openapi.TYPE_STRING, description='First name of the user'),
+                'last_name': openapi.Schema(type=openapi.TYPE_STRING, description='Last name of the user'),
+                'email': openapi.Schema(type=openapi.TYPE_STRING, description='Email address of the user'),
+            },
+            required=['username', 'password', 'password2', 'email']
+        ),
+        responses={
+            201: openapi.Response(
+                description="User created successfully",
+                examples={
+                    "application/json": {
+                        "id": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3",
+                        "username": "testuser",
+                        "first_name": "John",
+                        "last_name": "Doe",
+                        "email": "johndoe@example.com",
+                        "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                    }
+                }
+            ),
+            400: openapi.Response(
+                description="Bad Request",
+                examples={
+                    "application/json": {
+                        "errors": {
+                            "username": "This field is required.",
+                            "password": "This field is required.",
+                            "password2": "This field is required.",
+                            "email": "This field is required."
+                        }
+                    }
+                }
+            )
+        }
+    )
+
 
 
 
