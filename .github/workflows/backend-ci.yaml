@@ -1,6 +1,6 @@
 name: Backend CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build-test:
@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -44,13 +44,11 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest
+          coverage run -m pytest
+          coverage html
 
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
         with:
-          name: test-results
-          path: |
-            tests/results.xml
-            tests/coverage-report/
+          name: coverage-report
+          path: htmlcov/
