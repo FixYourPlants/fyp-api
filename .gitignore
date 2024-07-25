@@ -40,7 +40,7 @@ pip-delete-this-directory.txt
 migrations
 *.sqlite3
 
-# Unit test / coverage reports
+# Unit tests / coverage reports
 htmlcov/
 .tox/
 .nox/

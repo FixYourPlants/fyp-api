@@ -1,34 +1,36 @@
 import uuid
 
-from django.db import models
+from django.db.models import CharField, TextField, UUIDField, ImageField, Model, \
+    ForeignKey, CASCADE
+from django.forms import DateTimeField
 
 from app.users.models import User
 
 
 # Create your models here.
-class Diary(models.Model):
-    # Atributos
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=255)
-    updated_at = models.DateTimeField(auto_now=True)
+class Diary(Model):
+    # Attributes
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = CharField(max_length=255)
+    updated_at = DateTimeField(auto_now=True)
 
-    # Relaciones
-    plant = models.ForeignKey('plants.Plant', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # Relationships
+    plant = ForeignKey('plants.Plant', on_delete=CASCADE)
+    user = ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
         return self.title
 
-class Page(models.Model):
+class Page(Model):
     # Attributes
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to="pages/", null=True, blank=True)
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = CharField(max_length=255)
+    content = TextField()
+    created_at = DateTimeField(auto_now_add=True)
+    image = ImageField(upload_to="pages/", null=True, blank=True)
 
     # Relationships
-    diary = models.ForeignKey(Diary, on_delete=models.CASCADE)
+    diary = ForeignKey(Diary, on_delete=CASCADE)
 
     def __str__(self):
         return self.diary.title

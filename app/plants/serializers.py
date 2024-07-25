@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from app.sickness.serializers import SicknessSerializer
+from app.plants.models import Plant, History, Opinion, Characteristic
 from app.users.serializers import UserSerializer
-from .models import Plant, Opinion, Characteristic, Difficulty
+from ..sickness.serializers import SicknessSerializer
 
 
 class CharacteristicSerializer(serializers.ModelSerializer):
@@ -10,15 +10,9 @@ class CharacteristicSerializer(serializers.ModelSerializer):
         model = Characteristic
         fields = '__all__'
 
-
-class DifficultySerializer(serializers.Serializer):
-    def to_representation(self, instance):
-        return instance.value
-
-
 class PlantSerializer(serializers.ModelSerializer):
-    sicknesses = SicknessSerializer(many=True)
-    characteristics = CharacteristicSerializer(many=True)
+    sicknesses = SicknessSerializer(required=False, many=True)
+    characteristics = CharacteristicSerializer(required=False, many=True)
 
     class Meta:
         model = Plant
@@ -29,31 +23,35 @@ class PlantFavSerializer(serializers.ModelSerializer):
         model = Plant
         fields = ['id']
 
+class HistorySerializer(serializers.ModelSerializer):
+    plant = PlantSerializer()
+    sickness = SicknessSerializer()
+
+    class Meta:
+        model = History
+        fields = '__all__'
 
 class OpinionCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Opinion
-        fields = ['id', 'title', 'description', 'created_at', 'plant']
-        read_only_fields = ['id', 'created_at', 'plant', 'user']
+        fields = ['id', 'title', 'description', 'plant', 'user', 'created_at']
+        read_only_fields = ['id', 'created_at']
+        extra_kwargs = {
+            'plant': {'write_only': True},
+            'user': {'write_only': True}
+        }
 
 class OpinionSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    plant = PlantSerializer()
+
     class Meta:
         model = Opinion
         fields = '__all__'
 
-
-class DifficultyField(serializers.Field):
-    def to_representation(self, obj):
-        return obj
-
-    def to_internal_value(self, data):
-        try:
-            return Difficulty[data.upper()]
-        except KeyError:
-            raise serializers.ValidationError("Invalid difficulty level")
-
 class ImageUploadSerializer(serializers.Serializer):
     image = serializers.ImageField()
+
+
 
 

@@ -1,9 +1,8 @@
 from django.conf import settings
-from django.conf.urls.static import static
-from django.views.static import serve
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic.base import RedirectView
+from django.views.static import serve
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions

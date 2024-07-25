@@ -2,7 +2,8 @@ import uuid
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-from django.db import models
+from django.db.models import BooleanField, CharField, EmailField, TextField, UUIDField, ImageField
+from django.db.models import ManyToManyField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
@@ -10,17 +11,18 @@ from rest_framework.authtoken.models import Token
 
 class User(AbstractUser):
     # Attributes
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = models.ImageField(upload_to="users/", null=True, blank=True, default="users/default.png")
-    about_me = models.TextField(null=True, blank=True, default='')
-    email_verified = models.BooleanField(default=False)
-    email = models.EmailField(unique=True)
-    username = models.CharField(max_length=150, unique=True)
-    googleAccount = models.BooleanField(default=False)
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    image = ImageField(upload_to="users/", null=True, blank=True, default="users/default.png")
+    about_me = TextField(null=True, blank=True, default='')
+    email_verified = BooleanField(default=False)
+    email = EmailField(unique=True)
+    username = CharField(max_length=150, unique=True)
+    googleAccount = BooleanField(default=False)
 
     # Relationships
-    favourite_plant = models.ManyToManyField('plants.Plant', blank=True)
-    affected_sicknesses = models.ManyToManyField('sickness.Sickness', blank=True)
+    favourite_plant = ManyToManyField('plants.Plant', blank=True)
+    affected_sicknesses = ManyToManyField('sickness.Sickness', blank=True)
+    history = ManyToManyField('plants.History', blank=True)
 
     def __str__(self):
         return self.username
