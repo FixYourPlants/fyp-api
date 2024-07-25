@@ -7,13 +7,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Notification
-from .serilizers import NotificationSerializer
+from .serializers import NotificationSerializer
+from .swagger import list_notifications_swagger
 
 
 class NotificationListView(viewsets.GenericViewSet, mixins.ListModelMixin):
     serializer_class = NotificationSerializer
     permission_classes = [IsAuthenticated]
 
+    @list_notifications_swagger()
     def list(self, request, *args, **kwargs):
         user = request.user
         start_time = request.query_params.get('start_time')

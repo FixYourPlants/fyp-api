@@ -213,52 +213,6 @@ def plants_with_sickness_swagger():
         }
     )
 
-def sickness_affected_list_swagger():
-    return swagger_auto_schema(
-        operation_summary="List of Affected Sicknesses",
-        operation_description="Retrieve a list of sicknesses that are affecting the currently authenticated user. This endpoint provides details of all sicknesses associated with the user, including their names, descriptions, treatments, and images. Authentication is required for this operation.",
-        tags=['Sickness'],
-        manual_parameters=[
-            openapi.Parameter(
-                name='Authorization',
-                in_=openapi.IN_HEADER,
-                description="Token used for authentication. Format: Bearer <token>",
-                type=openapi.TYPE_STRING,
-                required=True
-            )
-        ],
-        responses={
-            200: openapi.Response(
-                description="List of sicknesses affecting the user",
-                examples={
-                    "application/json": [
-                        {
-                            "id": "5e1c6c4b-6c2f-4d4a-bc47-0e930a4e1c60",
-                            "name": "Mancha gris",
-                            "description": "Descripción de la enfermedad.",
-                            "treatment": "Tratamiento para la enfermedad.",
-                            "image": "http://example.com/media/sicknesses/mancha_gris.jpg"
-                        },
-                        {
-                            "id": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
-                            "name": "Podredumbre negra",
-                            "description": "Descripción de la enfermedad.",
-                            "treatment": "Tratamiento para la enfermedad.",
-                            "image": "http://example.com/media/sicknesses/podredumbre_negra.jpg"
-                        }
-                    ]
-                }
-            ),
-            401: openapi.Response(
-                description="Unauthorized",
-                examples={
-                    "application/json": {
-                        "detail": "Authentication credentials were not provided or are invalid."
-                    }
-                }
-            )
-        }
-    )
 
 def sickness_affected_change_swagger():
     return swagger_auto_schema(
@@ -369,3 +323,58 @@ def sickness_affected_status_swagger():
             )
         }
     )
+
+def retrieve_sickness_affected_status_swagger():
+    return swagger_auto_schema(
+        operation_summary="Retrieve Affected Sickness Status",
+        operation_description="Check if a specific sickness is in the user's affected sicknesses list by providing the sickness ID.",
+        tags=['Sickness'],
+        responses={
+            200: openapi.Response(
+                description="Sickness status retrieved successfully",
+                examples={
+                    "application/json": True
+                }
+            ),
+            404: openapi.Response(
+                description="Sickness not found",
+                examples={
+                    "application/json": {
+                        "detail": "Not found."
+                    }
+                }
+            )
+        }
+    )
+
+def sickness_affected_change_swagger():
+    return swagger_auto_schema(
+        operation_summary="Add or Remove an Affected Sickness",
+        operation_description="Add or remove a sickness from the user's affected sicknesses list by providing the sickness ID in the URL.",
+        tags=['Sickness'],
+        responses={
+            200: openapi.Response(
+                description="Sickness affected status changed successfully",
+                examples={
+                    "application/json": True  # or False depending on the action performed
+                }
+            ),
+            400: openapi.Response(
+                description="Bad Request",
+                examples={
+                    "application/json": {
+                        "detail": "Sickness ID is required"
+                    }
+                }
+            ),
+            404: openapi.Response(
+                description="Not Found",
+                examples={
+                    "application/json": {
+                        "detail": "Sickness not found"
+                    }
+                }
+            )
+        }
+    )
+

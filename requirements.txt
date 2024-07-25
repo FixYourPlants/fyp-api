@@ -9,7 +9,6 @@ django-cors-headers~=3.13.0
 django-filter~=24.2
 django-jazzmin~=3.0.0
 django-model-utils~=4.5.1
-django-nose~=1.4.5
 django-unique-upload~=0.2.1
 dj-database-url~=2.2.0
 dj-rest-auth~=6.0.0
@@ -24,6 +23,7 @@ ipdb~=0.13.13
 ipython~=8.24.0
 Markdown~=3.6
 mkdocs~=1.6.0
+mkdocs-material~=9.5.29
 mock~=5.1.0
 newrelic~=9.10.0
 packaging~=24.1
@@ -35,3 +35,7 @@ requests~=2.32.3
 six~=1.16.0
 tensorflow~=2.16.1
 typing-extensions~=4.12.2
+pytest~=7.4.0
+pytest-django~=4.5.2
+
+

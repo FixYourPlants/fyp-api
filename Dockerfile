@@ -5,8 +5,8 @@ FROM python:3.11-slim-bullseye
 RUN apt-get update && apt-get install -y git
 
 # Clona el repositorio
-COPY . /code
-# RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
+# COPY . /code
+RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
 
 # Establece el directorio de trabajo
 WORKDIR /code
@@ -23,7 +23,8 @@ RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
 # Ejecuta los siguientes comandos al iniciar el contenedor
 RUN python manage.py makemigrations && \
      python manage.py migrate && \
-    python manage.py loaddata backup.json
+     python manage.py collectstatic --noinput && \
+     python manage.py loaddata backup.json
 
 #---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
 
@@ -31,7 +32,7 @@ RUN python manage.py makemigrations && \
 EXPOSE 8000
 
 # Comando para iniciar el servidor de desarrollo y recopilar archivos estáticos
-CMD ["sh", "-c", "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000 --insecure"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
 
 # To build -> docker build -f Dockerfile -t server . --no-cache
 # To run -> docker run --env-file .env -p 8000:8000 server

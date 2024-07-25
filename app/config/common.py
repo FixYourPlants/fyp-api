@@ -1,9 +1,10 @@
 import os
-from datetime import timedelta
 from os.path import join
 
 from configurations import Configuration
 from decouple import config
+
+from app.config import simple_jwt, jazzmin_settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -85,8 +86,10 @@ class Common(Configuration):
 
     STATIC_ROOT = os.path.normpath(join(os.path.dirname(BASE_DIR), 'static'))
     STATICFILES_DIRS = [
+        join(BASE_DIR, 'static'),
     ]
     STATIC_URL = '/static/'
+
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -120,38 +123,7 @@ class Common(Configuration):
         {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
     ]
 
-    SIMPLE_JWT = {
-        "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-        "REFRESH_TOKEN_LIFETIME": timedelta(minutes=5),
-        "ROTATE_REFRESH_TOKENS": True,
-        "BLACKLIST_AFTER_ROTATION": True,
-        "UPDATE_LAST_LOGIN": False,
-        "ALGORITHM": "HS256",
-        "VERIFYING_KEY": "",
-        "AUDIENCE": None,
-        "ISSUER": None,
-        "JSON_ENCODER": None,
-        "JWK_URL": None,
-        "LEEWAY": 0,
-        "AUTH_HEADER_TYPES": ("Bearer",),
-        "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
-        "USER_ID_FIELD": "id",
-        "USER_ID_CLAIM": "user_id",
-        "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
-        "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-        "TOKEN_TYPE_CLAIM": "token_type",
-        "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
-        "JTI_CLAIM": "jti",
-        "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-        "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
-        "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-        "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
-        "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
-        "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
-        "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
-        "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
-        "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
-    }
+    SIMPLE_JWT = simple_jwt.SIMPLE_JWT
 
     LOGGING = {
         'version': 1,
@@ -231,54 +203,9 @@ class Common(Configuration):
         'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
     }
 
-    JAZZMIN_SETTINGS = {
-        "site_title": "FixYourPlants Admin",
-        "site_header": "FixYOurPlants",
-        "site_brand": "FixYourPlants",
-        "site_logo": None,
-        "login_logo": None,
-        "login_logo_dark": None,
-        "site_logo_classes": "img-circle",
-        "site_icon": None,
-        "welcome_sign": "Welcome to FixYourPlants",
-        "copyright": "FixYourPlants Ltd",
-        "search_model": ["users.User", "plant.Plant"],
-        "user_avatar": None,
-        "topmenu_links": [
-            {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-            {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-            {"model": "auth.User"},
-        ],
-        "usermenu_links": [
-            {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-            {"model": "auth.user"}
-        ],
-        "show_sidebar": True,
-        "navigation_expanded": True,
-        "hide_apps": [],
-        "hide_models": [],
-        "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
-        "custom_links": {
-            "books": [{
-                "name": "Make Messages", "url": "make_messages", "icon": "fas fa-comments", "permissions": ["books.view_book"]
-            }]
-        },
-        "icons": {
-            "auth": "fas fa-users-cog",
-            "auth.user": "fas fa-user",
-            "auth.Group": "fas fa-users",
-        },
-        "default_icon_parents": "fas fa-chevron-circle-right",
-        "default_icon_children": "fas fa-circle",
-        "related_modal_active": False,
-        "custom_css": None,
-        "custom_js": None,
-        "use_google_fonts_cdn": True,
-        "show_ui_builder": True,
-        "changeform_format": "horizontal_tabs",
-        "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
-        "language_chooser": False,
-    }
+    JAZZMIN_SETTINGS = jazzmin_settings.JAZZMIN_SETTINGS
+
+    JAZZMIN_UI_TWEAKS = jazzmin_settings.JAZZMIN_UI_TWEAKS
 
     SWAGGER_SETTINGS = {
         'SECURITY_DEFINITIONS': None,  # Eliminar la definición de seguridad

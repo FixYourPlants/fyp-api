@@ -1,68 +1,89 @@
 import uuid
 from enum import Enum
 
-from django.db import models
+from django.db.models import CharField, TextField, UUIDField, ImageField, Model, \
+    ManyToManyField, ForeignKey, CASCADE, DateTimeField
 
 from app.users.models import User
 
 
-# Create your models here.
 class Difficulty(Enum):
     EASY = 'FÁCIL'
     MEDIUM = 'MEDIO'
     HIGH = 'ALTA'
 
+    @classmethod
+    def choices(cls):
+        return [(tag.value, tag.name) for tag in cls]
+
+    @classmethod
+    def from_value(cls, value):
+        for tag in cls:
+            if tag.value.upper() == value.upper():
+                return tag
+        raise ValueError(f"Invalid difficulty level: {value}")
+
+    def __str__(self):
+        return self.value
 
 
-class Plant(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100)
-    scientific_name = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to="plants/", null=True, blank=True)
-    difficulty = models.CharField(choices=[(tag.name, tag.value) for tag in Difficulty], max_length=10, default=Difficulty.EASY.value)
-    treatment = models.TextField()
 
-    sicknesses = models.ManyToManyField('sickness.Sickness', related_name="plant_sicknesses", blank=True)
-    characteristics = models.ManyToManyField('Characteristic', related_name="plant_characteristics", blank=True)
-    notifications = models.ManyToManyField('notification.Notification', related_name='plant_notifications', blank=True)
+
+class Plant(Model):
+    # Attributes
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = CharField(max_length=100)
+    scientific_name = CharField(max_length=100)
+    description = TextField()
+    image = ImageField(upload_to="plants/", null=True, blank=True)
+    difficulty = CharField(choices=[(tag.value, tag.value) for tag in Difficulty], max_length=10, default=Difficulty.EASY.value)
+    treatment = TextField()
+
+    # Relationships
+    sicknesses = ManyToManyField('sickness.Sickness', related_name="plant_sicknesses", blank=True)
+    characteristics = ManyToManyField('Characteristic', related_name="plant_characteristics", blank=True)
+    notifications = ManyToManyField('notification.Notification', related_name='plant_notifications', blank=True)
 
     def __str__(self):
         return self.name
 
-class History(models.Model):
+class History(Model):
     # Attributes
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to="history/", null=True, blank=True)
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_at = DateTimeField(auto_now_add=True)
+    image = ImageField(upload_to="history/", null=True, blank=True)
 
     # Relationships
-    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
-    sickness = models.ForeignKey('sickness.Sickness', on_delete=models.CASCADE, null=True)
+    plant = ForeignKey(Plant, on_delete=CASCADE)
+    sickness = ForeignKey('sickness.Sickness', on_delete=CASCADE, null=True)
 
     def __str__(self):
+        if self.sickness is None:
+            return str(self.created_at) + " - " + self.plant.name
+        if self.plant is None:
+            return str(self.created_at) + " - " + self.sickness.name
         return str(self.created_at) + " - " + self.plant.name + " - " + self.sickness.name
 
 
-class Opinion(models.Model):
+class Opinion(Model):
     # Attributes
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = CharField(max_length=100)
+    description = TextField()
+    created_at = DateTimeField(auto_now_add=True)
 
     # Relationships
-    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    plant = ForeignKey(Plant, on_delete=CASCADE)
+    user = ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
         return self.title + " - " + self.plant.name
 
 
-class Characteristic(models.Model):
+class Characteristic(Model):
     # Attributes
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100)
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = CharField(max_length=100)
 
     def __str__(self):
         return self.name

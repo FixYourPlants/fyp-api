@@ -1,17 +1,15 @@
 from django.core.exceptions import BadRequest, ValidationError
-from drf_yasg.utils import swagger_auto_schema
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, status
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from app.permissions import IsUserOrReadOnly
 from app.plants.models import Plant
 from app.sickness.models import Sickness
 from app.sickness.serializers import SicknessSerializer
-from app.sickness.swagger import sickness_list_swagger, sickness_create_swagger, sickness_detail_swagger, \
-    plants_with_sickness_swagger, sickness_affected_list_swagger
+from app.sickness.swagger import sickness_list_swagger, sickness_detail_swagger, \
+    plants_with_sickness_swagger, retrieve_sickness_affected_status_swagger, sickness_affected_change_swagger
 
 # Create your views.py here.
 '''
@@ -57,22 +55,6 @@ class PlantsWithSicknessListView(viewsets.GenericViewSet, mixins.ListModelMixin)
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
-class SicknessAffectedListView(viewsets.GenericViewSet, mixins.ListModelMixin):
-    serializer_class = SicknessSerializer
-    queryset = Sickness.objects.all()
-    permission_classes = (IsAuthenticated,)
-    pagination_class = None
-
-    def get_queryset(self):
-        raise ValueError("Hello")
-        user = self.request.user
-        return user.affected_sicknesses.all()
-
-    @sickness_affected_list_swagger()
-    def list(self, request, *args, **kwargs):
-        raise ValueError("Hello")
-        return super().list(request, *args, **kwargs)
-
 
 class SicknessAffectedChangeView(viewsets.GenericViewSet, APIView):
     serializer_class = SicknessSerializer
@@ -100,10 +82,7 @@ class SicknessAffectedChangeView(viewsets.GenericViewSet, APIView):
         user.save()
         return added
 
-    @swagger_auto_schema(
-        operation_summary="Add or Remove an Affected Sickness",
-        tags=['Sickness']
-    )
+    @sickness_affected_change_swagger()
     def update(self, request, *args, **kwargs):
         result = self.perform_update(request, *args, **kwargs)
         return Response(result)
@@ -117,12 +96,11 @@ class SicknessAffectedStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMi
 
     def get_queryset(self):
         user = self.request.user
+        if not user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         return user.affected_sicknesses.filter(id=self.kwargs['pk'])
 
-    @swagger_auto_schema(
-        operation_summary="Retrieve Affected Sickness Status",
-        tags=['Sickness']
-    )
+    @retrieve_sickness_affected_status_swagger()
     def retrieve(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         print(queryset.exists())

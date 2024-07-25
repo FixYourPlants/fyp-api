@@ -1,26 +1,9 @@
 from rest_framework import serializers
 
-from app.plants.models import Plant, Difficulty, History, Opinion, Characteristic
+from app.plants.models import Plant, History, Opinion, Characteristic
 from app.users.serializers import UserSerializer
-from ..sickness.models import Sickness
+from ..sickness.serializers import SicknessSerializer
 
-
-from rest_framework import serializers
-from app.plants.models import Plant, Difficulty, History, Opinion, Characteristic
-from app.users.serializers import UserSerializer
-
-from rest_framework import serializers
-from app.plants.models import Difficulty
-
-from rest_framework import serializers
-
-from rest_framework import serializers
-
-
-class SicknessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Sickness
-        fields = '__all__'
 
 class CharacteristicSerializer(serializers.ModelSerializer):
     class Meta:

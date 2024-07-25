@@ -3,7 +3,7 @@ import os
 import numpy as np
 from PIL import Image
 from keras.src.saving import load_model
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -77,11 +77,13 @@ class PlantFavChangeView(viewsets.GenericViewSet, APIView):
 class PlantFavStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     serializer_class = PlantSerializer
     queryset = Plant.objects.all()
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (IsAuthenticated,)
     pagination_class = None
 
     def get_queryset(self):
         user = self.request.user
+        if not user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         return user.favourite_plant.all().filter(id=self.kwargs['pk'])
 
     @retrieve_favourite_plant_swagger()
