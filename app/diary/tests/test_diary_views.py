@@ -79,7 +79,7 @@ class TestPageCreateView(APITestCase):
         self.url = reverse('page-create-list')
         self.page = PageFactory(diary=self.diary)
         self.page_data = model_to_dict(self.page)
-        self.page_data['image'] = None
+        del self.page_data['image']
 
     def test_create_page(self):
         response = self.client.post(self.url, self.page_data, format='json')
