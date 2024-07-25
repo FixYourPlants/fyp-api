@@ -1,8 +1,7 @@
 import uuid
 
 from django.db.models import CharField, TextField, UUIDField, ImageField, Model, \
-    ForeignKey, CASCADE
-from django.forms import DateTimeField
+    ForeignKey, CASCADE, DateTimeField
 
 from app.users.models import User
 

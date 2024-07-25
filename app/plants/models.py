@@ -2,8 +2,7 @@ import uuid
 from enum import Enum
 
 from django.db.models import CharField, TextField, UUIDField, ImageField, Model, \
-    ManyToManyField, ForeignKey, CASCADE
-from django.forms import DateTimeField
+    ManyToManyField, ForeignKey, CASCADE, DateTimeField
 
 from app.users.models import User
 
@@ -59,6 +58,10 @@ class History(Model):
     sickness = ForeignKey('sickness.Sickness', on_delete=CASCADE, null=True)
 
     def __str__(self):
+        if self.sickness is None:
+            return str(self.created_at) + " - " + self.plant.name
+        if self.plant is None:
+            return str(self.created_at) + " - " + self.sickness.name
         return str(self.created_at) + " - " + self.plant.name + " - " + self.sickness.name
 
 

@@ -1,7 +1,6 @@
 import uuid
 
-from django.db.models import CharField, TextField, UUIDField, Model
-from django.forms import DateTimeField
+from django.db.models import CharField, TextField, UUIDField, Model, DateTimeField
 
 
 # Create your models here.
