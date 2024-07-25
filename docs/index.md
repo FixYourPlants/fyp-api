@@ -1,24 +1,54 @@
-# fyp-api
+# Introducción
 
-[![Build Status](https://travis-ci.org/FixYourPlants/fyp-api.svg?branch=master)](https://travis-ci.org/FixYourPlants/fyp-api)
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
+Este proyecto tiene como objetivo el desarrollo de una aplicación móvil llamada **FixYourPlants** que integra inteligencia artificial y una amplia base de conocimientos para realizar un análisis inmediato de la especie y enfermedad de las plantas, ofreciendo un cuidado óptimo.
 
-API for the project Fix Yours Plants. Check out the project's [documentation](http://FixYourPlants.github.io/fyp-api/).
+**FixYourPlants** brindará a los usuarios no registrados servicios de consulta sobre plantas y enfermedades, junto con orientación sobre sus cuidados. Para los usuarios registrados, la aplicación ofrecerá identificación de especies y enfermedades mediante IA, así como la posibilidad de llevar un seguimiento diario de sus plantas.
 
-# Prerequisites
+## Objetivos y Solución Propuesta
 
-- [Docker](https://docs.docker.com/docker-for-mac/install/)
+Los objetivos principales de este proyecto son:
 
-# Initialize the project
+1. Desarrollar una aplicación móvil para el cuidado de plantas.
+2. Crear una IA capaz de reconocer especies y enfermedades de plantas.
+3. Adquirir conocimientos en un campo de la informática no cubierto durante el grado.
 
-Start the dev server for local development:
+Para lograr estos objetivos, primero será necesario familiarizarse con el entorno y las herramientas de desarrollo para aplicaciones Android. El aprendizaje adicional se llevará a cabo en paralelo con el desarrollo del proyecto.
 
-```bash
-docker-compose up
-```
+Debido a incompatibilidades tecnológicas y para evitar sobrecargar la aplicación, se optará por una separación entre el frontend y el backend. El frontend contendrá la aplicación Android, mientras que el backend gestionará la base de datos y la IA entrenada. La comunicación entre ambos se realizará a través de una API.
 
-Create a superuser to login to the admin:
+## Estudio de Mercado
 
-```bash
-docker-compose run --rm web ./manage.py createsuperuser
-```
+Previo al desarrollo, se realizó un estudio de mercado para evaluar los estándares de calidad y funcionalidad del sector. Se analizaron las cinco aplicaciones más populares similares a **FixYourPlants** en Google Play Store: Plantix, Agrio, Blossom, Flora y PictureThis.
+
+### Matriz de Características
+
+| Id  | Característica                           | Plantix | Agrio | Blossom | Flora | PictureThis | FixYourPlants |
+|-----|-----------------------------------------|---------|-------|---------|-------|-------------|---------------|
+| #01 | IA reconocimiento de especie de plantas | X       | -     | -       | X     | X           | X             |
+| #02 | IA reconocimiento de enfermedades       | X       | X     | -       | -     | X           | X             |
+| #03 | Sección tus plantas/Plantas favoritas   | X       | -     | -       | -     | X           | X             |
+| #04 | Listado de plantas                      | X       | -     | -       | X     | -           | X             |
+| #05 | Listado de enfermedades                 | X       | -     | -       | -     | -           | X             |
+| #06 | Detalles de enfermedades                | X       | -     | -       | -     | -           | X             |
+| #07 | Listado de plagas                       | X       | -     | -       | -     | -           | X             |
+| #08 | Consejos de cultivo                     | X       | -     | -       | -     | -           | X             |
+| #09 | Localización                            | X       | -     | -       | -     | -           | -             |
+| #10 | Nivel de experiencia                    | X       | X     | X       | -     | -           | -             |
+| #11 | Clima                                   | X       | -     | -       | -     | -           | -             |
+| #12 | Comunidad                               | X       | -     | -       | -     | -           | -             |
+| #13 | Idioma                                  | X       | X     | -       | -     | -           | X             |
+| #14 | Notificaciones                          | X       | X     | X       | -     | X           | X             |
+| #15 | Suscripciones                           | -       | X     | X       | -     | -           | -             |
+| #16 | Asistencia expertos                     | -       | X     | -       | -     | X           | -             |
+| #17 | Amigos (Feed)                           | -       | X     | -       | -     | -           | -             |
+| #18 | Inicio sesión con Google                | -       | -     | -       | X     | -           | X             |
+| #19 | Tutorial de uso                         | -       | -     | -       | X     | -           | X             |
+| #20 | Logros                                   | -       | -     | -       | X     | -           | -             |
+| #21 | Historial de búsqueda                   | -       | -     | -       | X     | X           | X             |
+| #22 | Sección de noticias                     | -       | -     | -       | X     | -           | -             |
+| #23 | Compra de libros                        | -       | -     | -       | -     | X           | -             |
+| #24 | Diario de plantas                       | -       | -     | -       | -     | -           | X             |
+| #25 | Opiniones                               | -       | -     | -       | -     | -           | X             |
+| #26 | Detalles de las plantas                 | -       | -     | -       | -     | -           | X             |
+
+
