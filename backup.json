@@ -70,7 +70,7 @@
       "name": "Algodón",
       "scientific_name": "Gossypium hirsutum",
       "description": "El algodón es una planta perenne que se cultiva como anual en muchas regiones. Es un arbusto que puede alcanzar alturas de 1 a 2 metros. Sus hojas son lobuladas, de color verde oscuro, y alternas. Las flores son grandes, de color blanco o amarillo con un centro púrpura, y se convierten en cápsulas o \"bellotas\" que contienen las semillas rodeadas por fibras blancas o marrones de celulosa (el algodón).",
-      "image": "",
+      "image": "plants/algodón.jpg",
       "difficulty": "EASY",
       "treatment": "Clima: Prefiere climas cálidos y soleados. Sensible a las heladas y a temperaturas extremas.\r\n\r\nSuelo: Crece mejor en suelos bien drenados, profundos y fértiles. Prefiere suelos ligeros a medianos, como los francos arenosos. El pH del suelo debe ser ligeramente ácido a neutro, entre 5.8 y 7.5.\r\n\r\nRiego: Evitar el exceso de agua y el encharcamiento, ya que el algodón es susceptible a enfermedades fúngicas en condiciones de alta humedad. Necesita riego regular, especialmente durante la germinación y las primeras etapas de crecimiento. El riego por goteo es eficiente y ayuda a conservar el agua.\r\n\r\nLuz: Requiere pleno sol para un óptimo crecimiento y desarrollo. Necesita al menos 6-8 horas de luz solar directa al día.",
       "sicknesses": [
