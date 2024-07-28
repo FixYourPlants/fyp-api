@@ -232,42 +232,65 @@ class Common(Configuration):
     }
 
     JAZZMIN_SETTINGS = {
+        # Información del sitio
         "site_title": "FixYourPlants Admin",
-        "site_header": "FixYOurPlants",
+        "site_header": "FixYourPlants",
         "site_brand": "FixYourPlants",
-        "site_logo": None,
-        "login_logo": None,
-        "login_logo_dark": None,
-        "site_logo_classes": "img-circle",
-        "site_icon": None,
+        "site_logo": "media/logo.png",  # Ruta del logo en el directorio estático
+        "login_logo": "media/logo.png",  # Logo para la página de inicio de sesión
+        "login_logo_dark": "media/logo.png",  # Logo oscuro para la página de inicio de sesión
+        "site_logo_classes": "img-circle",  # Clases CSS para el logo del sitio
+        "site_icon": None,  # Icono del sitio en la pestaña del navegador
         "welcome_sign": "Welcome to FixYourPlants",
         "copyright": "FixYourPlants Ltd",
-        "search_model": ["users.User", "plant.Plant"],
-        "user_avatar": None,
+
+        # Modelos y búsquedas
+        "search_model": ["users.User", "plant.Plant"],  # Modelos para búsqueda
+
+        # Avatar y menús
+        "user_avatar": None,  # Avatar del usuario
+
         "topmenu_links": [
             {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
             {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
             {"model": "auth.User"},
         ],
+
         "usermenu_links": [
             {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
             {"model": "auth.user"}
         ],
+
+        # Configuración de la interfaz
         "show_sidebar": True,
         "navigation_expanded": True,
-        "hide_apps": [],
-        "hide_models": [],
-        "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+        "hide_apps": [],  # Aplicaciones a ocultar
+        "hide_models": [],  # Modelos a ocultar
+
+        "order_with_respect_to": [
+            "auth",
+            "books",
+            "books.author",
+            "books.book"
+        ],  # Orden de los modelos en el menú lateral
+
         "custom_links": {
-            "books": [{
-                "name": "Make Messages", "url": "make_messages", "icon": "fas fa-comments", "permissions": ["books.view_book"]
-            }]
+            "books": [
+                {
+                    "name": "Make Messages",
+                    "url": "make_messages",
+                    "icon": "fas fa-comments",
+                    "permissions": ["books.view_book"]
+                }
+            ]
         },
+
         "icons": {
             "auth": "fas fa-users-cog",
             "auth.user": "fas fa-user",
             "auth.Group": "fas fa-users",
         },
+
         "default_icon_parents": "fas fa-chevron-circle-right",
         "default_icon_children": "fas fa-circle",
         "related_modal_active": False,
@@ -276,7 +299,10 @@ class Common(Configuration):
         "use_google_fonts_cdn": True,
         "show_ui_builder": True,
         "changeform_format": "horizontal_tabs",
-        "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+        "changeform_format_overrides": {
+            "auth.user": "collapsible",
+            "auth.group": "vertical_tabs"
+        },
         "language_chooser": False,
     }
 
