@@ -1,12 +1,11 @@
 # Create your views.py here.
 import requests
 from bs4 import BeautifulSoup
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
-from app.alerts.swagger import alert_details_swagger, list_alerts_government_swagger, list_alerts_swagger
+from app.alerts.swagger import list_alerts_government_swagger
 
 '''
 ALERTS
