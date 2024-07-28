@@ -6,12 +6,13 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'image', 'about_me', 'favourite_plant','googleAccount')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'image', 'about_me', 'favourite_plant','affected_sicknesses','googleAccount')
         read_only_fields = ('username',)
 
     def update(self, instance, validated_data):
         # Remover el campo 'favourite_plant' de los datos validados
         validated_data.pop('favourite_plant', None)
+        validated_data.pop('affected_sicknesses', None)
         return super().update(instance, validated_data)
 
 class CreateUserSerializer(serializers.ModelSerializer):
