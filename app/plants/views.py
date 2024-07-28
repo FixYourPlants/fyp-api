@@ -119,6 +119,24 @@ class OpinionCreateView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
 
+'''
+HISTORY
+'''
+class HistoryListView(viewsets.GenericViewSet, mixins.ListModelMixin):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    permission_classes = (IsAuthenticated,)
+    pagination_class = None
+
+    def get_queryset(self):
+        user = self.request.user
+        if not user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return user.history.all()
+
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
 
 '''
 PLANT PREDICT
