@@ -88,6 +88,7 @@ class Common(Configuration):
     STATICFILES_DIRS = [
         join(BASE_DIR, 'static'),
     ]
+
     STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
