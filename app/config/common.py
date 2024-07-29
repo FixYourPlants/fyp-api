@@ -1,9 +1,10 @@
 import os
-from datetime import timedelta
 from os.path import join
 
 from configurations import Configuration
 from decouple import config
+
+from app.config import jazzmin_settings, simple_jwt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
