@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
 from app.plants.views import PlantDetailView, PlantListView, OpinionCreateView, \
-    PlantFavChangeView, PlantFavStatusView, OpinionListView, PlantPredictView
+    PlantFavChangeView, PlantFavStatusView, OpinionListView, PlantPredictView, HistoryListView
 
 router = SimpleRouter()
 
@@ -19,6 +19,11 @@ OPINION
 '''
 router.register(r'opinions/lists', OpinionListView, basename="opinion-list")
 router.register(r'opinions/create', OpinionCreateView, basename="opinion-create")
+
+'''
+HISTORY
+'''
+router.register(r'histories/lists', HistoryListView, basename="history-list")
 
 '''
 PLANT PREDICT

@@ -1,12 +1,11 @@
 # Create your views.py here.
 import requests
 from bs4 import BeautifulSoup
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
-from app.alerts.swagger import alert_details_swagger, list_alerts_government_swagger, list_alerts_swagger
+from app.alerts.swagger import list_alerts_government_swagger
 
 '''
 ALERTS
@@ -54,35 +53,6 @@ def get_alerts_gob():
 
     return alerts
 
-def get_alerts():
-    soup = fetch_and_parse(BASE_URL)
-    alerts = []
-    alerts_divs = soup.select("div.textoInterior div.row.bb-10")
-
-    for alert in alerts_divs:
-        title_element = alert.select_one("p")
-        link_element = alert.select_one("a")
-
-        if title_element and link_element:
-            title = title_element.get_text(strip=True)
-            link = link_element['href']
-            alerts.append({"title": title, "link": link})
-
-    return alerts
-
-def getAlert(url):
-    soup_element = fetch_and_parse(url)
-    text_element = soup_element.select_one("div.textoInterior")
-    return {"details": text_element.get_text(strip=True)}
-
-# Views
-class AlertListView(viewsets.GenericViewSet, mixins.ListModelMixin):
-    permission_classes = (AllowAny,)
-    pagination_class = None
-
-    @list_alerts_swagger()
-    def list(self, request, *args, **kwargs):
-        return Response(get_alerts())
 
 class AlertListViewGov(viewsets.GenericViewSet, mixins.ListModelMixin):
     permission_classes = (AllowAny,)
@@ -91,21 +61,4 @@ class AlertListViewGov(viewsets.GenericViewSet, mixins.ListModelMixin):
     @list_alerts_government_swagger()
     def list(self, request, *args, **kwargs):
         return Response(get_alerts_gob())
-
-class AlertDetailsView(APIView):
-    permission_classes = (AllowAny,)
-
-    @alert_details_swagger()
-    def get(self, request, *args, **kwargs):
-        link = request.query_params.get('link')
-
-        if not link:
-            return Response({"error": "Link not provided"}, status=status.HTTP_400_BAD_REQUEST)
-
-        alert_details = getAlert(link)
-
-        if alert_details is None:
-            return Response({"error": "Alert not found for the provided URL"}, status=status.HTTP_404_NOT_FOUND)
-
-        return Response(alert_details, status=status.HTTP_200_OK)
 

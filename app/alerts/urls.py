@@ -1,13 +1,14 @@
-from django.urls import include, path
+from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from app.alerts.views import AlertDetailsView, AlertListView, AlertListViewGov
+from app.alerts.views import AlertListViewGov
 
 router = SimpleRouter()
 '''
 ALERT
 '''
-router.register(r'alerts/list', AlertListView, basename="alert-list")
 router.register(r'alerts/list/gob', AlertListViewGov, basename="alert-list-gob")
 
-urlpatterns = [path('', include(router.urls)),path('alerts/details/', AlertDetailsView.as_view(), name='aletr_details')]
+urlpatterns = [
+    path('', include(router.urls)),
+]
