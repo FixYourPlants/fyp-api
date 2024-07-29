@@ -1,10 +1,8 @@
 import logging
-import os
 from time import time, sleep
 
 import psycopg2
 from decouple import config
-
 
 check_timeout = config("POSTGRES_CHECK_TIMEOUT", 30)
 check_interval = config("POSTGRES_CHECK_INTERVAL", 1)

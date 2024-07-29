@@ -1,5 +1,5 @@
 from django.core.exceptions import BadRequest, ValidationError
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, status
 from rest_framework.exceptions import NotFound
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -96,6 +96,8 @@ class SicknessAffectedStatusView(viewsets.GenericViewSet, mixins.RetrieveModelMi
 
     def get_queryset(self):
         user = self.request.user
+        if not user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         return user.affected_sicknesses.filter(id=self.kwargs['pk'])
 
     @retrieve_sickness_affected_status_swagger()
