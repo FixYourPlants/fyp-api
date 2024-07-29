@@ -21,7 +21,6 @@ RUN pip install --no-cache-dir Markdown~=3.6 mkdocs~=1.6.0 mkdocs-material~=9.5.
 # Copia el resto del código
 COPY /docs /code/docs
 COPY mkdocs.yml /code/mkdocs.yml
-COPY /media/logo.png /code/media/logo.png
 
 
 # Comando para ejecutar el servidor de MkDocs
