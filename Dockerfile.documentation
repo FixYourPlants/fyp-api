@@ -21,7 +21,6 @@ RUN pip install -r requirements_doc.txt
 # Copia el resto del código
 COPY /docs /code/docs
 COPY mkdocs.yml /code/mkdocs.yml
-COPY /media/logo.png /code/media/logo.png
 
 
 # Comando para ejecutar el servidor de MkDocs

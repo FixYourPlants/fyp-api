@@ -4,7 +4,7 @@ from os.path import join
 from configurations import Configuration
 from decouple import config
 
-from app.config import simple_jwt, jazzmin_settings
+from app.config import jazzmin_settings, simple_jwt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -86,8 +86,8 @@ class Common(Configuration):
     STATICFILES_DIRS = [
         join(BASE_DIR, 'static'),
     ]
-    STATIC_URL = '/static/'
 
+    STATIC_URL = '/static/'
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',

@@ -1,905 +1,905 @@
 [
-  {
+{
     "model": "users.user",
     "pk": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3",
     "fields": {
-      "password": "pbkdf2_sha256$720000$eGqaSXeBlcvvNjtnomobyd$2vnQ0ub8fkjwLwna35GqWU2bB8Ilt4C6N0Gqt+xIjNk=",
-      "last_login": "2024-07-19T16:26:29.844Z",
-      "is_superuser": true,
-      "first_name": "Rafa",
-      "last_name": "Corcho",
-      "is_staff": true,
-      "is_active": true,
-      "date_joined": "2024-04-19T18:32:48Z",
-      "image": "users/image_45copEQ.jpg",
-      "about_me": "hola",
-      "email_verified": true,
-      "email": "admin@us.es",
-      "username": "admin",
-      "googleAccount": false,
-      "groups": [],
-      "user_permissions": [],
-      "favourite_plant": [
-        "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
-        "ef2bf25e-fc21-4853-907b-cf4fc97dd4e3"
-      ],
-      "affected_sicknesses": [
-        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c"
-      ],
-      "history": []
+        "password": "pbkdf2_sha256$720000$eGqaSXeBlcvvNjtnomobyd$2vnQ0ub8fkjwLwna35GqWU2bB8Ilt4C6N0Gqt+xIjNk=",
+        "last_login": "2024-07-19T16:26:29.844Z",
+        "is_superuser": true,
+        "first_name": "Rafa",
+        "last_name": "Corcho",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-04-19T18:32:48Z",
+        "image": "users/image_45copEQ.jpg",
+        "about_me": "hola",
+        "email_verified": true,
+        "email": "admin@us.es",
+        "username": "admin",
+        "googleAccount": false,
+        "groups": [],
+        "user_permissions": [],
+        "favourite_plant": [
+            "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
+            "ef2bf25e-fc21-4853-907b-cf4fc97dd4e3"
+        ],
+        "affected_sicknesses": [
+            "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c"
+        ],
+        "history": []
     }
-  },
-  {
+},
+{
     "model": "users.user",
     "pk": "584f8219-d57a-4f3a-bea9-9a222a1378dd",
     "fields": {
-      "password": "pbkdf2_sha256$720000$qjJCJbK4pNJSyt5xs7hGrk$mL5QG+U8o7+rp+BUXQsEO4ywPAuA9Yeu4j2amI4Lbhg=",
-      "last_login": null,
-      "is_superuser": false,
-      "first_name": "",
-      "last_name": "",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2024-07-09T09:52:33.054Z",
-      "image": "users/default.png",
-      "about_me": "Muy buenos dias",
-      "email_verified": true,
-      "email": "nacho.arromant@gmail.com",
-      "username": "nacho.arromant.gmail.com",
-      "googleAccount": false,
-      "groups": [],
-      "user_permissions": [],
-      "favourite_plant": [
-        "15fe39ec-5071-4940-9d14-cb80bdc8bc27"
-      ],
-      "affected_sicknesses": [],
-      "history": [
-        "0fa343d6-f482-4d23-b8e3-7935dfab7c65",
-        "364ab6ce-d28e-4970-84a6-2e80215d2c92",
-        "495804eb-cc46-446b-b13f-438177bb746b",
-        "5394d431-2a12-4514-9a65-fcd569ccfe03",
-        "8c61b7b1-bf4f-4d6d-9ff9-1ade32f9ea24",
-        "c4b6a6bf-fee3-4fbf-9fbb-30a2cd91ca71"
-      ]
+        "password": "pbkdf2_sha256$720000$qjJCJbK4pNJSyt5xs7hGrk$mL5QG+U8o7+rp+BUXQsEO4ywPAuA9Yeu4j2amI4Lbhg=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-09T09:52:33.054Z",
+        "image": "users/default.png",
+        "about_me": "Muy buenos dias",
+        "email_verified": true,
+        "email": "nacho.arromant@gmail.com",
+        "username": "nacho.arromant.gmail.com",
+        "googleAccount": false,
+        "groups": [],
+        "user_permissions": [],
+        "favourite_plant": [
+            "15fe39ec-5071-4940-9d14-cb80bdc8bc27"
+        ],
+        "affected_sicknesses": [],
+        "history": [
+            "0fa343d6-f482-4d23-b8e3-7935dfab7c65",
+            "364ab6ce-d28e-4970-84a6-2e80215d2c92",
+            "495804eb-cc46-446b-b13f-438177bb746b",
+            "5394d431-2a12-4514-9a65-fcd569ccfe03",
+            "8c61b7b1-bf4f-4d6d-9ff9-1ade32f9ea24",
+            "c4b6a6bf-fee3-4fbf-9fbb-30a2cd91ca71"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "0b453265-2bf6-43ad-85ef-7b74528d8e08",
     "fields": {
-      "name": "Algodón",
-      "scientific_name": "Gossypium hirsutum",
-      "description": "El algodón es una planta perenne que se cultiva como anual en muchas regiones. Es un arbusto que puede alcanzar alturas de 1 a 2 metros. Sus hojas son lobuladas, de color verde oscuro, y alternas. Las flores son grandes, de color blanco o amarillo con un centro púrpura, y se convierten en cápsulas o \"bellotas\" que contienen las semillas rodeadas por fibras blancas o marrones de celulosa (el algodón).",
-      "image": "plants/algodón.jpg",
-      "difficulty": "EASY",
-      "treatment": "Clima: Prefiere climas cálidos y soleados. Sensible a las heladas y a temperaturas extremas.\r\n\r\nSuelo: Crece mejor en suelos bien drenados, profundos y fértiles. Prefiere suelos ligeros a medianos, como los francos arenosos. El pH del suelo debe ser ligeramente ácido a neutro, entre 5.8 y 7.5.\r\n\r\nRiego: Evitar el exceso de agua y el encharcamiento, ya que el algodón es susceptible a enfermedades fúngicas en condiciones de alta humedad. Necesita riego regular, especialmente durante la germinación y las primeras etapas de crecimiento. El riego por goteo es eficiente y ayuda a conservar el agua.\r\n\r\nLuz: Requiere pleno sol para un óptimo crecimiento y desarrollo. Necesita al menos 6-8 horas de luz solar directa al día.",
-      "sicknesses": [
-        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
-        "748528a9-48b2-497e-957e-4547711cd87e",
-        "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "37e68be1-94b1-4f49-9e41-f3024a79ac41",
-        "f1d388da-0dc5-4742-9795-b41ff2468d94",
-        "f4f91a64-1476-4528-89e1-dfee235eefb6"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Algodón",
+        "scientific_name": "Gossypium hirsutum",
+        "description": "El algodón es una planta perenne que se cultiva como anual en muchas regiones. Es un arbusto que puede alcanzar alturas de 1 a 2 metros. Sus hojas son lobuladas, de color verde oscuro, y alternas. Las flores son grandes, de color blanco o amarillo con un centro púrpura, y se convierten en cápsulas o \"bellotas\" que contienen las semillas rodeadas por fibras blancas o marrones de celulosa (el algodón).",
+        "image": "",
+        "difficulty": "EASY",
+        "treatment": "Clima: Prefiere climas cálidos y soleados. Sensible a las heladas y a temperaturas extremas.\r\n\r\nSuelo: Crece mejor en suelos bien drenados, profundos y fértiles. Prefiere suelos ligeros a medianos, como los francos arenosos. El pH del suelo debe ser ligeramente ácido a neutro, entre 5.8 y 7.5.\r\n\r\nRiego: Evitar el exceso de agua y el encharcamiento, ya que el algodón es susceptible a enfermedades fúngicas en condiciones de alta humedad. Necesita riego regular, especialmente durante la germinación y las primeras etapas de crecimiento. El riego por goteo es eficiente y ayuda a conservar el agua.\r\n\r\nLuz: Requiere pleno sol para un óptimo crecimiento y desarrollo. Necesita al menos 6-8 horas de luz solar directa al d¡a.",
+        "sicknesses": [
+            "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
+            "748528a9-48b2-497e-957e-4547711cd87e",
+            "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "37e68be1-94b1-4f49-9e41-f3024a79ac41",
+            "f1d388da-0dc5-4742-9795-b41ff2468d94",
+            "f4f91a64-1476-4528-89e1-dfee235eefb6"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
     "fields": {
-      "name": "Pimiento Morrón",
-      "scientific_name": "Capsicum annuum",
-      "description": "Se caracteriza por su forma gruesa y carnosa, con una piel brillante y un sabor suave y dulce. Los pimientos morrones suelen tener colores que van desde el verde al rojo, pasando por el amarillo y el naranja, dependiendo de su grado de madurez. Son muy apreciados en la cocina por su versatilidad y se utilizan en una amplia variedad de platos, tanto crudos como cocidos.",
-      "image": "plants/pimiento_morrón.jpeg",
-      "difficulty": "EASY",
-      "treatment": "Proporcionar riego regular y asegurarse de que reciban suficiente luz solar. Fertilizar periódicamente y proteger contra plagas como pulgones.",
-      "sicknesses": [
-        "3f4aa136-6246-4338-ab9c-c6f603401e23"
-      ],
-      "characteristics": [
-        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Pimiento Morrón",
+        "scientific_name": "Capsicum annuum",
+        "description": "Se caracteriza por su forma gruesa y carnosa, con una piel brillante y un sabor suave y dulce. Los pimientos morrones suelen tener colores que van desde el verde al rojo, pasando por el amarillo y el naranja, dependiendo de su grado de madurez. Son muy apreciados en la cocina por su versatilidad y se utilizan en una amplia variedad de platos, tanto crudos como cocidos.",
+        "image": "plants/pimiento_morrón.jpeg",
+        "difficulty": "EASY",
+        "treatment": "Proporcionar riego regular y asegurarse de que reciban suficiente luz solar. Fertilizar periódicamente y proteger contra plagas como pulgones.",
+        "sicknesses": [
+            "3f4aa136-6246-4338-ab9c-c6f603401e23"
+        ],
+        "characteristics": [
+            "0c0c9aa9-f7af-42ac-a27d-250da4f0f528"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "56790645-3184-4cfe-bdb7-78128a9287bf",
     "fields": {
-      "name": "Patata",
-      "scientific_name": "Solanum tuberosum",
-      "description": "La patata es un tubérculo comestible que pertenece a la familia de las solanáceas. Es una de las principales fuentes de carbohidratos en la dieta humana y se consume en todo el mundo en una amplia variedad de platos.",
-      "image": "plants/patata.jpeg",
-      "difficulty": "EASY",
-      "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar plagas como el escarabajo de la patata.",
-      "sicknesses": [
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
-        "1dbe51fa-29b7-4cd0-b680-fc102c254785"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Patata",
+        "scientific_name": "Solanum tuberosum",
+        "description": "La patata es un tubérculo comestible que pertenece a la familia de las solanáceas. Es una de las principales fuentes de carbohidratos en la dieta humana y se consume en todo el mundo en una amplia variedad de platos.",
+        "image": "plants/patata.jpeg",
+        "difficulty": "EASY",
+        "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar plagas como el escarabajo de la patata.",
+        "sicknesses": [
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
+            "1dbe51fa-29b7-4cd0-b680-fc102c254785"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "5fbb51fa-7e75-44fe-8615-f0366ea6c0df",
     "fields": {
-      "name": "Café",
-      "scientific_name": "Coffea arabica",
-      "description": "El café es un arbusto o árbol pequeño que puede crecer hasta unos 3-4 metros de altura. Tiene hojas perennes, de color verde oscuro y brillante. Las flores son pequeñas, blancas y muy aromáticas, similares a las flores del jazmín. El fruto del café es una baya que cambia de verde a rojo oscuro o púrpura cuando madura. Cada baya contiene dos semillas, que son los granos de café.",
-      "image": "plants/cafe.png",
-      "difficulty": "EASY",
-      "treatment": "Clima: Prefiere climas tropicales con temperaturas entre 18-24 C. No tolera las heladas.\r\nSuelo: Necesita suelos bien drenados, ricos en materia orgánica y ligeramente ácidos (pH entre 5.5 y 6.5).\r\nRiego: Debe ser regular pero evitando encharcamientos. La planta requiere humedad constante.\r\nLuz: Necesita sombra parcial, especialmente en sus primeras etapas de crecimiento. Las plantaciones suelen intercalarse con árboles que proporcionan sombra.\r\nFertilización: Se recomienda aplicar abonos orgánicos y fertilizantes balanceados para mantener la salud del suelo y la planta.\r\nPoda: Se realiza para controlar la altura y promover la ramificación. También es útil para eliminar ramas enfermas o dañadas.",
-      "sicknesses": [],
-      "characteristics": [
-        "2afecf32-d6c3-40fa-b59f-6a72272326fd",
-        "f4f91a64-1476-4528-89e1-dfee235eefb6"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Café",
+        "scientific_name": "Coffea arabica",
+        "description": "El café es un arbusto o árbol pequeño que puede crecer hasta unos 3-4 metros de altura. Tiene hojas perennes, de color verde oscuro y brillante. Las flores son pequeñas, blancas y muy aromáticas, similares a las flores del jazm¡n. El fruto del café es una baya que cambia de verde a rojo oscuro o púrpura cuando madura. Cada baya contiene dos semillas, que son los granos de café.",
+        "image": "plants/cafe.png",
+        "difficulty": "EASY",
+        "treatment": "Clima: Prefiere climas tropicales con temperaturas entre 18-24ºC. No tolera las heladas.\r\nSuelo: Necesita suelos bien drenados, ricos en materia orgánica y ligeramente ácidos (pH entre 5.5 y 6.5).\r\nRiego: Debe ser regular pero evitando encharcamientos. La planta requiere humedad constante.\r\nLuz: Necesita sombra parcial, especialmente en sus primeras etapas de crecimiento. Las plantaciones suelen intercalarse con árboles que proporcionan sombra.\r\nFertilización: Se recomienda aplicar abonos orgánicos y fertilizantes balanceados para mantener la salud del suelo y la planta.\r\nPoda: Se realiza para controlar la altura y promover la ramificación. También es útil para eliminar ramas enfermas o dañadas.",
+        "sicknesses": [],
+        "characteristics": [
+            "2afecf32-d6c3-40fa-b59f-6a72272326fd",
+            "f4f91a64-1476-4528-89e1-dfee235eefb6"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "6b01fa6e-cb21-47c9-a9aa-6addf5681cc4",
     "fields": {
-      "name": "Caña de azúcar",
-      "scientific_name": "Saccharum officinarum",
-      "description": "La caña de azúcar es una planta perenne que puede crecer hasta 6 metros de altura. Tiene tallos gruesos, fibrosos y jugosos que contienen una alta concentración de sacarosa. Las hojas son largas y estrechas, y las flores se agrupan en espigas plumosas.",
-      "image": "plants/caña_de_azucar.jpeg",
-      "difficulty": "EASY",
-      "treatment": "Clima: Prefiere climas tropicales y subtropicales, con temperaturas óptimas entre 25-30 C.\r\nSuelo: Crece bien en suelos profundos, bien drenados y ricos en materia orgánica. Los suelos arcillosos y franco-arenosos son ideales.\r\nRiego: Necesita riego regular, especialmente en las fases iniciales de crecimiento y durante la formación de los tallos. Evitar encharcamientos.\r\nLuz: Requiere pleno sol para un buen desarrollo.\r\nFertilización: Es importante aplicar fertilizantes ricos en nitrógeno, fósforo y potasio. Se recomienda también el uso de compost y otros abonos orgánicos.\r\nPoda: No requiere poda regular, pero se debe realizar limpieza de malezas y eliminación de tallos dañados.\r\nControl de plagas y enfermedades: Debe protegerse contra plagas como el barrenador de la caña y enfermedades como el carbón de la caña.",
-      "sicknesses": [
-        "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
-        "748528a9-48b2-497e-957e-4547711cd87e",
-        "ee6a3f9b-e578-4ca1-b089-87b345cb76e1"
-      ],
-      "characteristics": [
-        "0a9bec8c-5116-4c73-ad46-40dd79a430e6",
-        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
-        "15dd8516-e8d0-49a5-9021-add01f356174",
-        "5993e741-54b9-41e3-84e4-5089d4f39d96"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Caña de azúcar",
+        "scientific_name": "Saccharum officinarum",
+        "description": "La caña de azúcar es una planta perenne que puede crecer hasta 6 metros de altura. Tiene tallos gruesos, fibrosos y jugosos que contienen una alta concentración de sacarosa. Las hojas son largas y estrechas, y las flores se agrupan en espigas plumosas.",
+        "image": "plants/caña_de_azucar.jpeg",
+        "difficulty": "EASY",
+        "treatment": "Clima: Prefiere climas tropicales y subtropicales, con temperaturas óptimas entre 25-30ºC.\r\nSuelo: Crece bien en suelos profundos, bien drenados y ricos en materia orgánica. Los suelos arcillosos y franco-arenosos son ideales.\r\nRiego: Necesita riego regular, especialmente en las fases iniciales de crecimiento y durante la formación de los tallos. Evitar encharcamientos.\r\nLuz: Requiere pleno sol para un buen desarrollo.\r\nFertilización: Es importante aplicar fertilizantes ricos en nitrógeno, fósforo y potasio. Se recomienda también el uso de compost y otros abonos orgánicos.\r\nPoda: No requiere poda regular, pero se debe realizar limpieza de malezas y eliminación de tallos dañados.\r\nControl de plagas y enfermedades: Debe protegerse contra plagas como el barrenador de la caña y enfermedades como el carbón de la caña.",
+        "sicknesses": [
+            "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
+            "748528a9-48b2-497e-957e-4547711cd87e",
+            "ee6a3f9b-e578-4ca1-b089-87b345cb76e1"
+        ],
+        "characteristics": [
+            "0a9bec8c-5116-4c73-ad46-40dd79a430e6",
+            "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
+            "15dd8516-e8d0-49a5-9021-add01f356174",
+            "5993e741-54b9-41e3-84e4-5089d4f39d96"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "7f73e7be-04a2-4bd5-b494-84b86ca894e7",
     "fields": {
-      "name": "Cereza",
-      "scientific_name": "Prunus cerasus",
-      "description": "Las cerezas son frutas pequeñas y redondas que crecen en árboles caducifolios del género Prunus. Existen dos tipos principales de cerezas: las dulces y las ácidas. Las cerezas dulces son conocidas por su sabor suave y dulce, mientras que las cerezas ácidas tienen un sabor más ácido y se utilizan comúnmente en la preparación de postres y conservas.",
-      "image": "plants/cereza.jpg",
-      "difficulty": "EASY",
-      "treatment": "Proporcionar riego regular y protección contra enfermedades fúngicas y plagas como los pájaros.",
-      "sicknesses": [
-        "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c"
-      ],
-      "characteristics": [
-        "78350738-a259-4440-b0ba-836e21ec2bf6",
-        "7c2879f9-11f6-4690-ae7e-8fbfab55b764"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Cereza",
+        "scientific_name": "Prunus cerasus",
+        "description": "Las cerezas son frutas pequeñas y redondas que crecen en árboles caducifolios del género Prunus. Existen dos tipos principales de cerezas: las dulces y las ácidas. Las cerezas dulces son conocidas por su sabor suave y dulce, mientras que las cerezas ácidas tienen un sabor más ácido y se utilizan comúnmente en la preparación de postres y conservas.",
+        "image": "plants/cereza.jpg",
+        "difficulty": "EASY",
+        "treatment": "Proporcionar riego regular y protección contra enfermedades fúngicas y plagas como los pájaros.",
+        "sicknesses": [
+            "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c"
+        ],
+        "characteristics": [
+            "78350738-a259-4440-b0ba-836e21ec2bf6",
+            "7c2879f9-11f6-4690-ae7e-8fbfab55b764"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "8cf9abd8-41ee-40b0-a7d2-df2eec4bc812",
     "fields": {
-      "name": "Tomate",
-      "scientific_name": "Solanum lycopersicum",
-      "description": "El tomate es una fruta de pulpa jugosa y piel fina, de color rojo brillante en su madurez, que crece en la planta del mismo nombre. Aunque es comúnmente utilizado como una verdura en la cocina, botánicamente es una fruta. Los tomates son una fuente importante de nutrientes como la vitamina C, el potasio y el licopeno, un antioxidante que se ha asociado con varios beneficios para la salud.",
-      "image": "plants/tomate.jpg",
-      "difficulty": "EASY",
-      "treatment": "Proporcionar riego regular y fertilizar según sea necesario. Podar y entutorar para promover un crecimiento saludable, evitando la aparición de hongos que dañan los frutos.",
-      "sicknesses": [
-        "200f50f6-a34c-48d7-82ec-ae485be62ed8",
-        "3f4aa136-6246-4338-ab9c-c6f603401e23",
-        "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
-        "ccf10026-6fed-465a-b549-ad1b0c3efb29",
-        "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
-        "ee6a3f9b-e578-4ca1-b089-87b345cb76e1",
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "f1d388da-0dc5-4742-9795-b41ff2468d94"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Tomate",
+        "scientific_name": "Solanum lycopersicum",
+        "description": "El tomate es una fruta de pulpa jugosa y piel fina, de color rojo brillante en su madurez, que crece en la planta del mismo nombre. Aunque es comúnmente utilizado como una verdura en la cocina, botánicamente es una fruta. Los tomates son una fuente importante de nutrientes como la vitamina C, el potasio y el licopeno, un antioxidante que se ha asociado con varios beneficios para la salud.",
+        "image": "plants/tomate.jpg",
+        "difficulty": "EASY",
+        "treatment": "Proporcionar riego regular y fertilizar según sea necesario. Podar y entutorar para promover un crecimiento saludable, evitando la aparición de hongos que dañan los frutos.",
+        "sicknesses": [
+            "200f50f6-a34c-48d7-82ec-ae485be62ed8",
+            "3f4aa136-6246-4338-ab9c-c6f603401e23",
+            "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
+            "ccf10026-6fed-465a-b549-ad1b0c3efb29",
+            "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
+            "ee6a3f9b-e578-4ca1-b089-87b345cb76e1",
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "f1d388da-0dc5-4742-9795-b41ff2468d94"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
     "fields": {
-      "name": "Manzana",
-      "scientific_name": "Malus domestica",
-      "description": "Es una fruta de forma redondeada, con una piel suave y brillante que puede variar en color desde el verde al rojo, pasando por diferentes tonalidades intermedias. Es una fruta muy popular y versátil, utilizada tanto en postres como en platos salados, siendo muy conocida por su sabor dulce y refrescante.",
-      "image": "plants/manzana.jpg",
-      "difficulty": "MEDIUM",
-      "treatment": "Podar regularmente para mantener la forma y estimular el crecimiento. Proporcionar riego regular y protección contra plagas y enfermedades.",
-      "sicknesses": [
-        "748528a9-48b2-497e-957e-4547711cd87e",
-        "8eb46215-7dfd-4771-a083-68aef095b5ba",
-        "9f68c63e-9389-4339-b594-a61bd4edabad",
-        "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
-      ],
-      "characteristics": [
-        "78350738-a259-4440-b0ba-836e21ec2bf6"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Manzana",
+        "scientific_name": "Malus domestica",
+        "description": "Es una fruta de forma redondeada, con una piel suave y brillante que puede variar en color desde el verde al rojo, pasando por diferentes tonalidades intermedias. Es una fruta muy popular y versátil, utilizada tanto en postres como en platos salados, siendo muy conocida por su sabor dulce y refrescante.",
+        "image": "plants/manzana.jpg",
+        "difficulty": "MEDIUM",
+        "treatment": "Podar regularmente para mantener la forma y estimular el crecimiento. Proporcionar riego regular y protección contra plagas y enfermedades.",
+        "sicknesses": [
+            "748528a9-48b2-497e-957e-4547711cd87e",
+            "8eb46215-7dfd-4771-a083-68aef095b5ba",
+            "9f68c63e-9389-4339-b594-a61bd4edabad",
+            "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        ],
+        "characteristics": [
+            "78350738-a259-4440-b0ba-836e21ec2bf6"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "919af476-c4c5-4201-bc77-c9c8ded8cae4",
     "fields": {
-      "name": "Arroz",
-      "scientific_name": "Oryza sativa",
-      "description": "El arroz es una planta herbácea anual que puede alcanzar alturas de 1 a 1.8 metros. Tiene hojas largas y delgadas, y sus flores se agrupan en espigas. El grano de arroz es el fruto de la planta, y es una de las principales fuentes de alimento en todo el mundo.",
-      "image": "plants/arroz.jpg",
-      "difficulty": "EASY",
-      "treatment": "Clima: Requiere climas cálidos y húmedos, con temperaturas ideales entre 20-35 C.\r\nSuelo: Prefiere suelos arcillosos que retengan bien el agua, aunque puede adaptarse a otros tipos de suelos.\r\nRiego: Necesita abundante agua, especialmente durante el crecimiento y desarrollo de los granos. El cultivo se realiza generalmente en campos inundados (arrozales).\r\nLuz: Requiere pleno sol para un buen desarrollo.\r\nFertilización: Es importante el uso de fertilizantes ricos en nitrógeno, fósforo y potasio para asegurar una buena producción.\r\nControl de plagas y enfermedades: El arroz es susceptible a varias plagas y enfermedades, por lo que se deben aplicar medidas preventivas y curativas adecuadas.",
-      "sicknesses": [
-        "547f0964-e20f-4523-a3f6-4a848fc52593",
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "8adcad81-e785-4af5-ad7e-e1b1724f26b9",
-        "c2eaacd8-2cf4-45a2-a8ad-389dc33ff3fd"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Arroz",
+        "scientific_name": "Oryza sativa",
+        "description": "El arroz es una planta herbácea anual que puede alcanzar alturas de 1 a 1.8 metros. Tiene hojas largas y delgadas, y sus flores se agrupan en espigas. El grano de arroz es el fruto de la planta, y es una de las principales fuentes de alimento en todo el mundo.",
+        "image": "plants/arroz.jpg",
+        "difficulty": "EASY",
+        "treatment": "Clima: Requiere climas cálidos y húmedos, con temperaturas ideales entre 20-35ºC.\r\nSuelo: Prefiere suelos arcillosos que retengan bien el agua, aunque puede adaptarse a otros tipos de suelos.\r\nRiego: Necesita abundante agua, especialmente durante el crecimiento y desarrollo de los granos. El cultivo se realiza generalmente en campos inundados (arrozales).\r\nLuz: Requiere pleno sol para un buen desarrollo.\r\nFertilización: Es importante el uso de fertilizantes ricos en nitrógeno, fósforo y potasio para asegurar una buena producción.\r\nControl de plagas y enfermedades: El arroz es susceptible a varias plagas y enfermedades, por lo que se deben aplicar medidas preventivas y curativas adecuadas.",
+        "sicknesses": [
+            "547f0964-e20f-4523-a3f6-4a848fc52593",
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "8adcad81-e785-4af5-ad7e-e1b1724f26b9",
+            "c2eaacd8-2cf4-45a2-a8ad-389dc33ff3fd"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "a9e21759-74c8-4240-b7eb-e2da984078ad",
     "fields": {
-      "name": "Melocotón",
-      "scientific_name": "Prunus persica",
-      "description": "El melocotón es una fruta de pulpa suave y jugosa que crece en el árbol del mismo nombre. Conocido por su piel aterciopelada y su sabor dulce y aromático. El melocotón es una fruta popular en muchas partes del mundo.",
-      "image": "plants/melocotón.jpg",
-      "difficulty": "EASY",
-      "treatment": "Proporcionar riego regular y protección contra plagas y enfermedades. Podar en invierno para mantener la forma y estimular la fructificación.",
-      "sicknesses": [
-        "3f4aa136-6246-4338-ab9c-c6f603401e23"
-      ],
-      "characteristics": [
-        "022cdc1d-8916-4cc3-b726-4b835f4b9597",
-        "78350738-a259-4440-b0ba-836e21ec2bf6"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Melocotón",
+        "scientific_name": "Prunus persica",
+        "description": "El melocotón es una fruta de pulpa suave y jugosa que crece en el árbol del mismo nombre. Conocido por su piel aterciopelada y su sabor dulce y aromático. El melocotón es una fruta popular en muchas partes del mundo.",
+        "image": "plants/melocotón.jpg",
+        "difficulty": "EASY",
+        "treatment": "Proporcionar riego regular y protección contra plagas y enfermedades. Podar en invierno para mantener la forma y estimular la fructificación.",
+        "sicknesses": [
+            "3f4aa136-6246-4338-ab9c-c6f603401e23"
+        ],
+        "characteristics": [
+            "022cdc1d-8916-4cc3-b726-4b835f4b9597",
+            "78350738-a259-4440-b0ba-836e21ec2bf6"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "ca5a28d9-24f2-4746-8e51-7ad4d392f5cf",
     "fields": {
-      "name": "Maíz",
-      "scientific_name": "Zea mays",
-      "description": "El maíz es una planta cultivada ampliamente por sus mazorcas comestibles, que son una fuente importante de nutrientes como carbohidratos, proteínas y fibra. Es utilizado en una variedad de formas, desde alimentos básicos hasta ingredientes industriales.",
-      "image": "plants/maíz.png",
-      "difficulty": "EASY",
-      "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y fertilizar según sea necesario. Se suele cortar el penacho superior, que es la flor masculina, para que la mazorca tenga una mayor exposición al sol.",
-      "sicknesses": [
-        "748528a9-48b2-497e-957e-4547711cd87e",
-        "8eb46215-7dfd-4771-a083-68aef095b5ba",
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "0a9bec8c-5116-4c73-ad46-40dd79a430e6",
-        "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
-        "15dd8516-e8d0-49a5-9021-add01f356174",
-        "8adcad81-e785-4af5-ad7e-e1b1724f26b9",
-        "c2eaacd8-2cf4-45a2-a8ad-389dc33ff3fd",
-        "d5832410-02d9-4b48-b0bc-dab181ebe5cd",
-        "dadf2b16-4401-4ff4-9250-cfb0c1f8632b"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Ma¡z",
+        "scientific_name": "Zea mays",
+        "description": "El ma¡z es una planta cultivada ampliamente por sus mazorcas comestibles, que son una fuente importante de nutrientes como carbohidratos, prote¡nas y fibra. Es utilizado en una variedad de formas, desde alimentos básicos hasta ingredientes industriales.",
+        "image": "plants/ma¡z.png",
+        "difficulty": "EASY",
+        "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y fertilizar según sea necesario. Se suele cortar el penacho superior, que es la flor masculina, para que la mazorca tenga una mayor exposición al sol.",
+        "sicknesses": [
+            "748528a9-48b2-497e-957e-4547711cd87e",
+            "8eb46215-7dfd-4771-a083-68aef095b5ba",
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "0a9bec8c-5116-4c73-ad46-40dd79a430e6",
+            "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
+            "15dd8516-e8d0-49a5-9021-add01f356174",
+            "8adcad81-e785-4af5-ad7e-e1b1724f26b9",
+            "c2eaacd8-2cf4-45a2-a8ad-389dc33ff3fd",
+            "d5832410-02d9-4b48-b0bc-dab181ebe5cd",
+            "dadf2b16-4401-4ff4-9250-cfb0c1f8632b"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "df753634-8b78-475a-a27e-5d040996e7c5",
     "fields": {
-      "name": "Fresa",
-      "scientific_name": "Fragaria x ananassa",
-      "description": "La fresa es un fruto rojo brillante, pequeño y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, así como por su textura suave y carnosa.",
-      "image": "plants/fresa.jpeg",
-      "difficulty": "EASY",
-      "treatment": "Plantar en suelo rico en materia orgánica y proporcionar riego regular. Retirar corredores para fomentar la producción de frutos. Estos corredores se pueden utilizar para producir nuevas plantas.",
-      "sicknesses": [
-        "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
-        "f2f94473-be4d-49c3-b022-47d49de98a1d"
-      ],
-      "characteristics": [
-        "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
-        "e24707c7-ea98-41ae-a2d0-83984cc58f13",
-        "f1d388da-0dc5-4742-9795-b41ff2468d94"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Fresa",
+        "scientific_name": "Fragaria x ananassa",
+        "description": "La fresa es un fruto rojo brillante, pequeño y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, as¡ como por su textura suave y carnosa.",
+        "image": "plants/fresa.jpeg",
+        "difficulty": "EASY",
+        "treatment": "Plantar en suelo rico en materia orgánica y proporcionar riego regular. Retirar corredores para fomentar la producción de frutos. Estos corredores se pueden utilizar para producir nuevas plantas.",
+        "sicknesses": [
+            "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
+            "f2f94473-be4d-49c3-b022-47d49de98a1d"
+        ],
+        "characteristics": [
+            "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
+            "e24707c7-ea98-41ae-a2d0-83984cc58f13",
+            "f1d388da-0dc5-4742-9795-b41ff2468d94"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.plant",
     "pk": "ef2bf25e-fc21-4853-907b-cf4fc97dd4e3",
     "fields": {
-      "name": "Uva",
-      "scientific_name": "Vitis vinifera",
-      "description": "Las uvas son frutas pequeñas y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, así como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
-      "image": "plants/uva.jpeg",
-      "difficulty": "MEDIUM",
-      "treatment": "Proporcionar riego regular (en Extremadura no se riegan) y protección contra plagas como la polilla de la uva. Con mucha humedad, época de muchas lluvias, conviene hacer un tratamiento contra el mildiu. Hacer una poda fuerte en invierno, quitando todas las ramas y dejando solo unas yemas, para promover una buena producción.",
-      "sicknesses": [
-        "120bd813-d903-4b64-926d-dfd9abb83c70",
-        "bc58219f-1182-4da7-8d15-61b3dfc6f48a",
-        "f5378db4-7219-4116-ac3e-2ab4ba772491"
-      ],
-      "characteristics": [
-        "f1d388da-0dc5-4742-9795-b41ff2468d94",
-        "f4f91a64-1476-4528-89e1-dfee235eefb6"
-      ],
-      "notifications": [
-        "48efb792-9af9-46ef-ad07-6e7ecebaa651",
-        "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
-      ]
+        "name": "Uva",
+        "scientific_name": "Vitis vinifera",
+        "description": "Las uvas son frutas pequeñas y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, as¡ como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
+        "image": "plants/uva.jpeg",
+        "difficulty": "MEDIUM",
+        "treatment": "Proporcionar riego regular (en Extremadura no se riegan) y protección contra plagas como la polilla de la uva. Con mucha humedad, época de muchas lluvias, conviene hacer un tratamiento contra el mildiu. Hacer una poda fuerte en invierno, quitando todas las ramas y dejando solo unas yemas, para promover una buena producción.",
+        "sicknesses": [
+            "120bd813-d903-4b64-926d-dfd9abb83c70",
+            "bc58219f-1182-4da7-8d15-61b3dfc6f48a",
+            "f5378db4-7219-4116-ac3e-2ab4ba772491"
+        ],
+        "characteristics": [
+            "f1d388da-0dc5-4742-9795-b41ff2468d94",
+            "f4f91a64-1476-4528-89e1-dfee235eefb6"
+        ],
+        "notifications": [
+            "48efb792-9af9-46ef-ad07-6e7ecebaa651",
+            "8d8d686b-0535-4863-a4cb-bf0a26c4ce29"
+        ]
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "0fa343d6-f482-4d23-b8e3-7935dfab7c65",
     "fields": {
-      "created_at": "2024-07-19T10:55:57.911Z",
-      "image": "history/image_nvgU6XZ.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:55:57.911Z",
+        "image": "history/image_nvgU6XZ.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "33338393-b028-46e4-98eb-82e6a8c1325b",
     "fields": {
-      "created_at": "2024-07-19T10:51:11.534Z",
-      "image": "history/image_NmRajdb.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:51:11.534Z",
+        "image": "history/image_NmRajdb.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "364ab6ce-d28e-4970-84a6-2e80215d2c92",
     "fields": {
-      "created_at": "2024-07-19T10:57:10.284Z",
-      "image": "history/image_gyFfAA1.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:57:10.284Z",
+        "image": "history/image_gyFfAA1.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "495804eb-cc46-446b-b13f-438177bb746b",
     "fields": {
-      "created_at": "2024-07-19T10:52:15.192Z",
-      "image": "history/image_SR3pfcD.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:52:15.192Z",
+        "image": "history/image_SR3pfcD.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "5394d431-2a12-4514-9a65-fcd569ccfe03",
     "fields": {
-      "created_at": "2024-07-19T10:52:31.531Z",
-      "image": "history/image_oE0hROD.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:52:31.531Z",
+        "image": "history/image_oE0hROD.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "8c61b7b1-bf4f-4d6d-9ff9-1ade32f9ea24",
     "fields": {
-      "created_at": "2024-07-19T10:52:18.978Z",
-      "image": "history/image_dg7vua7.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:52:18.978Z",
+        "image": "history/image_dg7vua7.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.history",
     "pk": "c4b6a6bf-fee3-4fbf-9fbb-30a2cd91ca71",
     "fields": {
-      "created_at": "2024-07-19T10:52:09.538Z",
-      "image": "history/image_URXIbOR.jpg",
-      "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
-      "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
+        "created_at": "2024-07-19T10:52:09.538Z",
+        "image": "history/image_URXIbOR.jpg",
+        "plant": "8d2d7637-0d30-4c6c-a8e5-1e5274a284c2",
+        "sickness": "bc58219f-1182-4da7-8d15-61b3dfc6f48a"
     }
-  },
-  {
+},
+{
     "model": "plants.opinion",
     "pk": "24ff3b50-04f8-433b-97ce-f929b51970fc",
     "fields": {
-      "title": "Está bueno en un Wok",
-      "description": "Hola Parejo si estas viendo esto",
-      "created_at": "2024-06-29T10:13:59.351Z",
-      "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
-      "user": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3"
+        "title": "Est bueno en un Wok",
+        "description": "Hola Parejo si estas viendo esto",
+        "created_at": "2024-06-29T10:13:59.351Z",
+        "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
+        "user": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "022cdc1d-8916-4cc3-b726-4b835f4b9597",
     "fields": {
-      "name": "Mejor Zumo"
+        "name": "Mejor Zumo"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "0a9bec8c-5116-4c73-ad46-40dd79a430e6",
     "fields": {
-      "name": "Jugoso"
+        "name": "Jugoso"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "0c0c9aa9-f7af-42ac-a27d-250da4f0f528",
     "fields": {
-      "name": "Americana"
+        "name": "Americana"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "15dd8516-e8d0-49a5-9021-add01f356174",
     "fields": {
-      "name": "Alargado"
+        "name": "Alargado"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "1dbe51fa-29b7-4cd0-b680-fc102c254785",
     "fields": {
-      "name": "Tubérculo"
+        "name": "Tubérculo"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "2afecf32-d6c3-40fa-b59f-6a72272326fd",
     "fields": {
-      "name": "Fragrante"
+        "name": "Fragrante"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "2dc61948-28ce-471a-9a33-7279f2f01fe6",
     "fields": {
-      "name": "Aterciopelado"
+        "name": "Aterciopelado"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "37e68be1-94b1-4f49-9e41-f3024a79ac41",
     "fields": {
-      "name": "Suave"
+        "name": "Suave"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "5993e741-54b9-41e3-84e4-5089d4f39d96",
     "fields": {
-      "name": "Dulce"
+        "name": "Dulce"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "755e59e1-c2a1-4b91-aec3-ee81bf7efa88",
     "fields": {
-      "name": "Antioxidantes"
+        "name": "Antioxidantes"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "78350738-a259-4440-b0ba-836e21ec2bf6",
     "fields": {
-      "name": "Árbol"
+        "name": "┴rbol"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "7c2879f9-11f6-4690-ae7e-8fbfab55b764",
     "fields": {
-      "name": "Rojo"
+        "name": "Rojo"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "8335a26b-0a60-4e83-90ca-ad6f640e9fb1",
     "fields": {
-      "name": "Ácida"
+        "name": "┴cida"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "8adcad81-e785-4af5-ad7e-e1b1724f26b9",
     "fields": {
-      "name": "Carbohidratos"
+        "name": "Carbohidratos"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "9b947e3a-e0b6-4365-8273-98ee04f84235",
     "fields": {
-      "name": "Proteica"
+        "name": "Proteica"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "c2eaacd8-2cf4-45a2-a8ad-389dc33ff3fd",
     "fields": {
-      "name": "Nutritiva"
+        "name": "Nutritiva"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "d5832410-02d9-4b48-b0bc-dab181ebe5cd",
     "fields": {
-      "name": "Carnosos"
+        "name": "Carnosos"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "dadf2b16-4401-4ff4-9250-cfb0c1f8632b",
     "fields": {
-      "name": "Versátil"
+        "name": "Versátil"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "e24707c7-ea98-41ae-a2d0-83984cc58f13",
     "fields": {
-      "name": "Dulce"
+        "name": "Dulce"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "e71db759-aef9-40b6-8c7d-bada41e0e1a9",
     "fields": {
-      "name": "Oriental"
+        "name": "Oriental"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "f1d388da-0dc5-4742-9795-b41ff2468d94",
     "fields": {
-      "name": "Mediterráneo"
+        "name": "Mediterráneo"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "f4008ff0-4283-4293-b5bd-7c1114dc1f14",
     "fields": {
-      "name": "Roja"
+        "name": "Roja"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "f497b6b0-fa1c-427b-bafc-cac2d759edf6",
     "fields": {
-      "name": "Colores variados"
+        "name": "Colores variados"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "f4f91a64-1476-4528-89e1-dfee235eefb6",
     "fields": {
-      "name": "Arbusto"
+        "name": "Arbusto"
     }
-  },
-  {
+},
+{
     "model": "plants.characteristic",
     "pk": "f7c5bd94-af80-45e5-bc69-255622a1bd9a",
     "fields": {
-      "name": "Aceitosa"
+        "name": "Aceitosa"
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "120bd813-d903-4b64-926d-dfd9abb83c70",
     "fields": {
-      "name": "Sarampión negro",
-      "description": "El sarampión negro de la vid es una enfermedad causada por hongos (principalmente especies del género Phaeomoniella y Phaeoacremonium) que afecta a la vid. Se manifiesta por manchas negras en las hojas y el tronco, así como un retraso en el crecimiento y la muerte prematura de las plantas.",
-      "treatment": "1. Poda: Poda de las partes infectadas de la planta y destrucción de los restos para evitar la propagación del hongo.\r\n2. Fungicidas: Aplicación de fungicidas específicos puede ayudar a controlar la enfermedad.\r\n3. Buen manejo del viñedo: Mantener una buena circulación de aire y evitar el exceso de humedad alrededor de las plantas.\r\n4. Replantación: En casos graves, puede ser necesario replantar con variedades más resistentes.",
-      "image": "sicknesses/Black_measel.jpeg",
-      "notifications": []
+        "name": "Sarampión negro",
+        "description": "El sarampión negro de la vid es una enfermedad causada por hongos (principalmente especies del género Phaeomoniella y Phaeoacremonium) que afecta a la vid. Se manifiesta por manchas negras en las hojas y el tronco, as¡ como un retraso en el crecimiento y la muerte prematura de las plantas.",
+        "treatment": "1. Poda: Poda de las partes infectadas de la planta y destrucción de los restos para evitar la propagación del hongo.\r\n2. Fungicidas: Aplicación de fungicidas espec¡ficos puede ayudar a controlar la enfermedad.\r\n3. Buen manejo del viñedo: Mantener una buena circulación de aire y evitar el exceso de humedad alrededor de las plantas.\r\n4. Replantación: En casos graves, puede ser necesario replantar con variedades más resistentes.",
+        "image": "sicknesses/Black_measel.jpeg",
+        "notifications": []
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
     "fields": {
-      "name": "Oídio",
-      "description": "El oídio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosales, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
-      "treatment": "1. Mantener una buena circulación de aire alrededor de las plantas para reducir la humedad.\r\n2. Aplicar tratamientos con fungicidas a intervalos regulares.",
-      "image": "sicknesses/oídio.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "O¡dio",
+        "description": "El o¡dio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosales, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
+        "treatment": "1. Mantener una buena circulación de aire alrededor de las plantas para reducir la humedad.\r\n2. Aplicar tratamientos con fungicidas a intervalos regulares.",
+        "image": "sicknesses/o¡dio.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "200f50f6-a34c-48d7-82ec-ae485be62ed8",
     "fields": {
-      "name": "Moho",
-      "description": "El moho es una enfermedad fúngica que afecta a muchas plantas, incluyendo hortalizas, árboles frutales y plantas ornamentales. Se manifiesta como un crecimiento micelial blanco, gris o negro en las hojas, tallos o frutos, lo que puede causar la pudrición de los tejidos.",
-      "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en períodos de alta humedad.",
-      "image": "sicknesses/moho.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Moho",
+        "description": "El moho es una enfermedad fúngica que afecta a muchas plantas, incluyendo hortalizas, árboles frutales y plantas ornamentales. Se manifiesta como un crecimiento micelial blanco, gris o negro en las hojas, tallos o frutos, lo que puede causar la pudrición de los tejidos.",
+        "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en per¡odos de alta humedad.",
+        "image": "sicknesses/moho.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "3f4aa136-6246-4338-ab9c-c6f603401e23",
     "fields": {
-      "name": "Mancha bacteriana",
-      "description": "La mancha bacteriana es una enfermedad causada por bacterias que afecta a plantas como tomates, pimientos y pepinos. Se caracteriza por la formación de manchas húmedas y oscuras en las hojas y frutos, lo que puede llevar a la pudrición de estos tejidos.",
-      "treatment": "1. Utilizar prácticas de cultivo que reduzcan la humedad en las hojas.\r\n2. Aplicar tratamientos bactericidas, según las recomendaciones del fabricante.",
-      "image": "sicknesses/mancha_bacteriana.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Mancha bacteriana",
+        "description": "La mancha bacteriana es una enfermedad causada por bacterias que afecta a plantas como tomates, pimientos y pepinos. Se caracteriza por la formación de manchas húmedas y oscuras en las hojas y frutos, lo que puede llevar a la pudrición de estos tejidos.",
+        "treatment": "1. Utilizar prácticas de cultivo que reduzcan la humedad en las hojas.\r\n2. Aplicar tratamientos bactericidas, según las recomendaciones del fabricante.",
+        "image": "sicknesses/mancha_bacteriana.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "547f0964-e20f-4523-a3f6-4a848fc52593",
     "fields": {
-      "name": "Brusone",
-      "description": "La brusone es una de las enfermedades más destructivas del arroz y está causada por el hongo Magnaporthe oryzae. Este hongo puede infectar todas las partes aéreas de la planta de arroz, incluyendo hojas, tallos, nudos, panículas y granos.",
-      "treatment": "Rotación de Cultivos: Alternar cultivos susceptibles con cultivos no hospedantes para reducir la presencia del hongo en el suelo.\r\n\r\nEliminación de Residuos: Remover y destruir restos de cultivos anteriores y otras partes infectadas para reducir las fuentes de inóculo.\r\n\r\nFungicidas: Aplicar fungicidas específicos para controlar el hongo. Alternar diferentes grupos de fungicidas para evitar la resistencia del hongo.",
-      "image": "sicknesses/brusone.jpeg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Brusone",
+        "description": "La brusone es una de las enfermedades más destructivas del arroz y está causada por el hongo Magnaporthe oryzae. Este hongo puede infectar todas las partes aéreas de la planta de arroz, incluyendo hojas, tallos, nudos, pan¡culas y granos.",
+        "treatment": "Rotación de Cultivos: Alternar cultivos susceptibles con cultivos no hospedantes para reducir la presencia del hongo en el suelo.\r\n\r\nEliminación de Residuos: Remover y destruir restos de cultivos anteriores y otras partes infectadas para reducir las fuentes de inóculo.\r\n\r\nFungicidas: Aplicar fungicidas espec¡ficos para controlar el hongo. Alternar diferentes grupos de fungicidas para evitar la resistencia del hongo.",
+        "image": "sicknesses/brusone.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
     "fields": {
-      "name": "Virus del mosaico",
-      "description": "El virus del mosaico es una enfermedad viral que afecta a muchas plantas, incluyendo tomates, pepinos y calabacines. Se manifiesta como un moteado característico en las hojas, que puede reducir la capacidad de la planta para realizar la fotosíntesis y afectar su rendimiento.",
-      "treatment": "1. Eliminar y destruir las plantas infectadas para prevenir la propagación del virus.\r\n2. Controlar los insectos vectores que puedan transmitir el virus.",
-      "image": "sicknesses/virus_del_mosaico.jpeg",
-      "notifications": []
+        "name": "Virus del mosaico",
+        "description": "El virus del mosaico es una enfermedad viral que afecta a muchas plantas, incluyendo tomates, pepinos y calabacines. Se manifiesta como un moteado caracter¡stico en las hojas, que puede reducir la capacidad de la planta para realizar la fotos¡ntesis y afectar su rendimiento.",
+        "treatment": "1. Eliminar y destruir las plantas infectadas para prevenir la propagación del virus.\r\n2. Controlar los insectos vectores que puedan transmitir el virus.",
+        "image": "sicknesses/virus_del_mosaico.jpeg",
+        "notifications": []
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "748528a9-48b2-497e-957e-4547711cd87e",
     "fields": {
-      "name": "Óxido",
-      "description": "El óxido es una enfermedad fúngica que afecta a diversas plantas, incluyendo cereales, rosales y árboles frutales. Se manifiesta como manchas de color naranja o marrón en las hojas y, si no se controla, puede debilitar la planta.",
-      "treatment": "1. Retirar y eliminar las partes de la planta afectadas.\r\n2. Aplicar fungicidas preventivos al inicio de la temporada de crecimiento.",
-      "image": "sicknesses/óxido.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Ëxido",
+        "description": "El óxido es una enfermedad fúngica que afecta a diversas plantas, incluyendo cereales, rosales y árboles frutales. Se manifiesta como manchas de color naranja o marrón en las hojas y, si no se controla, puede debilitar la planta.",
+        "treatment": "1. Retirar y eliminar las partes de la planta afectadas.\r\n2. Aplicar fungicidas preventivos al inicio de la temporada de crecimiento.",
+        "image": "sicknesses/óxido.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "8eb46215-7dfd-4771-a083-68aef095b5ba",
     "fields": {
-      "name": "Mancha gris",
-      "description": "La mancha gris es una enfermedad fúngica que afecta a varias especies de plantas. Se caracteriza por manchas grises en las hojas que pueden expandirse y fusionarse, causando la muerte del tejido foliar. Es común en condiciones de alta humedad y temperaturas moderadas.",
-      "treatment": "1. Riego controlado: Evitar el riego por aspersión para minimizar la humedad en las hojas.\r\n2. Fungicidas: Aplicación de fungicidas apropiados puede ayudar a controlar la propagación del hongo.\r\n3. Poda y eliminación de hojas infectadas: Retirar y destruir las hojas afectadas para reducir la fuente de inóculo.\r\n4. Rotación de cultivos: Practicar la rotación de cultivos para prevenir la acumulación de patógenos en el suelo.",
-      "image": "sicknesses/Gray_Spot.jpeg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Mancha gris",
+        "description": "La mancha gris es una enfermedad fúngica que afecta a varias especies de plantas. Se caracteriza por manchas grises en las hojas que pueden expandirse y fusionarse, causando la muerte del tejido foliar. Es común en condiciones de alta humedad y temperaturas moderadas.",
+        "treatment": "1. Riego controlado: Evitar el riego por aspersión para minimizar la humedad en las hojas.\r\n2. Fungicidas: Aplicación de fungicidas apropiados puede ayudar a controlar la propagación del hongo.\r\n3. Poda y eliminación de hojas infectadas: Retirar y destruir las hojas afectadas para reducir la fuente de inóculo.\r\n4. Rotación de cultivos: Practicar la rotación de cultivos para prevenir la acumulación de patógenos en el suelo.",
+        "image": "sicknesses/Gray_Spot.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "9f68c63e-9389-4339-b594-a61bd4edabad",
     "fields": {
-      "name": "Sarna",
-      "description": "La sarna es una enfermedad fúngica común en árboles frutales como manzanos y perales. Se caracteriza por la formación de manchas en las hojas y frutos, lo que puede afectar su crecimiento y calidad.",
-      "treatment": "1. Aplicar fungicidas específicos para la sarna, siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación.",
-      "image": "sicknesses/sarna.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Sarna",
+        "description": "La sarna es una enfermedad fúngica común en árboles frutales como manzanos y perales. Se caracteriza por la formación de manchas en las hojas y frutos, lo que puede afectar su crecimiento y calidad.",
+        "treatment": "1. Aplicar fungicidas espec¡ficos para la sarna, siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación.",
+        "image": "sicknesses/sarna.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "bc58219f-1182-4da7-8d15-61b3dfc6f48a",
     "fields": {
-      "name": "Podredumbre negra",
-      "description": "La podredumbre negra es una enfermedad causada por hongos que afecta a diversas plantas, incluyendo vides, tomates y fresas. Se caracteriza por la descomposición de los tejidos, que adquieren un color oscuro o negro, y puede propagarse rápidamente en condiciones húmedas.",
-      "treatment": "1. Evitar el exceso de riego para reducir la humedad en el suelo.\r\n2. Eliminar y destruir los frutos afectados para prevenir la propagación.",
-      "image": "sicknesses/podredumbre_negra.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Podredumbre negra",
+        "description": "La podredumbre negra es una enfermedad causada por hongos que afecta a diversas plantas, incluyendo vides, tomates y fresas. Se caracteriza por la descomposición de los tejidos, que adquieren un color oscuro o negro, y puede propagarse rápidamente en condiciones húmedas.",
+        "treatment": "1. Evitar el exceso de riego para reducir la humedad en el suelo.\r\n2. Eliminar y destruir los frutos afectados para prevenir la propagación.",
+        "image": "sicknesses/podredumbre_negra.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "ccf10026-6fed-465a-b549-ad1b0c3efb29",
     "fields": {
-      "name": "Ácaros rojos",
-      "description": "Los ácaros rojos son pequeños arácnidos que se alimentan de las hojas de las plantas, causando decoloración, manchas y, en casos graves, la caída de las hojas. Son especialmente problemáticos en climas cálidos y secos.",
-      "treatment": "1. Riego: Aumentar la humedad ambiental alrededor de las plantas puede ayudar a disuadir a los ácaros.\r\n2. Aceites hortícolas: Aplicar aceites hortícolas o insecticidas a base de neem puede ser efectivo para controlar la población de ácaros.\r\n3. Depredadores naturales: Introducir depredadores naturales como las mariquitas o los ácaros depredadores puede ayudar a reducir las poblaciones de ácaros rojos.\r\n4. Limpieza regular: Lavar las hojas de las plantas con agua jabonosa también puede ayudar a eliminar los ácaros.",
-      "image": "sicknesses/Two_spotted_spider_mittens.jpeg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "┴caros rojos",
+        "description": "Los ácaros rojos son pequeños arácnidos que se alimentan de las hojas de las plantas, causando decoloración, manchas y, en casos graves, la ca¡da de las hojas. Son especialmente problemáticos en climas cálidos y secos.",
+        "treatment": "1. Riego: Aumentar la humedad ambiental alrededor de las plantas puede ayudar a disuadir a los ácaros.\r\n2. Aceites hort¡colas: Aplicar aceites hort¡colas o insecticidas a base de neem puede ser efectivo para controlar la población de ácaros.\r\n3. Depredadores naturales: Introducir depredadores naturales como las mariquitas o los ácaros depredadores puede ayudar a reducir las poblaciones de ácaros rojos.\r\n4. Limpieza regular: Lavar las hojas de las plantas con agua jabonosa también puede ayudar a eliminar los ácaros.",
+        "image": "sicknesses/Two_spotted_spider_mittens.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "dbd0e898-06b4-4dc9-a0bd-2682dd48b24e",
     "fields": {
-      "name": "Mancha foliar",
-      "description": "La mancha foliar es una enfermedad fúngica que afecta a una amplia gama de plantas, desde árboles frutales hasta cultivos de hortalizas. Se presenta como manchas circulares o irregulares en las hojas, que pueden expandirse y fusionarse si las condiciones son favorables.",
-      "treatment": "1. Evitar el riego por aspersión para reducir la humedad en las hojas.\r\n2. Eliminar y destruir las hojas afectadas para prevenir la propagación.",
-      "image": "sicknesses/mancha_foliar.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Mancha foliar",
+        "description": "La mancha foliar es una enfermedad fúngica que afecta a una amplia gama de plantas, desde árboles frutales hasta cultivos de hortalizas. Se presenta como manchas circulares o irregulares en las hojas, que pueden expandirse y fusionarse si las condiciones son favorables.",
+        "treatment": "1. Evitar el riego por aspersión para reducir la humedad en las hojas.\r\n2. Eliminar y destruir las hojas afectadas para prevenir la propagación.",
+        "image": "sicknesses/mancha_foliar.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "ee6a3f9b-e578-4ca1-b089-87b345cb76e1",
     "fields": {
-      "name": "Virus rizado amarillo",
-      "description": "El virus rizado amarillo es una enfermedad viral que afecta a diversas plantas cultivadas, incluyendo tomates, patatas y remolachas. Se caracteriza por el amarillamiento y deformación de las hojas, así como la reducción en el rendimiento de la planta.",
-      "treatment": "1. Utilizar variedades resistentes, cuando sea posible.\r\n2. Controlar las malas hierbas que puedan servir como huéspedes alternativos.",
-      "image": "sicknesses/virus_rizado_amarillo.jpg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Virus rizado amarillo",
+        "description": "El virus rizado amarillo es una enfermedad viral que afecta a diversas plantas cultivadas, incluyendo tomates, patatas y remolachas. Se caracteriza por el amarillamiento y deformación de las hojas, as¡ como la reducción en el rendimiento de la planta.",
+        "treatment": "1. Utilizar variedades resistentes, cuando sea posible.\r\n2. Controlar las malas hierbas que puedan servir como huéspedes alternativos.",
+        "image": "sicknesses/virus_rizado_amarillo.jpg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "f2f94473-be4d-49c3-b022-47d49de98a1d",
     "fields": {
-      "name": "Quemadura",
-      "description": "La quemadura en las plantas se manifiesta como el marchitamiento, decoloración y muerte del tejido vegetal, típicamente en las hojas y a veces en los tallos. Esto puede ser causado por diversos factores como el exceso de sol (quemadura solar), altas temperaturas, viento seco o una falta de agua.",
-      "treatment": "1. Riego adecuado: Mantener un riego regular y suficiente para que las plantas no se deshidraten.\r\n2. Sombra: Proporcionar sombra a las plantas durante las horas más calurosas del día, especialmente en regiones muy soleadas.\r\n3. Mulching: Aplicar una capa de mantillo alrededor de la base de las plantas para ayudar a retener la humedad del suelo.\r\n4. Evitar fertilizantes agresivos: Utilizar fertilizantes con cuidado para no causar estrés adicional a las plantas.",
-      "image": "sicknesses/Scorch.jpeg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Quemadura",
+        "description": "La quemadura en las plantas se manifiesta como el marchitamiento, decoloración y muerte del tejido vegetal, t¡picamente en las hojas y a veces en los tallos. Esto puede ser causado por diversos factores como el exceso de sol (quemadura solar), altas temperaturas, viento seco o una falta de agua.",
+        "treatment": "1. Riego adecuado: Mantener un riego regular y suficiente para que las plantas no se deshidraten.\r\n2. Sombra: Proporcionar sombra a las plantas durante las horas más calurosas del d¡a, especialmente en regiones muy soleadas.\r\n3. Mulching: Aplicar una capa de mantillo alrededor de la base de las plantas para ayudar a retener la humedad del suelo.\r\n4. Evitar fertilizantes agresivos: Utilizar fertilizantes con cuidado para no causar estrés adicional a las plantas.",
+        "image": "sicknesses/Scorh.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "sickness.sickness",
     "pk": "f5378db4-7219-4116-ac3e-2ab4ba772491",
     "fields": {
-      "name": "Tizón",
-      "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo maíz, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar daños significativos si no se trata adecuadamente.",
-      "treatment": "1. Rotar cultivos para evitar la propagación del tizón.\r\n2. Mantener el suelo limpio de restos vegetales para reducir la propagación de esporas.",
-      "image": "sicknesses/tizón.jpeg",
-      "notifications": [
-        "3398fbc0-f60f-430c-bc4b-076b630e030c"
-      ]
+        "name": "Tizón",
+        "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo ma¡z, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar daños significativos si no se trata adecuadamente.",
+        "treatment": "1. Rotar cultivos para evitar la propagación del tizón.\r\n2. Mantener el suelo limpio de restos vegetales para reducir la propagación de esporas.",
+        "image": "sicknesses/tizón.jpeg",
+        "notifications": [
+            "3398fbc0-f60f-430c-bc4b-076b630e030c"
+        ]
     }
-  },
-  {
+},
+{
     "model": "diary.diary",
     "pk": "4f5b0385-1601-4229-886b-ad5162fb82a9",
     "fields": {
-      "title": "Diario para Pimiento Morrón",
-      "updated_at": "2024-07-09T09:55:39.185Z",
-      "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
-      "user": "584f8219-d57a-4f3a-bea9-9a222a1378dd"
+        "title": "Diario para Pimiento Morrón",
+        "updated_at": "2024-07-09T09:55:39.185Z",
+        "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
+        "user": "584f8219-d57a-4f3a-bea9-9a222a1378dd"
     }
-  },
-  {
+},
+{
     "model": "diary.diary",
     "pk": "f1dacdf7-5161-4ab7-a6b9-aa94654e0a47",
     "fields": {
-      "title": "Diario para Pimiento Morrón",
-      "updated_at": "2024-06-27T11:15:50.348Z",
-      "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
-      "user": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3"
+        "title": "Diario para Pimiento Morrón",
+        "updated_at": "2024-06-27T11:15:50.348Z",
+        "plant": "15fe39ec-5071-4940-9d14-cb80bdc8bc27",
+        "user": "374e2243-6fbb-4c3b-9185-ca56cdcd81f3"
     }
-  },
-  {
+},
+{
     "model": "diary.page",
     "pk": "115819e4-de3f-49bd-8d0b-12176a8478f7",
     "fields": {
-      "title": "Prueba",
-      "content": "bciubceuycbevuyeb",
-      "created_at": "2024-06-29T10:50:34.715Z",
-      "image": "pages/image_aETF4Au.jpg",
-      "diary": "f1dacdf7-5161-4ab7-a6b9-aa94654e0a47"
+        "title": "Prueba",
+        "content": "bciubceuycbevuyeb",
+        "created_at": "2024-06-29T10:50:34.715Z",
+        "image": "pages/image_aETF4Au.jpg",
+        "diary": "f1dacdf7-5161-4ab7-a6b9-aa94654e0a47"
     }
-  },
-  {
+},
+{
     "model": "diary.page",
     "pk": "757fab02-a7d9-42e4-b286-7613d7ce276b",
     "fields": {
-      "title": "Primera Pagina",
-      "content": "La plantita esta creciendo muy saludable y sin complicaciones.",
-      "created_at": "2024-07-16T08:49:16.456Z",
-      "image": "pages/image_e5C6TuO.jpg",
-      "diary": "4f5b0385-1601-4229-886b-ad5162fb82a9"
+        "title": "Primera Pagina",
+        "content": "La plantita esta creciendo muy saludable y sin complicaciones.",
+        "created_at": "2024-07-16T08:49:16.456Z",
+        "image": "pages/image_e5C6TuO.jpg",
+        "diary": "4f5b0385-1601-4229-886b-ad5162fb82a9"
     }
-  },
-  {
+},
+{
     "model": "notification.notification",
     "pk": "3398fbc0-f60f-430c-bc4b-076b630e030c",
     "fields": {
-      "title": "íHora de cuidar tu planta!",
-      "timestamp": "2024-06-18T17:00:00Z",
-      "description": "Parece que necesita atención especial hoy. Revisa si hay signos de enfermedad o plagas y trata la planta según sea necesario para mantenerla saludable. Recuerda que un cuidado constante garantiza una cosecha abundante. íManos a la obra!"
+        "title": "¡Hora de cuidar tu planta!",
+        "timestamp": "2024-06-18T17:00:00Z",
+        "description": "Parece que necesita atención especial hoy. Revisa si hay signos de enfermedad o plagas y trata la planta según sea necesario para mantenerla saludable. Recuerda que un cuidado constante garantiza una cosecha abundante. ¡Manos a la obra!"
     }
-  },
-  {
+},
+{
     "model": "notification.notification",
     "pk": "48efb792-9af9-46ef-ad07-6e7ecebaa651",
     "fields": {
-      "title": "Recordatorio de riego por la tarde",
-      "timestamp": "2024-06-18T22:00:00Z",
-      "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
+        "title": "Recordatorio de riego por la tarde",
+        "timestamp": "2024-06-18T22:00:00Z",
+        "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
     }
-  },
-  {
+},
+{
     "model": "notification.notification",
     "pk": "8d8d686b-0535-4863-a4cb-bf0a26c4ce29",
     "fields": {
-      "title": "Recordatorio de riego por la mañana",
-      "timestamp": "2024-06-18T10:00:00Z",
-      "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
+        "title": "Recordatorio de riego por la mañana",
+        "timestamp": "2024-06-18T10:00:00Z",
+        "description": "Es hora de regar tu plantita. Recuerda mantener el suelo húmedo pero sin encharcar para asegurar un buen crecimiento."
     }
-  }
+}
 ]
