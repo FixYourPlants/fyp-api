@@ -30,12 +30,14 @@ class PlantAdmin(admin.ModelAdmin):
 
     def image_preview(self, obj):
         if obj.image:
-            return format_html('<img src="{}" style="max-height: 200px;"/>', obj.image.url)
+            return format_html(
+                '<img src="{}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />',
+                obj.image.url
+            )
         return "(No image)"
+
     image_preview.short_description = "Image Preview"
 
-from django.contrib import admin
-from .models import History
 
 @admin.register(History)
 class HistoryAdmin(admin.ModelAdmin):
@@ -67,6 +69,7 @@ class HistoryAdmin(admin.ModelAdmin):
                 obj.image.url
             )
         return "(No image)"
+
     image_preview.short_description = "Image Preview"
 
 

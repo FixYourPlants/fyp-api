@@ -35,8 +35,8 @@ ENV DATABASE_URL=postgresql://fyp_db_tsgh_user:8dq1LsgApzt6KMggLqY8p2ru3r3O09oy@
 # Descomenta las siguientes líneas si es la primera vez que se conecta a la base de datos
 RUN python manage.py makemigrations && \
      python manage.py migrate && \
-     python manage.py collectstatic --noinput && \
-     python manage.py loaddata backup.json
+     python manage.py collectstatic --noinput
+#     python manage.py loaddata backup.json
 
 # Expone el puerto de la aplicación
 EXPOSE 8000

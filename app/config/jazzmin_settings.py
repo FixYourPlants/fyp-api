@@ -1,10 +1,17 @@
+import os
+
+from decouple import config
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+logo = os.path.join(BASE_DIR, "static/images/logo.png")
+
 JAZZMIN_SETTINGS = {
     "site_title": "FixYourPlants Admin",
     "site_header": "FixYourPlants",
     "site_brand": "FixYourPlants",
-    "site_logo": 'logo.png',
-    "login_logo": "logo.png",
-    "login_logo_dark": "logo.png",
+    "site_logo": logo,
+    "login_logo": logo,
+    "login_logo_dark": logo,
     "site_logo_classes": "img-circle",
     "site_icon": "icon-leaf",
     "welcome_sign": "Welcome to FixYourPlants",
@@ -14,6 +21,9 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         {"name": "Support", "url": "https://github.com/FixYourPlants/fyp-api/issues", "new_window": True},
+        {"name": "Api Docs (Swagger)", "url": config("BACKEND_URL") + "/docs/",  "new_window": True},
+        {"name": "Api Docs (Redoc)", "url": config("BACKEND_URL") + "/redoc/",  "new_window": True},
+        {"name": "Documentation", "url": "https://fyp-doc.onrender.com/", "new_window": True},
         {"model": "auth.User"},
     ],
     "usermenu_links": [
