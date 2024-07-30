@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from app.plants.models import Plant, Opinion, Characteristic
+from app.plants.models import Plant, Opinion, Characteristic, History
 
 
 @admin.register(Plant)
