@@ -1,0 +1,30 @@
+# Usa una imagen base de Python
+FROM python:3.9-slim
+
+# Instala git
+RUN apt-get update && apt-get install -y git
+
+# Clona el repositorio
+# COPY . /code
+RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
+
+
+# Establece el directorio de trabajo
+WORKDIR /code
+
+# Copia el archivo de requisitos
+COPY requirements/requirements_doc.txt .
+
+# Instala las dependencias
+RUN pip install -r requirements_doc.txt
+
+# Copia el resto del código
+COPY /docs /code/docs
+COPY mkdocs.yml /code/mkdocs.yml
+
+
+# Comando para ejecutar el servidor de MkDocs
+CMD ["mkdocs", "serve", "--dev-addr=0.0.0.0:8001"]
+
+# To build -> docker build -f Dockerfile.documentation -t documentation . --no-cache
+# To run -> docker run -p 8001:8001 documentation
