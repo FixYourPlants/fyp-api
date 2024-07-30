@@ -26,8 +26,6 @@ class Common(Configuration):
         'allauth',
         'allauth.account',
         'allauth.socialaccount',
-        'dj_rest_auth',
-        'dj_rest_auth.registration',
         'django_filters',  # for filtering rest endpoints
         'corsheaders',
         'decouple',

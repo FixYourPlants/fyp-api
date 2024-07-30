@@ -1,40 +1,52 @@
-# Usa la imagen base de Python
+# Usa la imagen base de Python 3.11 slim-bullseye
 FROM python:3.11-slim-bullseye
 
-# Instala git
-RUN apt-get update && apt-get install -y git
+# Establece las variables de entorno para Python
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-# Clona el repositorio
-# COPY . /code
-RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
+# Instala las dependencias del sistema y las bibliotecas necesarias
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    build-essential \
+    libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Establece el directorio de trabajo
+# Crea y establece el directorio de trabajo
 WORKDIR /code
 
-# Instala las dependencias de la aplicación
-RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
+# Copia los archivos de requisitos primero para aprovechar la cache de Docker
+COPY requirements/requirements_api.txt /code/requirements_api.txt
 
-#---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
+# Actualiza pip e instala las dependencias de la aplicación, incluyendo psycopg2
+RUN pip install --upgrade pip && \
+    pip install -r /code/requirements_api.txt --no-cache-dir && \
+    pip install psycopg2 --no-cache-dir
 
-# Establece las variables de entorno
-# ENV DATABASE_URL=postgres://fyp_db_7e93_user:I9I07eyb3tPV5w2b2kBo38Yt4kYrySYS@dpg-cppfqlg8fa8c739fch4g-a.oregon-postgres.render.com/fyp_db_7e93
-# ENV DJANGO_CONFIGURATION=Production
 
-# Ejecuta los siguientes comandos al iniciar el contenedor
+# Copia el código de la aplicación al contenedor
+COPY . /code
+
+# Establece las variables de entorno para la aplicación
+ENV DATABASE_URL=postgresql://fyp_db_tsgh_user:8dq1LsgApzt6KMggLqY8p2ru3r3O09oy@dpg-cqkco1rqf0us73c7bm90-a.oregon-postgres.render.com/fyp_db_tsgh \
+    DJANGO_CONFIGURATION=Production
+
+# Descomenta las siguientes líneas si es la primera vez que se conecta a la base de datos
 RUN python manage.py makemigrations && \
      python manage.py migrate && \
      python manage.py collectstatic --noinput && \
      python manage.py loaddata backup.json
 
-#---- Descomentar si es la primera vez que se conecta a esa base de datos ----#
-
-# Exponer el puerto
+# Expone el puerto de la aplicación
 EXPOSE 8000
 
-# Comando para iniciar el servidor de desarrollo y recopilar archivos estáticos
+# Comando para iniciar el servidor de desarrollo
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
 
-# To build -> docker build -f Dockerfile -t server . --no-cache
-# To run -> docker run --env-file .env -p 8000:8000 server
+# Instrucciones para construir y ejecutar el contenedor
+# Para construir -> docker build -f Dockerfile -t server . --no-cache
+# Para ejecutar -> docker run --env-file .env -p 8000:8000 server
+
 
 
