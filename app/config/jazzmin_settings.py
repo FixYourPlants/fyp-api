@@ -21,9 +21,9 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         {"name": "Support", "url": "https://github.com/FixYourPlants/fyp-api/issues", "new_window": True},
-        {"name": "Api Docs (Swagger)", "url": config("BACKEND_URL") + "/docs/",  "new_window": True},
-        {"name": "Api Docs (Redoc)", "url": config("BACKEND_URL") + "/redoc/",  "new_window": True},
-        {"name": "Documentation", "url": "https://fyp-doc.onrender.com/", "new_window": True},
+        {"name": "Api Docs (Swagger)", "url": config("BACKEND_URL", default="https://fyp-api-0yf4.onrender.com/) + "/docs/",  "new_window": True},
+        {"name": "Api Docs (Redoc)", "url": config("BACKEND_URL", default="https://fyp-api-0yf4.onrender.com/) + "/redoc/",  "new_window": True},
+        {"name": "Documentation", "url": config("DOCS_URL", default="https://fyp-doc.onrender.com/"), "new_window": True},
         {"model": "auth.User"},
     ],
     "usermenu_links": [
