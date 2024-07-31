@@ -70,9 +70,9 @@
         "name": "Algodón",
         "scientific_name": "Gossypium hirsutum",
         "description": "El algodón es una planta perenne que se cultiva como anual en muchas regiones. Es un arbusto que puede alcanzar alturas de 1 a 2 metros. Sus hojas son lobuladas, de color verde oscuro, y alternas. Las flores son grandes, de color blanco o amarillo con un centro púrpura, y se convierten en cápsulas o \"bellotas\" que contienen las semillas rodeadas por fibras blancas o marrones de celulosa (el algodón).",
-        "image": "",
+        "image": "plants/algodón.jpg",
         "difficulty": "EASY",
-        "treatment": "Clima: Prefiere climas cálidos y soleados. Sensible a las heladas y a temperaturas extremas.\r\n\r\nSuelo: Crece mejor en suelos bien drenados, profundos y fértiles. Prefiere suelos ligeros a medianos, como los francos arenosos. El pH del suelo debe ser ligeramente ácido a neutro, entre 5.8 y 7.5.\r\n\r\nRiego: Evitar el exceso de agua y el encharcamiento, ya que el algodón es susceptible a enfermedades fúngicas en condiciones de alta humedad. Necesita riego regular, especialmente durante la germinación y las primeras etapas de crecimiento. El riego por goteo es eficiente y ayuda a conservar el agua.\r\n\r\nLuz: Requiere pleno sol para un óptimo crecimiento y desarrollo. Necesita al menos 6-8 horas de luz solar directa al d¡a.",
+        "treatment": "Clima: Prefiere climas cálidos y soleados. Sensible a las heladas y a temperaturas extremas.\r\n\r\nSuelo: Crece mejor en suelos bien drenados, profundos y fértiles. Prefiere suelos ligeros a medianos, como los francos arenosos. El pH del suelo debe ser ligeramente ácido a neutro, entre 5.8 y 7.5.\r\n\r\nRiego: Evitar el exceso de agua y el encharcamiento, ya que el algodón es susceptible a enfermedades fúngicas en condiciones de alta humedad. Necesita riego regular, especialmente durante la germinación y las primeras etapas de crecimiento. El riego por goteo es eficiente y ayuda a conservar el agua.\r\n\r\nLuz: Requiere pleno sol para un óptimo crecimiento y desarrollo. Necesita al menos 6-8 horas de luz solar directa al día.",
         "sicknesses": [
             "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
             "748528a9-48b2-497e-957e-4547711cd87e",
@@ -141,7 +141,7 @@
     "fields": {
         "name": "Café",
         "scientific_name": "Coffea arabica",
-        "description": "El café es un arbusto o árbol pequeño que puede crecer hasta unos 3-4 metros de altura. Tiene hojas perennes, de color verde oscuro y brillante. Las flores son pequeñas, blancas y muy aromáticas, similares a las flores del jazm¡n. El fruto del café es una baya que cambia de verde a rojo oscuro o púrpura cuando madura. Cada baya contiene dos semillas, que son los granos de café.",
+        "description": "El café es un arbusto o árbol pequeño que puede crecer hasta unos 3-4 metros de altura. Tiene hojas perennes, de color verde oscuro y brillante. Las flores son pequeñas, blancas y muy aromáticas, similares a las flores del jazmín. El fruto del café es una baya que cambia de verde a rojo oscuro o púrpura cuando madura. Cada baya contiene dos semillas, que son los granos de café.",
         "image": "plants/cafe.png",
         "difficulty": "EASY",
         "treatment": "Clima: Prefiere climas tropicales con temperaturas entre 18-24ºC. No tolera las heladas.\r\nSuelo: Necesita suelos bien drenados, ricos en materia orgánica y ligeramente ácidos (pH entre 5.5 y 6.5).\r\nRiego: Debe ser regular pero evitando encharcamientos. La planta requiere humedad constante.\r\nLuz: Necesita sombra parcial, especialmente en sus primeras etapas de crecimiento. Las plantaciones suelen intercalarse con árboles que proporcionan sombra.\r\nFertilización: Se recomienda aplicar abonos orgánicos y fertilizantes balanceados para mantener la salud del suelo y la planta.\r\nPoda: Se realiza para controlar la altura y promover la ramificación. También es útil para eliminar ramas enfermas o dañadas.",
@@ -310,10 +310,10 @@
     "model": "plants.plant",
     "pk": "ca5a28d9-24f2-4746-8e51-7ad4d392f5cf",
     "fields": {
-        "name": "Ma¡z",
+        "name": "Maíz",
         "scientific_name": "Zea mays",
-        "description": "El ma¡z es una planta cultivada ampliamente por sus mazorcas comestibles, que son una fuente importante de nutrientes como carbohidratos, prote¡nas y fibra. Es utilizado en una variedad de formas, desde alimentos básicos hasta ingredientes industriales.",
-        "image": "plants/ma¡z.png",
+        "description": "El maíz es una planta cultivada ampliamente por sus mazorcas comestibles, que son una fuente importante de nutrientes como carbohidratos, proteínas y fibra. Es utilizado en una variedad de formas, desde alimentos básicos hasta ingredientes industriales.",
+        "image": "plants/maíz.png",
         "difficulty": "EASY",
         "treatment": "Plantar en suelo bien drenado y proporcionar riego regular. Controlar malezas y fertilizar según sea necesario. Se suele cortar el penacho superior, que es la flor masculina, para que la mazorca tenga una mayor exposición al sol.",
         "sicknesses": [
@@ -342,7 +342,7 @@
     "fields": {
         "name": "Fresa",
         "scientific_name": "Fragaria x ananassa",
-        "description": "La fresa es un fruto rojo brillante, pequeño y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, as¡ como por su textura suave y carnosa.",
+        "description": "La fresa es un fruto rojo brillante, pequeño y jugoso, que se encuentra en la planta del mismo nombre. Es conocida por su sabor dulce y fragante, así como por su textura suave y carnosa.",
         "image": "plants/fresa.jpeg",
         "difficulty": "EASY",
         "treatment": "Plantar en suelo rico en materia orgánica y proporcionar riego regular. Retirar corredores para fomentar la producción de frutos. Estos corredores se pueden utilizar para producir nuevas plantas.",
@@ -367,7 +367,7 @@
     "fields": {
         "name": "Uva",
         "scientific_name": "Vitis vinifera",
-        "description": "Las uvas son frutas pequeñas y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, as¡ como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
+        "description": "Las uvas son frutas pequeñas y redondas que crecen en racimos en las vides del género Vitis. Son conocidas por su sabor dulce y jugoso, así como por su versatilidad en la cocina y en la producción de vino. Las uvas pueden ser de diferentes colores, incluyendo verde, rojo, morado y negro, dependiendo de la variedad.",
         "image": "plants/uva.jpeg",
         "difficulty": "MEDIUM",
         "treatment": "Proporcionar riego regular (en Extremadura no se riegan) y protección contra plagas como la polilla de la uva. Con mucha humedad, época de muchas lluvias, conviene hacer un tratamiento contra el mildiu. Hacer una poda fuerte en invierno, quitando todas las ramas y dejando solo unas yemas, para promover una buena producción.",
@@ -541,7 +541,7 @@
     "model": "plants.characteristic",
     "pk": "78350738-a259-4440-b0ba-836e21ec2bf6",
     "fields": {
-        "name": "┴rbol"
+        "name": "Árbol"
     }
 },
 {
@@ -555,7 +555,7 @@
     "model": "plants.characteristic",
     "pk": "8335a26b-0a60-4e83-90ca-ad6f640e9fb1",
     "fields": {
-        "name": "┴cida"
+        "name": "Ácida"
     }
 },
 {
@@ -647,8 +647,8 @@
     "pk": "120bd813-d903-4b64-926d-dfd9abb83c70",
     "fields": {
         "name": "Sarampión negro",
-        "description": "El sarampión negro de la vid es una enfermedad causada por hongos (principalmente especies del género Phaeomoniella y Phaeoacremonium) que afecta a la vid. Se manifiesta por manchas negras en las hojas y el tronco, as¡ como un retraso en el crecimiento y la muerte prematura de las plantas.",
-        "treatment": "1. Poda: Poda de las partes infectadas de la planta y destrucción de los restos para evitar la propagación del hongo.\r\n2. Fungicidas: Aplicación de fungicidas espec¡ficos puede ayudar a controlar la enfermedad.\r\n3. Buen manejo del viñedo: Mantener una buena circulación de aire y evitar el exceso de humedad alrededor de las plantas.\r\n4. Replantación: En casos graves, puede ser necesario replantar con variedades más resistentes.",
+        "description": "El sarampión negro de la vid es una enfermedad causada por hongos (principalmente especies del género Phaeomoniella y Phaeoacremonium) que afecta a la vid. Se manifiesta por manchas negras en las hojas y el tronco, así como un retraso en el crecimiento y la muerte prematura de las plantas.",
+        "treatment": "1. Poda: Poda de las partes infectadas de la planta y destrucción de los restos para evitar la propagación del hongo.\r\n2. Fungicidas: Aplicación de fungicidas específicos puede ayudar a controlar la enfermedad.\r\n3. Buen manejo del viñedo: Mantener una buena circulación de aire y evitar el exceso de humedad alrededor de las plantas.\r\n4. Replantación: En casos graves, puede ser necesario replantar con variedades más resistentes.",
         "image": "sicknesses/Black_measel.jpeg",
         "notifications": []
     }
@@ -657,10 +657,10 @@
     "model": "sickness.sickness",
     "pk": "1fba38fb-d1a0-47e5-a14d-73a8b070ac5c",
     "fields": {
-        "name": "O¡dio",
-        "description": "El o¡dio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosales, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
+        "name": "Oídio",
+        "description": "El oídio es una enfermedad causada por hongos que afecta a una amplia variedad de plantas, incluyendo rosales, calabazas y vid. Se caracteriza por el crecimiento de un polvo blanco o grisáceo en las hojas, tallos y flores.",
         "treatment": "1. Mantener una buena circulación de aire alrededor de las plantas para reducir la humedad.\r\n2. Aplicar tratamientos con fungicidas a intervalos regulares.",
-        "image": "sicknesses/o¡dio.jpg",
+        "image": "sicknesses/oídio.jpg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
         ]
@@ -672,7 +672,7 @@
     "fields": {
         "name": "Moho",
         "description": "El moho es una enfermedad fúngica que afecta a muchas plantas, incluyendo hortalizas, árboles frutales y plantas ornamentales. Se manifiesta como un crecimiento micelial blanco, gris o negro en las hojas, tallos o frutos, lo que puede causar la pudrición de los tejidos.",
-        "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en per¡odos de alta humedad.",
+        "treatment": "1. Mantener un buen drenaje del suelo para reducir la humedad.\r\n2. Aplicar fungicidas preventivos en períodos de alta humedad.",
         "image": "sicknesses/moho.jpg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
@@ -697,8 +697,8 @@
     "pk": "547f0964-e20f-4523-a3f6-4a848fc52593",
     "fields": {
         "name": "Brusone",
-        "description": "La brusone es una de las enfermedades más destructivas del arroz y está causada por el hongo Magnaporthe oryzae. Este hongo puede infectar todas las partes aéreas de la planta de arroz, incluyendo hojas, tallos, nudos, pan¡culas y granos.",
-        "treatment": "Rotación de Cultivos: Alternar cultivos susceptibles con cultivos no hospedantes para reducir la presencia del hongo en el suelo.\r\n\r\nEliminación de Residuos: Remover y destruir restos de cultivos anteriores y otras partes infectadas para reducir las fuentes de inóculo.\r\n\r\nFungicidas: Aplicar fungicidas espec¡ficos para controlar el hongo. Alternar diferentes grupos de fungicidas para evitar la resistencia del hongo.",
+        "description": "La brusone es una de las enfermedades más destructivas del arroz y está causada por el hongo Magnaporthe oryzae. Este hongo puede infectar todas las partes aéreas de la planta de arroz, incluyendo hojas, tallos, nudos, panículas y granos.",
+        "treatment": "Rotación de Cultivos: Alternar cultivos susceptibles con cultivos no hospedantes para reducir la presencia del hongo en el suelo.\r\n\r\nEliminación de Residuos: Remover y destruir restos de cultivos anteriores y otras partes infectadas para reducir las fuentes de inóculo.\r\n\r\nFungicidas: Aplicar fungicidas específicos para controlar el hongo. Alternar diferentes grupos de fungicidas para evitar la resistencia del hongo.",
         "image": "sicknesses/brusone.jpeg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
@@ -710,7 +710,7 @@
     "pk": "56366999-f5f3-49f1-ae99-4fbd1c9d14e6",
     "fields": {
         "name": "Virus del mosaico",
-        "description": "El virus del mosaico es una enfermedad viral que afecta a muchas plantas, incluyendo tomates, pepinos y calabacines. Se manifiesta como un moteado caracter¡stico en las hojas, que puede reducir la capacidad de la planta para realizar la fotos¡ntesis y afectar su rendimiento.",
+        "description": "El virus del mosaico es una enfermedad viral que afecta a muchas plantas, incluyendo tomates, pepinos y calabacines. Se manifiesta como un moteado característico en las hojas, que puede reducir la capacidad de la planta para realizar la fotosíntesis y afectar su rendimiento.",
         "treatment": "1. Eliminar y destruir las plantas infectadas para prevenir la propagación del virus.\r\n2. Controlar los insectos vectores que puedan transmitir el virus.",
         "image": "sicknesses/virus_del_mosaico.jpeg",
         "notifications": []
@@ -748,7 +748,7 @@
     "fields": {
         "name": "Sarna",
         "description": "La sarna es una enfermedad fúngica común en árboles frutales como manzanos y perales. Se caracteriza por la formación de manchas en las hojas y frutos, lo que puede afectar su crecimiento y calidad.",
-        "treatment": "1. Aplicar fungicidas espec¡ficos para la sarna, siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación.",
+        "treatment": "1. Aplicar fungicidas específicos para la sarna, siguiendo las instrucciones del fabricante.\r\n2. Eliminar y destruir las hojas infectadas para prevenir la propagación.",
         "image": "sicknesses/sarna.jpg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
@@ -772,9 +772,9 @@
     "model": "sickness.sickness",
     "pk": "ccf10026-6fed-465a-b549-ad1b0c3efb29",
     "fields": {
-        "name": "┴caros rojos",
-        "description": "Los ácaros rojos son pequeños arácnidos que se alimentan de las hojas de las plantas, causando decoloración, manchas y, en casos graves, la ca¡da de las hojas. Son especialmente problemáticos en climas cálidos y secos.",
-        "treatment": "1. Riego: Aumentar la humedad ambiental alrededor de las plantas puede ayudar a disuadir a los ácaros.\r\n2. Aceites hort¡colas: Aplicar aceites hort¡colas o insecticidas a base de neem puede ser efectivo para controlar la población de ácaros.\r\n3. Depredadores naturales: Introducir depredadores naturales como las mariquitas o los ácaros depredadores puede ayudar a reducir las poblaciones de ácaros rojos.\r\n4. Limpieza regular: Lavar las hojas de las plantas con agua jabonosa también puede ayudar a eliminar los ácaros.",
+        "name": "Ácaros rojos",
+        "description": "Los ácaros rojos son pequeños arácnidos que se alimentan de las hojas de las plantas, causando decoloración, manchas y, en casos graves, la caída de las hojas. Son especialmente problemáticos en climas cálidos y secos.",
+        "treatment": "1. Riego: Aumentar la humedad ambiental alrededor de las plantas puede ayudar a disuadir a los ácaros.\r\n2. Aceites hortícolas: Aplicar aceites hortícolas o insecticidas a base de neem puede ser efectivo para controlar la población de ácaros.\r\n3. Depredadores naturales: Introducir depredadores naturales como las mariquitas o los ácaros depredadores puede ayudar a reducir las poblaciones de ácaros rojos.\r\n4. Limpieza regular: Lavar las hojas de las plantas con agua jabonosa también puede ayudar a eliminar los ácaros.",
         "image": "sicknesses/Two_spotted_spider_mittens.jpeg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
@@ -799,7 +799,7 @@
     "pk": "ee6a3f9b-e578-4ca1-b089-87b345cb76e1",
     "fields": {
         "name": "Virus rizado amarillo",
-        "description": "El virus rizado amarillo es una enfermedad viral que afecta a diversas plantas cultivadas, incluyendo tomates, patatas y remolachas. Se caracteriza por el amarillamiento y deformación de las hojas, as¡ como la reducción en el rendimiento de la planta.",
+        "description": "El virus rizado amarillo es una enfermedad viral que afecta a diversas plantas cultivadas, incluyendo tomates, patatas y remolachas. Se caracteriza por el amarillamiento y deformación de las hojas, así como la reducción en el rendimiento de la planta.",
         "treatment": "1. Utilizar variedades resistentes, cuando sea posible.\r\n2. Controlar las malas hierbas que puedan servir como huéspedes alternativos.",
         "image": "sicknesses/virus_rizado_amarillo.jpg",
         "notifications": [
@@ -812,8 +812,8 @@
     "pk": "f2f94473-be4d-49c3-b022-47d49de98a1d",
     "fields": {
         "name": "Quemadura",
-        "description": "La quemadura en las plantas se manifiesta como el marchitamiento, decoloración y muerte del tejido vegetal, t¡picamente en las hojas y a veces en los tallos. Esto puede ser causado por diversos factores como el exceso de sol (quemadura solar), altas temperaturas, viento seco o una falta de agua.",
-        "treatment": "1. Riego adecuado: Mantener un riego regular y suficiente para que las plantas no se deshidraten.\r\n2. Sombra: Proporcionar sombra a las plantas durante las horas más calurosas del d¡a, especialmente en regiones muy soleadas.\r\n3. Mulching: Aplicar una capa de mantillo alrededor de la base de las plantas para ayudar a retener la humedad del suelo.\r\n4. Evitar fertilizantes agresivos: Utilizar fertilizantes con cuidado para no causar estrés adicional a las plantas.",
+        "description": "La quemadura en las plantas se manifiesta como el marchitamiento, decoloración y muerte del tejido vegetal, típicamente en las hojas y a veces en los tallos. Esto puede ser causado por diversos factores como el exceso de sol (quemadura solar), altas temperaturas, viento seco o una falta de agua.",
+        "treatment": "1. Riego adecuado: Mantener un riego regular y suficiente para que las plantas no se deshidraten.\r\n2. Sombra: Proporcionar sombra a las plantas durante las horas más calurosas del día, especialmente en regiones muy soleadas.\r\n3. Mulching: Aplicar una capa de mantillo alrededor de la base de las plantas para ayudar a retener la humedad del suelo.\r\n4. Evitar fertilizantes agresivos: Utilizar fertilizantes con cuidado para no causar estrés adicional a las plantas.",
         "image": "sicknesses/Scorh.jpeg",
         "notifications": [
             "3398fbc0-f60f-430c-bc4b-076b630e030c"
@@ -825,7 +825,7 @@
     "pk": "f5378db4-7219-4116-ac3e-2ab4ba772491",
     "fields": {
         "name": "Tizón",
-        "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo ma¡z, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar daños significativos si no se trata adecuadamente.",
+        "description": "El tizón es una enfermedad fúngica que afecta a muchas plantas cultivadas, incluyendo maíz, patatas y tomates. Se manifiesta como manchas oscuras en las hojas y puede causar daños significativos si no se trata adecuadamente.",
         "treatment": "1. Rotar cultivos para evitar la propagación del tizón.\r\n2. Mantener el suelo limpio de restos vegetales para reducir la propagación de esporas.",
         "image": "sicknesses/tizón.jpeg",
         "notifications": [
