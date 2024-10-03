@@ -15,6 +15,18 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data.pop('affected_sicknesses', None)
         return super().update(instance, validated_data)
 
+    def validate_username(self, value):
+        # Validar que el nombre de usuario no esté en uso
+        if User.objects.exclude(id=self.instance.id).filter(username=value).exists():
+            raise serializers.ValidationError("Este nombre de usuario ya está en uso.")
+        return value
+
+    def validate_email(self, value):
+        # Validar que el correo electrónico no esté en uso
+        if User.objects.exclude(id=self.instance.id).filter(email=value).exists():
+            raise serializers.ValidationError("Este correo electrónico ya está en uso.")
+        return value
+
 class CreateUserSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)
     

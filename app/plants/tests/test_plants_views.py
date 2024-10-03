@@ -3,7 +3,9 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from app.plants.models import History, Plant
 from app.plants.tests.factories import PlantFactory, OpinionFactory
+from app.users.models import User
 from app.users.tests.factories import UserFactory
 
 '''
@@ -133,3 +135,38 @@ class TestOpinionCreateView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn('plant', response.data)
 
+'''
+HISTORY
+'''
+
+
+class TestHistoryListView(APITestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        refresh = RefreshToken.for_user(self.user)
+        access_token = str(refresh.access_token)
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
+
+        self.plant = Plant.objects.create(name='Sample Plant')
+        self.history_entry = History.objects.create(plant=self.plant, sickness=None)
+
+        self.user.history.add(self.history_entry)
+
+        self.url = reverse('history-list-list')  # Asegúrate de que esta sea la URL correcta
+
+    def test_list_history_authenticated(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)  # Asegúrate de que se retorne la cantidad correcta de registros
+
+    def test_list_history_unauthenticated(self):
+        self.client.logout()
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_list_history_with_no_entries(self):
+        History.objects.all().delete()  # Eliminar todas las entradas de historia
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 0)  # Debería retornar una lista vacía

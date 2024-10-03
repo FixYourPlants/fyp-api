@@ -41,7 +41,7 @@ ENV DJANGO_CONFIGURATION=Local
 # Realiza migraciones y otras tareas iniciales (si es necesario)
 RUN python /code/manage.py makemigrations && \
     python /code/manage.py migrate && \
-    python /code/manage.py collectstatic --noinput
+    python /code/manage.py collectstatic --noinput && \
     python /code/manage.py loaddata backup.json
 
 # Expone el puerto de la aplicación

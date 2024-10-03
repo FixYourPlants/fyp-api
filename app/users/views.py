@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, password_validation
 from django.contrib.auth.tokens import default_token_generator
-from django.core.exceptions import ValidationError as DjangoValidationError
+from django.core.exceptions import ValidationError as DjangoValidationError, ValidationError
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
@@ -56,10 +56,10 @@ class UserDetailView(viewsets.GenericViewSet, mixins.RetrieveModelMixin):
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
-class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+class UserUpdateView(viewsets.GenericViewSet, mixins.UpdateModelMixin):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     pagination_class = None
 
     @user_update_swagger()
@@ -70,7 +70,7 @@ class UserUpdateAndDestroyView(viewsets.GenericViewSet, mixins.UpdateModelMixin,
 class LoggedInUserView(viewsets.ViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated,)
 
     @logged_in_user_swagger()
     @action(detail=False, methods=['GET'])
