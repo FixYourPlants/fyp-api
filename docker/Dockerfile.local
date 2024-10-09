@@ -22,7 +22,8 @@ COPY ../requirements/requirements_doc.txt /code/requirements_test.txt
 # Actualiza pip e instala las dependencias de la aplicación
 RUN pip install --upgrade pip && \
     pip install -r /code/requirements_api.txt --no-cache-dir && \
-    pip install -r /code/requirements_test.txt --no-cache-dir
+    pip install -r /code/requirements_test.txt --no-cache-dir && \
+    pip install pytest-django --no-cache-dir
 
 # Clona el repositorio del código de la aplicación
 COPY .. /code
@@ -51,5 +52,5 @@ EXPOSE 8000
 CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
 
 # Instrucciones para construir y ejecutar el contenedor
-# Para construir -> docker build -f docker\Dockerfile -t server . --no-cache
+# Para construir -> docker build -f docker\Dockerfile.local -t server . --no-cache
 # Para ejecutar -> docker run --env-file .env -p 8000:8000 server

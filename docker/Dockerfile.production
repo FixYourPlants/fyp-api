@@ -37,13 +37,13 @@ RUN curl -L -o /code/app/plants/models/model.weights.h5 https://raw.githubuserco
     curl -L -o /code/app/plants/models/plant_leaf_disease_detector.keras https://raw.githubusercontent.com/FixYourPlants/fyp-ai/master/models/plant_leaf_disease_detector.keras
 
 # Establece las variables de entorno para la aplicación
-ENV DATABASE_URL=postgresql://fyp_db_tsgh_user:8dq1LsgApzt6KMggLqY8p2ru3r3O09oy@dpg-cqkco1rqf0us73c7bm90-a.oregon-postgres.render.com/fyp_db_tsgh \
+ENV DATABASE_URL=postgresql://fyp_db_d8u3_user:Qm71Sp62eoulbyoPVzkbYW5vE7P6nLYO@dpg-cs3as1t6l47c73ed1nqg-a.oregon-postgres.render.com/fyp_db_d8u3 \
     DJANGO_CONFIGURATION=Production
 
 # Realiza migraciones y otras tareas iniciales (si es necesario)
 RUN python /code/manage.py makemigrations && \
     python /code/manage.py migrate && \
-    python /code/manage.py collectstatic --noinput
+    python /code/manage.py collectstatic --noinput && \
 #    python /code/manage.py loaddata backup.json
 
 # Expone el puerto de la aplicación
@@ -53,7 +53,7 @@ EXPOSE 8000
 CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
 
 # Instrucciones para construir y ejecutar el contenedor
-# Para construir -> docker build -f docker\Dockerfile -t server . --no-cache
+# Para construir -> docker build -f docker\Dockerfile.production -t server . --no-cache
 # Para ejecutar -> docker run --env-file .env -p 8000:8000 server
 
 
