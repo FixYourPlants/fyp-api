@@ -205,10 +205,7 @@ class Common(Configuration):
 
     JAZZMIN_UI_TWEAKS = jazzmin_settings.JAZZMIN_UI_TWEAKS
 
-    SWAGGER_SETTINGS = {
-        'SECURITY_DEFINITIONS': None,  # Eliminar la definición de seguridad
-        'USE_SESSION_AUTH': False,  # No usar autenticación de sesión
-    }
+
 
 
 

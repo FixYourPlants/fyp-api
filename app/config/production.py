@@ -34,3 +34,15 @@ class Production(Common):
         'default': dj_database_url.config(default=config('DATABASE_URL', default='postgres://localhost'))
     }
 
+    SWAGGER_SETTINGS = {
+        'SECURITY_DEFINITIONS': {
+            'Bearer': {
+                'type': 'apiKey',
+                'name': 'Authorization',
+                'in': 'header'
+            }
+        },  # Si usas autenticación por tokens o JWT, puedes definir el esquema de seguridad
+        'USE_SESSION_AUTH': False,  # Deshabilitar autenticación de sesión si no la necesitas
+        'DEFAULT_API_URL': 'https://fyp-api-0yf4.onrender.com/',  # Definir la URL base de la API
+    }
+

@@ -35,3 +35,15 @@ class Local(Common):
         }
     }
 
+    SWAGGER_SETTINGS = {
+        'SECURITY_DEFINITIONS': {
+            'Bearer': {
+                'type': 'apiKey',
+                'name': 'Authorization',
+                'in': 'header'
+            }
+        },  # Si usas autenticación por tokens o JWT, puedes definir el esquema de seguridad
+        'USE_SESSION_AUTH': False,  # Deshabilitar autenticación de sesión si no la necesitas
+        'DEFAULT_API_URL': 'http://localhost:8000',  # Definir la URL base de la API
+    }
+
