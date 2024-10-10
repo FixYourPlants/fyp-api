@@ -36,7 +36,11 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Ignora migraciones y base de datos
+migrations
+*.sqlite3
+
+# Unit tests / coverage reports
 htmlcov/
 .tox/
 .nox/

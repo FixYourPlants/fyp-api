@@ -1,0 +1,56 @@
+# Usa la imagen base de Python 3.11 slim-bullseye
+FROM python:3.11-slim-bullseye
+
+# Establece las variables de entorno para Python
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Instala las dependencias del sistema y las bibliotecas necesarias
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Crea y establece el directorio de trabajo
+WORKDIR /code
+
+# Copia los archivos de requisitos primero para aprovechar la cache de Docker
+COPY ../requirements/requirements_api.txt /code/requirements_api.txt
+COPY ../requirements/requirements_doc.txt /code/requirements_test.txt
+
+# Actualiza pip e instala las dependencias de la aplicación
+RUN pip install --upgrade pip && \
+    pip install -r /code/requirements_api.txt --no-cache-dir && \
+    pip install -r /code/requirements_test.txt --no-cache-dir && \
+    pip install pytest-django --no-cache-dir
+
+# Clona el repositorio del código de la aplicación
+COPY .. /code
+# RUN git clone --branch develop https://github.com/FixYourPlants/fyp-api.git /code
+
+# Crea el directorio para los archivos
+RUN mkdir -p /code/app/plants/models
+
+# Descarga los archivos adicionales desde GitHub y los coloca en el directorio adecuado
+RUN curl -L -o /code/app/plants/models/model.weights.h5 https://raw.githubusercontent.com/FixYourPlants/fyp-ai/master/models/model.weights.h5 && \
+    curl -L -o /code/app/plants/models/plant_leaf_disease_detector.keras https://raw.githubusercontent.com/FixYourPlants/fyp-ai/master/models/plant_leaf_disease_detector.keras
+
+# Establece las variables de entorno para la aplicación
+ENV DJANGO_CONFIGURATION=Local
+
+# Realiza migraciones y otras tareas iniciales (si es necesario)
+RUN python /code/manage.py makemigrations && \
+    python /code/manage.py migrate && \
+    python /code/manage.py collectstatic --noinput && \
+    python /code/manage.py loaddata backup.json
+
+# Expone el puerto de la aplicación
+EXPOSE 8000
+
+# Comando para iniciar el servidor de desarrollo
+CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000", "--insecure"]
+
+# Instrucciones para construir y ejecutar el contenedor
+# Para construir -> docker build -f docker\Dockerfile.local -t server . --no-cache
+# Para ejecutar -> docker run --env-file .env -p 8000:8000 server

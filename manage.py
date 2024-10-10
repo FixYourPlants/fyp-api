@@ -3,10 +3,15 @@
 import os
 import sys
 
+from decouple import config
+
 
 def main():
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.config")
-    os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
+    os.environ.setdefault("DJANGO_CONFIGURATION", config('DJANGO_CONFIGURATION', default='Local'))
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+    os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+        
 
     try:
         from configurations.management import execute_from_command_line

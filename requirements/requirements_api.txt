@@ -1,0 +1,47 @@
+# Django core and configurations
+Django~=5.0.6
+django-allauth~=0.63.2
+django-configurations~=2.5.1
+
+# Django middleware and utilities
+django-cors-headers~=3.13.0
+django-filter~=24.2
+django-jazzmin~=3.0.0
+django-model-utils~=4.5.1
+django-unique-upload~=0.2.1
+
+# Django REST framework and extensions
+djangorestframework~=3.15.1
+djangorestframework-simplejwt~=5.3.1
+drf-yasg~=1.21.7
+
+# Database and URL configuration
+dj-database-url~=2.2.0
+
+# HTTP server
+gunicorn~=22.0.0
+
+# Parsing and data processing
+beautifulsoup4~=4.12.3
+coreapi~=2.3.3
+packaging~=24.1
+
+# Image processing
+pillow~=10.3.0
+
+# Environment configuration
+python-decouple~=3.7
+
+# Timezone utilities
+pytz~=2024.1
+
+# Machine learning
+tensorflow~=2.16.1
+
+
+
+
+
+
+
+

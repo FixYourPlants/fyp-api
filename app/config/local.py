@@ -1,25 +1,49 @@
 import os
+
+from decouple import config
+
 from .common import Common
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class Local(Common):
     DEBUG = True
 
-    # Testing
-    INSTALLED_APPS = Common.INSTALLED_APPS
-    INSTALLED_APPS += ('django_nose',)
-    TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-    NOSE_ARGS = [
-        BASE_DIR,
-        '-s',
-        '--nologcapture',
-        '--with-coverage',
-        '--with-progressive',
-        '--cover-package=app'
-    ]
+    SECRET_KEY = 'TuClaveSecretaGeneradaAleatoriamenteAquí'
+    ALLOWED_HOSTS = ["*"]
 
-    # Mail
-    EMAIL_HOST = 'localhost'
-    EMAIL_PORT = 1025
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = config('EMAIL_HOST', default='smtp.sendgrid.net')
+    EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+    EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False)
+    EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+
+    # Testing
+    INSTALLED_APPS = Common.INSTALLED_APPS + [
+        'pytest_django',
+    ]
+    TEST_RUNNER = 'pytest_django.runner.PytestTestRunner'
+
+    # Database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'app.sqlite3'),
+        }
+    }
+
+    SWAGGER_SETTINGS = {
+        'SECURITY_DEFINITIONS': {
+            'Bearer': {
+                'type': 'apiKey',
+                'name': 'Authorization',
+                'in': 'header'
+            }
+        },  # Si usas autenticación por tokens o JWT, puedes definir el esquema de seguridad
+        'USE_SESSION_AUTH': False,  # Deshabilitar autenticación de sesión si no la necesitas
+        'DEFAULT_API_URL': 'http://localhost:8000',  # Definir la URL base de la API
+    }
+
